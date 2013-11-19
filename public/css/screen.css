@@ -1,0 +1,394 @@
+@charset "UTF-8";
+
+/*
+Author: jibin
+Author URI: http://www.houjibin.com/
+Author mail: gagucooper@gmail.com
+Version: 1.0
+Last Updated: 2013-11-12
+-------------------------------------------------------------- */
+
+/* price */
+.price dt .price-title {
+	height: 28px;
+	line-height: 28px;
+	overflow: hidden;
+	width: 182px;
+	border: 1px solid #2371b7;
+	margin-bottom: 10px;
+	border-radius: 2px;
+}
+	.price dt em, .price dt span {
+		float: left;
+		height: 28px;
+	}
+	.price dt em {
+		font-size: 16px;
+		color: #fff;
+		padding: 0 10px;
+		min-width: 64px;
+		background: #2371b7;
+	}
+	.price dt span {
+		font-size: 18px;
+		background: #fff url(../images/bg-decorate.png) no-repeat 0 0;
+		padding: 0 10px 0 15px;
+	}
+		.price dt strong {
+			color: #2371b7;
+			font-size: 24px;
+			font-weight: normal;
+		}
+	.price dd {
+		margin-bottom: 15px;
+		padding-bottom: 15px;
+	}
+
+.price-large dt .price-title {
+	margin: 15px 0;
+}
+	.price-large dd {
+		border-bottom: 1px solid #e1e1e1;
+	}
+	.price-large dd:last-child {
+		border-bottom: 0 none;
+	}	
+		.price-option {
+			padding-right: 20px;
+			height: 42px;
+			line-height: 42px;
+		}
+			.price-option label {
+				padding: 0 15px 0 10px;
+			}
+			.price-option .ipt-txt {
+				margin-right: 10px;
+			}
+
+/* form */
+.form-1 ul li {
+	padding-bottom: 10px;
+}
+	.form-1 ul li .select {
+		margin-right: 18px;
+		width: 112px;
+	}
+	.form-1 ul li .select:last-child {
+		margin-right: 0;
+	}
+	.form-1 ul li .btn {
+		margin-bottom: 10px;
+		height: 30px;
+	}
+
+.form-2 th, .form-2 td {
+	padding: 30px 5px 0;
+}
+.form-2 th {
+	width: 10%;
+	text-align: right;
+	font-weight: normal;
+	font-size: 16px;
+}
+.form-2 td {
+	width: 90%;
+}
+	.form-2 td span {
+		padding-left: 10px;
+	}
+	.form-2 .btn-wrap {
+		padding: 40px 0 0 100px;
+	}
+		.form-2 .btn-wrap .btn {
+			padding: 0 60px;
+		}
+
+.form-3 th, .form-3 td {
+	padding: 15px 5px 0;
+}
+.form-3 th {
+	width: 22%;
+	text-align: right;
+	font-weight: normal;
+}
+.form-3 td {
+	width: 78%;
+}
+	.form-3 td .select, .form-3 td label {
+		margin-right: 10px;
+	}
+
+.form-psw th {
+	font-size: 14px;
+}
+	.form-2 .btn-wrap .btn {
+		padding: 0 35px;
+		margin-right: 35px;
+	}
+
+/* news */
+.news-index ul li {
+	float: left;
+}
+.news-index ul li {
+	float: left;
+	padding: 0 20px;
+	width: 205px;
+}
+	.pic-news {
+		width: 205px;
+		height: 120px;
+		overflow: hidden;
+		border-radius: 3px;
+	}
+	.news-index ul li dl dt {
+		font-size: 16px;
+		text-align: center;
+	}
+	.news-index ul li dl dd {
+		padding-bottom: 20px;
+	}
+
+.news-list li.active {
+	background: #2371b7;
+}
+	.news-list li.active a {
+		color: #fff;
+		cursor: default;
+		text-decoration: none;
+		background: url(../images/icon-arrows.png) no-repeat 15px -24px;
+	}
+	.news-list li a {
+		display: block;
+		padding: 8px 10px 8px 30px;
+		border-bottom: 1px dotted #999;
+		background: url(../images/icon-arrows.png) no-repeat 15px 16px;
+	}
+
+/* question */
+.question-stat span {
+	padding-left: 20px;
+}
+.question-list ul li {
+	padding-bottom: 20px;
+}
+.question-list ul li:hover {
+	background:#f6f6f6;
+}
+	.question-list ul li dl dt {
+		padding-bottom: 10px;
+	}
+	.question-list ul li dl dd {
+		padding: 0 0 0 18px;
+	}
+		.question-list ul li dl dd label {
+			display: inline-block;
+			height: 30px;
+			vertical-align: middle;
+			width: 48%;
+		}
+
+/*  message */
+.msg-list {
+	padding: 20px 50px;
+}	
+	.msg-list ul li {
+		padding-bottom: 10px;
+	}
+	.msg-list ul li a {
+		margin-left: 5px;
+	}
+
+/* user */
+.user-info dt {
+	margin: 15px 0;
+	font-weight: bold;
+}
+	.user-info dd {
+		margin-bottom: 15px;
+		padding-bottom: 15px;
+		border-bottom: 1px solid #e1e1e1;
+	}
+	.user-info dd:last-child {
+		border-bottom: 0 none;
+	}
+		.user-option {
+			padding-right: 20px;
+			line-height: 42px;
+		}
+			.user-info .user-option-first {
+				line-height: 62px;
+			}
+				.user-info .user-option-first .btn {
+					position: relative;
+					top: 12px;
+				}		
+			.user-option ul li {
+				float: left;
+				padding-right: 36px;
+			}
+			.user-option ul li:last-child {
+				padding-right: 0;
+			}
+
+/* faq */
+.btn-groups {
+	padding: 0 20px 30px;
+}
+	.btn-groups .fl .btn {
+		margin-right: 10px;
+	}
+
+/* video */
+.video-search ul li {
+	float: left;
+	vertical-align: middle;
+	padding: 0 30px 30px 20px;
+	min-width: 220px;
+}
+.video-search ul li:last-child {
+	padding-right: 0;
+}
+	.video-search ul li p {
+		padding-bottom: 5px;
+	}
+	.video-search ul li .select, .video-search ul li label {
+		vertical-align: middle;
+		margin-right: 10px;
+	}
+.video-search .fr .btn {
+	position: relative;
+	top: 10px;
+}
+
+.video-list ul li, .video-index ul li {
+	float: left;
+}
+.video-list ul li {
+	float: left;
+	padding: 0 20px 20px;
+	width: 205px;
+}
+.video-index ul li {
+	float: left;
+	padding-right: 25px;
+	width: 110px;
+	text-align: center;
+}
+.video-index ul li:last-child {
+	padding-right: 0;
+}
+	.pic-video-normal {
+		width: 205px;
+		height: 140px;
+		overflow: hidden;
+		position: relative;
+		border-radius: 3px;
+	}
+	.pic-video-mini {
+		width: 110px;
+		height: 65px;
+		overflow: hidden;
+		position: relative;
+		border-radius: 3px;
+	}
+	.video-index .icon-play {
+		display: block;
+		width: 50px;
+		height: 50px;
+		overflow: hidden;
+		background: url(../images/icon-play.png) no-repeat 0 0;
+		position: absolute;
+		top: 7px;
+		left: 30px;
+	}
+	.video-list .icon-play {
+		display: block;
+		width: 50px;
+		height: 50px;
+		overflow: hidden;
+		background: url(../images/icon-play.png) no-repeat 0 0;
+		position: absolute;
+		top: 45px;
+		left: 77px;
+	}
+	.video-list ul li:hover .icon-play, .video-index ul li:hover .icon-play {
+		background: url(../images/icon-play.png) no-repeat -50px 0;
+	}	
+		.video-list ul li dl dt {
+			font-size: 16px;
+			padding: 8px 0;
+		}
+		.video-list ul li dl dd {
+			font-size: 12px;
+			color: #555;
+			padding-bottom: 5px;
+		}
+
+/* question */
+.question-mode h4 {
+	font-size: 14px;
+	padding: 0 0 10px;
+}
+	.question-mode ul li {
+		padding: 0 0 10px;
+	}
+	.question-mode ul li:last-child {
+		padding-top: 20px;
+	}
+	.question-mode ul li .c-gray {
+		padding-left: 20px;
+		color: #666;
+	}
+
+.question-writing dl dt {
+	font-weight: bold;
+	font-size: 16px;
+	padding-bottom: 20px;
+}
+.question-writing dl dd {
+	padding-bottom: 20px;
+}
+	.question-writing dl dd .textarea {
+		height: 240px;
+	}
+
+/* toolbar */
+.toolbar-search ul li {
+	float: left;
+	padding-left: 20px;
+	height: 40px;
+	line-height: 40px;
+}
+.toolbar-search2 ul li {
+	float: left;
+	padding-left: 20px;
+	height: 26px;
+	line-height: 26px;
+}
+	.toolbar-search2 ul li .btn-white {
+		margin-right: 20px;
+	}
+	.toolbar-search2 ul li a {
+		margin-right: 6px;
+		color: #000;
+		padding: 0 4px;
+	}
+	.toolbar-search2 ul li a:hover, .toolbar-search2 ul li a.active {
+		color: #fff;
+		background: #1468A3;
+		text-decoration: none;
+		border-radius: 3px;
+	}
+
+.toolbar-problem-list {
+	padding: 0 20px;
+}
+	.toolbar-problem-list ul li .btn-white {
+		position: relative;
+		top: -36px;
+	}
+
+.toolbar-search-list ul li .btn-white {
+	margin: 20px 20px 0 20px;
+}
