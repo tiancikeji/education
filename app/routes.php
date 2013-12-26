@@ -11,8 +11,16 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', 'HomeController@showWelcome');
+
+
+Route::group(array('prefix' => 'admin'), function()
 {
-	return View::make('hello');
+
+    Route::get('main','AdminController@main' );
+    Route::resource('topics', 'TopicsController');
 });
+
+
+// Route::resource('topics', 'TopicsController');
 
