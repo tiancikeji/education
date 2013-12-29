@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MacGenerated</key>
+	<true/>
+	<key>iPadCompatible</key>
+	<true/>
+	<key>progress</key>
+	<real>0.020408163265306121</real>
+	<key>title</key>
+	<string>Education</string>
+	<key>version</key>
+	<string>Projector 3.5.5 (Mac)</string>
+</dict>
+</plist>
