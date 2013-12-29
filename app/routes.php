@@ -19,8 +19,7 @@ Route::group(array('prefix' => 'admin'), function()
 
     Route::get('main','AdminController@main' );
     Route::resource('topics', 'TopicsController');
+    Route::resource('videos', 'VideosController');
 });
 
-
-// Route::resource('topics', 'TopicsController');
 
