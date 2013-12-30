@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
+Route::get('/login', 'UsersController@login');
+Route::post('/login', 'UsersController@dologin');
+Route::get('/plan', 'PlansController@index');
 
 
 Route::group(array('prefix' => 'admin'), function()
@@ -20,6 +23,7 @@ Route::group(array('prefix' => 'admin'), function()
     Route::get('main','AdminController@main' );
     Route::resource('topics', 'TopicsController');
     Route::resource('videos', 'VideosController');
+    Route::resource('users', 'UsersController');
 });
 
 
