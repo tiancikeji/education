@@ -12,8 +12,11 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
-Route::get('/login', 'UsersController@login');
-Route::post('/login', 'UsersController@dologin');
+
+Route::get('/sessions/new', 'SessionsController@newpage');
+
+Route::get('/registrations/new', 'RegistrationsController@newpage');
+
 Route::get('/plan', 'PlansController@index');
 
 

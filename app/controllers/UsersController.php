@@ -13,16 +13,5 @@ class UsersController extends BaseController {
       return View::make('admin.users.index',compact('users'));
     } 
 
-    public function login(){
-    
-      return View::make('login');
-    }
-
-    public function dologin(){
-    
-
-			return Redirect::to('/plan');
-      
-    }
 }
 

@@ -9,22 +9,22 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>致远教育</title>
 <link rel="shortcut icon" href="favicon.ico" />
-<link rel="stylesheet" href="css/reset.css" />
-<link rel="stylesheet" href="css/public.css" />
-<link rel="stylesheet" href="css/screen.css" />
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/public.css" />
+<link rel="stylesheet" href="/css/screen.css" />
 <!--[if IE]>
-<script src="js/ie/html5.js"></script>
+<script src="/js/ie/html5.js"></script>
 <![endif]-->
 <!--[if lt IE 9]>
-<style type="text/css">.css3{behavior: url(js/ie/css3.htc);-pie-lazy-init: true; position: relative;}.ie6png{-pie-png-fix: true;}</style> <script src="js/ie/ie9.js"></script>
+<style type="text/css">.css3{behavior: url(/js/ie/css3.htc);-pie-lazy-init: true; position: relative;}.ie6png{-pie-png-fix: true;}</style> <script src="js/ie/ie9.js"></script>
 <![endif]-->
 <!--[if IE 6]>
-<script src="js/ie/png.js"></script>
+<script src="/js/ie/png.js"></script>
 <script>DD_belatedPNG.fix('.pngfix, .pngfix img, .logo img');</script>
 <![endif]-->
-<script src="js/ie/modernizr.js"></script>
-<script src="js/jquery/jquery.js"></script>
-<script src="js/jquery/jquery.tools.min.js"></script>
+<script src="/js/ie/modernizr.js"></script>
+<script src="/js/jquery/jquery.js"></script>
+<script src="/js/jquery/jquery.tools.min.js"></script>
 </head>
 <body>
 
@@ -48,7 +48,7 @@
 
 <h1 class="logo fl">
 <a href="index.html">
-<img src="images/logo.png" alt="致远教育" title="致远教育" />
+<img src="/images/logo.png" alt="致远教育" title="致远教育" />
 </a>
 </h1><!-- logo -->
 
@@ -64,7 +64,7 @@ Slogan,为你的英语一路护航！
 <div class="grid">
 
 <div class="banner-cont">
-<img src="images/banner/banner.jpg" alt="致远教育" />
+<img src="/images/banner/banner.jpg" alt="致远教育" />
 </div>
 
 </div>

@@ -29,9 +29,9 @@
                                 <dd>作文批改服务</dd>                          
                             </dl>
                             <div class="btn-wrap-1">
-                                <a href="register.html"><input class="btn btn-large btn-green css3" type="button" value="免费注册" /></a>
-                                <a href="login.html"><input class="btn btn-large btn-blue css3" type="button" value="登 录" /></a>
-                                <a href="faq.html"><input class="btn btn-large btn-gray css3" type="button" value="FAQ" /></a>
+                                <a href="/registrations/new"><input class="btn btn-large btn-green css3" type="button" value="免费注册" /></a>
+                                <a href="/sessions/new"><input class="btn btn-large btn-blue css3" type="button" value="登 录" /></a>
+                                <a href="/topics"><input class="btn btn-large btn-gray css3" type="button" value="FAQ" /></a>
                             </div>
                     	</div>
                 	</div><!-- mod -->
