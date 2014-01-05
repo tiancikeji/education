@@ -48,7 +48,7 @@
 <div class="list-group">
 <a href="/admin/users" class="list-group-item active">Users</a>
 <a href="/admin/videos" class="list-group-item">Videos</a>
-<a href="/admin/exercises" class="list-group-item">Exercises</a>
+<a href="/admin/papers" class="list-group-item">Papers</a>
 <a href="/admin/topics" class="list-group-item">Topics</a>
 <a href="/admin/students" class="list-group-item">Students</a>
 <a href="/admin/teachers" class="list-group-item">Teachers</a>

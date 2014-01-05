@@ -16,6 +16,8 @@ Route::get('/', 'HomeController@showWelcome');
 Route::get('/sessions/new', 'SessionsController@newpage');
 
 Route::get('/registrations/new', 'RegistrationsController@newpage');
+Route::post('/registrations/store', 'RegistrationsController@store');
+
 
 Route::get('/plan', 'PlansController@index');
 
@@ -24,9 +26,17 @@ Route::group(array('prefix' => 'admin'), function()
 {
 
     Route::get('main','AdminController@main' );
-    Route::resource('topics', 'TopicsController');
-    Route::resource('videos', 'VideosController');
-    Route::resource('users', 'UsersController');
+    Route::resource('topics', 'AdminTopicsController');
+    Route::resource('videos', 'AdminVideosController');
+    Route::resource('users', 'AdminUsersController');
+    Route::resource('papers', 'AdminPapersController');
 });
 
 
+
+
+// Route::resource('papers', 'PapersController');
+// 
+// Route::resource('exercises', 'ExercisesController');
+// 
+// Route::resource('answers', 'AnswersController');

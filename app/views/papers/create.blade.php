@@ -1,26 +1,19 @@
-@extends('layouts.admin')
+@extends('layouts.scaffold')
 
 @section('main')
 
-<h1>Edit User</h1>
+<h1>Create Paper</h1>
 
-
-{{ Form::model($user, array('method' => 'PATCH', 'route' => array('admin.users.update', $user->id))) }}
+{{ Form::open(array('route' => 'papers.store')) }}
 	<ul>
-        <li>
-            {{ Form::label('email', 'Email:') }}
-            {{ Form::text('email') }}
-        </li>
-
         <li>
             {{ Form::label('name', 'Name:') }}
             {{ Form::text('name') }}
         </li>
 
-
         <li>
-            {{ Form::label('password', 'Password:') }}
-            {{ Form::text('password') }}
+            {{ Form::label('published_date', 'Published_date:') }}
+            {{ Form::text('published_date') }}
         </li>
 
 		<li>
