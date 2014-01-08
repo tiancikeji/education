@@ -1,19 +1,17 @@
 <?php
 
-class TopicsController extends BaseController {
+class AdminPapersController extends BaseController {
 
 	/**
-	 * Topic Repository
+	 * Paper Repository
 	 *
-	 * @var Topic
+	 * @var Paper
 	 */
-	protected $topic;
+	protected $paper;
 
-  protected $layout = "layouts.member";
-
-	public function __construct(Topic $topic)
+	public function __construct(Paper $paper)
 	{
-		$this->topic = $topic;
+		$this->paper = $paper;
 	}
 
 	/**
@@ -23,9 +21,9 @@ class TopicsController extends BaseController {
 	 */
 	public function index()
 	{
-		$topics = $this->topic->all();
+		$papers = $this->paper->all();
 
-		return View::make('topics.index', compact('topics'));
+		return View::make('admin.papers.index', compact('papers'));
 	}
 
 	/**
@@ -35,7 +33,7 @@ class TopicsController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('topics.create');
+		return View::make('admin.papers.create');
 	}
 
 	/**
@@ -46,16 +44,16 @@ class TopicsController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, Topic::$rules);
+		$validation = Validator::make($input, Paper::$rules);
 
 		if ($validation->passes())
 		{
-			$this->topic->create($input);
+			$this->paper->create($input);
 
-			return Redirect::route('topics.index');
+			return Redirect::route('admin.papers.index');
 		}
 
-		return Redirect::route('topics.create')
+		return Redirect::route('admin.papers.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -69,9 +67,9 @@ class TopicsController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$topic = $this->topic->findOrFail($id);
+		$paper = $this->paper->findOrFail($id);
 
-		return View::make('topics.show', compact('topic'));
+		return View::make('admin.papers.show', compact('paper'));
 	}
 
 	/**
@@ -82,14 +80,14 @@ class TopicsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$topic = $this->topic->find($id);
+		$paper = $this->paper->find($id);
 
-		if (is_null($topic))
+		if (is_null($paper))
 		{
-			return Redirect::route('topics.index');
+			return Redirect::route('admin.papers.index');
 		}
 
-		return View::make('topics.edit', compact('topic'));
+		return View::make('admin.papers.edit', compact('paper'));
 	}
 
 	/**
@@ -101,21 +99,20 @@ class TopicsController extends BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Topic::$rules);
+		$validation = Validator::make($input, Paper::$rules);
 
 		if ($validation->passes())
 		{
-			$topic = $this->topic->find($id);
-			$topic->update($input);
+			$paper = $this->paper->find($id);
+			$paper->update($input);
 
-			return Redirect::route('topics.show', $id);
+			return Redirect::route('admin.papers.show', $id);
 		}
 
-		return Redirect::route('topics.edit', $id)
+		return Redirect::route('admin.papers.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
-
 	}
 
 	/**
@@ -126,9 +123,9 @@ class TopicsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->topic->find($id)->delete();
+		$this->paper->find($id)->delete();
 
-		return Redirect::route('topics.index');
+		return Redirect::route('admin.papers.index');
 	}
 
 }

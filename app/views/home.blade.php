@@ -102,15 +102,6 @@
                                             </div>
                                             <p>视频标题</p>
                                         </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pic-video-mini">
-                                                <img src="images/video/pic-video.jpg" alt="video" />
-                                                <i class="icon-play"></i>
-                                            </div>
-                                            <p>视频标题</p>
-                                        </a>
                                     </li>                                
                                 </ul>
                             </div>
@@ -123,56 +114,26 @@
                 <div class="hd hd-2">
                     <h3>最新资讯</h3>
                     <div class="fr">
-                        <span class="l-black"><a href="news.html">更多资讯&gt;&gt;</a></span>
+                        <span class="l-black"><a href="/news">更多资讯&gt;&gt;</a></span>
                     </div>
                 </div>
                 <div class="bd bd-1">
                     <div class="news-index l-black cf">
                         <ul>
+
+			@foreach ($news as $news)
                             <li>
-                                <a href="news.html">
+                                <a href="/news/{{{ $news->id }}}">
                                     <div class="pic-news">
                                         <img src="images/news/pic-news.jpg" alt="news" />
                                     </div>
                                 </a>
                                 <dl>
-                                    <dt><a href="#">SAT新题出现了</a></dt>
-                                    <dd>适应高等教育大众化，普及发展趋势，满足更多社会成员...</dd>
+                                    <dt><a href="/news/{{{ $news->id }}}">{{{ $news->title }}}</a></dt>
+                                    <dd>{{{ $news->body }}}</dd>
                                 </dl>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <div class="pic-news">
-                                        <img src="images/news/pic-news.jpg" alt="news" />
-                                    </div>
-                                </a>
-                                <dl>
-                                    <dt><a href="#">SAT新题出现了</a></dt>
-                                    <dd>适应高等教育大众化，普及发展趋势，满足更多社会成员...</dd>
-                                </dl>
-                            </li>                        
-                            <li>
-                                <a href="#">
-                                    <div class="pic-news">
-                                        <img src="images/news/pic-news.jpg" alt="news" />
-                                    </div>
-                                </a>
-                                <dl>
-                                    <dt><a href="#">SAT新题出现了</a></dt>
-                                    <dd>适应高等教育大众化，普及发展趋势，满足更多社会成员...</dd>
-                                </dl>
-                            </li>                        
-                            <li>
-                                <a href="#">
-                                    <div class="pic-news">
-                                        <img src="images/news/pic-news.jpg" alt="news" />
-                                    </div>
-                                </a>
-                                <dl>
-                                    <dt><a href="#">SAT新题出现了</a></dt>
-                                    <dd>适应高等教育大众化，普及发展趋势，满足更多社会成员...</dd>
-                                </dl>
-                            </li>                        
+			@endforeach
                         </ul>
                     </div>
                 </div>

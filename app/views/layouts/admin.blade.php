@@ -46,14 +46,15 @@
 
 <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
 <div class="list-group">
-<a href="/admin/users" class="list-group-item active">Users</a>
-<a href="/admin/videos" class="list-group-item">Videos</a>
-<a href="/admin/papers" class="list-group-item">Papers</a>
-<a href="/admin/topics" class="list-group-item">Topics</a>
-<a href="/admin/students" class="list-group-item">Students</a>
-<a href="/admin/teachers" class="list-group-item">Teachers</a>
-<a href="/admin/classes" class="list-group-item">Classes</a>
-<a href="/admin/homeworks" class="list-group-item">Homeworks</a>
+<a href="/admin/users" class="list-group-item active">用户管理</a>
+<a href="/admin/videos" class="list-group-item">视频管理</a>
+<a href="/admin/news" class="list-group-item">新闻管理</a>
+<a href="/admin/papers" class="list-group-item">试卷管理</a>
+<a href="/admin/topics" class="list-group-item">常见问题</a>
+<a href="/admin/students" class="list-group-item">学生管理</a>
+<a href="/admin/teachers" class="list-group-item">教师管理</a>
+<a href="/admin/classes" class="list-group-item">课程管理</a>
+<a href="/admin/homeworks" class="list-group-item">作业管理</a>
 </div>
 </div><!--/span-->
 

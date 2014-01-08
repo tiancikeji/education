@@ -1,19 +1,18 @@
 <?php
 
-class TopicsController extends BaseController {
+class NewsController extends BaseController {
 
+  protected $layout = 'layouts.main';
 	/**
-	 * Topic Repository
+	 * News Repository
 	 *
-	 * @var Topic
+	 * @var News
 	 */
-	protected $topic;
+	protected $news;
 
-  protected $layout = "layouts.member";
-
-	public function __construct(Topic $topic)
+	public function __construct(News $news)
 	{
-		$this->topic = $topic;
+		$this->news = $news;
 	}
 
 	/**
@@ -23,9 +22,9 @@ class TopicsController extends BaseController {
 	 */
 	public function index()
 	{
-		$topics = $this->topic->all();
+		$news = $this->news->all();
 
-		return View::make('topics.index', compact('topics'));
+		return View::make('news.index', compact('news'));
 	}
 
 	/**
@@ -35,7 +34,7 @@ class TopicsController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('topics.create');
+		return View::make('news.create');
 	}
 
 	/**
@@ -46,16 +45,16 @@ class TopicsController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, Topic::$rules);
+		$validation = Validator::make($input, News::$rules);
 
 		if ($validation->passes())
 		{
-			$this->topic->create($input);
+			$this->news->create($input);
 
-			return Redirect::route('topics.index');
+			return Redirect::route('news.index');
 		}
 
-		return Redirect::route('topics.create')
+		return Redirect::route('news.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -69,9 +68,10 @@ class TopicsController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$topic = $this->topic->findOrFail($id);
+		$newsarr = $this->news->all();
+		$news = $this->news->findOrFail($id);
 
-		return View::make('topics.show', compact('topic'));
+		return View::make('news.show', compact('news','newsarr'));
 	}
 
 	/**
@@ -82,14 +82,14 @@ class TopicsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$topic = $this->topic->find($id);
+		$news = $this->news->find($id);
 
-		if (is_null($topic))
+		if (is_null($news))
 		{
-			return Redirect::route('topics.index');
+			return Redirect::route('news.index');
 		}
 
-		return View::make('topics.edit', compact('topic'));
+		return View::make('news.edit', compact('news'));
 	}
 
 	/**
@@ -101,21 +101,20 @@ class TopicsController extends BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Topic::$rules);
+		$validation = Validator::make($input, News::$rules);
 
 		if ($validation->passes())
 		{
-			$topic = $this->topic->find($id);
-			$topic->update($input);
+			$news = $this->news->find($id);
+			$news->update($input);
 
-			return Redirect::route('topics.show', $id);
+			return Redirect::route('news.show', $id);
 		}
 
-		return Redirect::route('topics.edit', $id)
+		return Redirect::route('news.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
-
 	}
 
 	/**
@@ -126,9 +125,9 @@ class TopicsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->topic->find($id)->delete();
+		$this->news->find($id)->delete();
 
-		return Redirect::route('topics.index');
+		return Redirect::route('news.index');
 	}
 
 }

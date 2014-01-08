@@ -12,13 +12,15 @@ class CreateExercisesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('exercises', function(Blueprint $table) {
-			$table->increments('id');
-			$table->integer('no');
-			$table->string('description');
-			$table->integer('paer_id');
-			$table->timestamps();
-		});
+
+		// Schema::create('exercises', function(Blueprint $table) {
+		// 	$table->increments('id');
+		// 	$table->integer('no');
+		// 	$table->string('description');
+		// 	$table->integer('paer_id');
+		// 	$table->timestamps();
+		// });
+
 	}
 
 

@@ -9,6 +9,8 @@ class VideosController extends BaseController {
 	 */
 	protected $video;
 
+  protected $layout = "layouts.member";
+
 	public function __construct(Video $video)
 	{
 		$this->video = $video;
@@ -23,7 +25,7 @@ class VideosController extends BaseController {
 	{
 		$videos = $this->video->all();
 
-		return View::make('admin.videos.index', compact('videos'));
+		return View::make('videos.index', compact('videos'));
 	}
 
 	/**
@@ -33,7 +35,7 @@ class VideosController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.videos.create');
+		return View::make('videos.create');
 	}
 
 	/**
@@ -50,10 +52,10 @@ class VideosController extends BaseController {
 		{
 			$this->video->create($input);
 
-			return Redirect::route('admin.videos.index');
+			return Redirect::route('videos.index');
 		}
 
-		return Redirect::route('admin.videos.create')
+		return Redirect::route('videos.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -69,7 +71,7 @@ class VideosController extends BaseController {
 	{
 		$video = $this->video->findOrFail($id);
 
-		return View::make('admin.videos.show', compact('video'));
+		return View::make('videos.show', compact('video'));
 	}
 
 	/**
@@ -84,10 +86,10 @@ class VideosController extends BaseController {
 
 		if (is_null($video))
 		{
-			return Redirect::route('admin.videos.index');
+			return Redirect::route('videos.index');
 		}
 
-		return View::make('admin.videos.edit', compact('video'));
+		return View::make('videos.edit', compact('video'));
 	}
 
 	/**
@@ -106,10 +108,10 @@ class VideosController extends BaseController {
 			$video = $this->video->find($id);
 			$video->update($input);
 
-			return Redirect::route('admin.videos.show', $id);
+			return Redirect::route('videos.show', $id);
 		}
 
-		return Redirect::route('admin.videos.edit', $id)
+		return Redirect::route('videos.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -125,7 +127,7 @@ class VideosController extends BaseController {
 	{
 		$this->video->find($id)->delete();
 
-		return Redirect::route('admin.videos.index');
+		return Redirect::route('videos.index');
 	}
 
 }

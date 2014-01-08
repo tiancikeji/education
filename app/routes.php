@@ -21,6 +21,10 @@ Route::post('/registrations/store', 'RegistrationsController@store');
 
 Route::get('/plan', 'PlansController@index');
 
+Route::resource('news', 'NewsController');
+Route::resource('topics', 'TopicsController');
+
+Route::resource('videos', 'VideosController');
 
 Route::group(array('prefix' => 'admin'), function()
 {
@@ -30,13 +34,11 @@ Route::group(array('prefix' => 'admin'), function()
     Route::resource('videos', 'AdminVideosController');
     Route::resource('users', 'AdminUsersController');
     Route::resource('papers', 'AdminPapersController');
+    Route::resource('exercises', 'AdminExercisesController');
+    Route::resource('answers', 'AdminAnswersController');
+    Route::resource('news', 'AdminNewsController');
 });
 
 
 
 
-// Route::resource('papers', 'PapersController');
-// 
-// Route::resource('exercises', 'ExercisesController');
-// 
-// Route::resource('answers', 'AnswersController');

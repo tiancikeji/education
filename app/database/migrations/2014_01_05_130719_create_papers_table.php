@@ -12,12 +12,14 @@ class CreatePapersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('papers', function(Blueprint $table) {
-			$table->increments('id');
-			$table->string('name');
-			$table->string('published_date');
-			$table->timestamps();
-		});
+
+		// Schema::create('papers', function(Blueprint $table) {
+		// 	$table->increments('id');
+		// 	$table->string('name');
+		// 	$table->string('published_date');
+		// 	$table->timestamps();
+		// });
+
 	}
 
 

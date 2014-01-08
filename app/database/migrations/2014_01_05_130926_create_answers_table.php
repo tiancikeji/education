@@ -12,13 +12,15 @@ class CreateAnswersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('answers', function(Blueprint $table) {
-			$table->increments('id');
-			$table->integer('id');
-			$table->string('description');
-			$table->integer('exercise_id');
-			$table->timestamps();
-		});
+
+		// Schema::create('answers', function(Blueprint $table) {
+		// 	$table->increments('id');
+		// 	$table->integer('id');
+		// 	$table->string('description');
+		// 	$table->integer('exercise_id');
+		// 	$table->timestamps();
+		// });
+
 	}
 
 

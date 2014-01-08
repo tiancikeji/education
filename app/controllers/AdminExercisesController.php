@@ -1,19 +1,17 @@
 <?php
 
-class TopicsController extends BaseController {
+class AdminExercisesController extends BaseController {
 
 	/**
-	 * Topic Repository
+	 * Exercise Repository
 	 *
-	 * @var Topic
+	 * @var Exercise
 	 */
-	protected $topic;
+	protected $exercise;
 
-  protected $layout = "layouts.member";
-
-	public function __construct(Topic $topic)
+	public function __construct(Exercise $exercise)
 	{
-		$this->topic = $topic;
+		$this->exercise = $exercise;
 	}
 
 	/**
@@ -23,9 +21,9 @@ class TopicsController extends BaseController {
 	 */
 	public function index()
 	{
-		$topics = $this->topic->all();
+		$exercises = $this->exercise->all();
 
-		return View::make('topics.index', compact('topics'));
+		return View::make('admin.exercises.index', compact('exercises'));
 	}
 
 	/**
@@ -35,7 +33,7 @@ class TopicsController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('topics.create');
+		return View::make('admin.exercises.create');
 	}
 
 	/**
@@ -46,16 +44,16 @@ class TopicsController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, Topic::$rules);
+		$validation = Validator::make($input, Exercise::$rules);
 
 		if ($validation->passes())
 		{
-			$this->topic->create($input);
+			$this->exercise->create($input);
 
-			return Redirect::route('topics.index');
+			return Redirect::route('admin.exercises.index');
 		}
 
-		return Redirect::route('topics.create')
+		return Redirect::route('admin.exercises.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -69,9 +67,9 @@ class TopicsController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$topic = $this->topic->findOrFail($id);
+		$exercise = $this->exercise->findOrFail($id);
 
-		return View::make('topics.show', compact('topic'));
+		return View::make('admin.exercises.show', compact('exercise'));
 	}
 
 	/**
@@ -82,14 +80,14 @@ class TopicsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$topic = $this->topic->find($id);
+		$exercise = $this->exercise->find($id);
 
-		if (is_null($topic))
+		if (is_null($exercise))
 		{
-			return Redirect::route('topics.index');
+			return Redirect::route('admin.exercises.index');
 		}
 
-		return View::make('topics.edit', compact('topic'));
+		return View::make('admin.exercises.edit', compact('exercise'));
 	}
 
 	/**
@@ -101,21 +99,20 @@ class TopicsController extends BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Topic::$rules);
+		$validation = Validator::make($input, Exercise::$rules);
 
 		if ($validation->passes())
 		{
-			$topic = $this->topic->find($id);
-			$topic->update($input);
+			$exercise = $this->exercise->find($id);
+			$exercise->update($input);
 
-			return Redirect::route('topics.show', $id);
+			return Redirect::route('admin.exercises.show', $id);
 		}
 
-		return Redirect::route('topics.edit', $id)
+		return Redirect::route('admin.exercises.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
-
 	}
 
 	/**
@@ -126,9 +123,9 @@ class TopicsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->topic->find($id)->delete();
+		$this->exercise->find($id)->delete();
 
-		return Redirect::route('topics.index');
+		return Redirect::route('admin.exercises.index');
 	}
 
 }
