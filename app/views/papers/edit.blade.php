@@ -1,9 +1,9 @@
-@extends('layouts.scaffold')
+@extends('layouts.admin')
 
 @section('main')
 
 <h1>Edit Paper</h1>
-{{ Form::model($paper, array('method' => 'PATCH', 'route' => array('papers.update', $paper->id))) }}
+{{ Form::model($paper, array('method' => 'PATCH', 'route' => array('admin.papers.update', $paper->id))) }}
 	<ul>
         <li>
             {{ Form::label('name', 'Name:') }}

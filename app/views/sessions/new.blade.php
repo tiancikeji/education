@@ -8,7 +8,12 @@
                     <h3>登录</h3>
                 </div>
                 <div class="bd bd-2">
-                    <form action="/login" method="post">
+@if(Session::has('message'))
+    <div class="alert-box error">
+        <h2>{{ Session::get('message') }}</h2>
+    </div>
+@endif
+                    <form action="/sessions/save" method="post">
                         <div class="form form-2">
                             <table>
                                 <tr>

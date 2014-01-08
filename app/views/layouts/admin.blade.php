@@ -47,6 +47,8 @@
 <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
 <div class="list-group">
 <a href="/admin/users" class="list-group-item active">用户管理</a>
+<a href="/admin/messages" class="list-group-item">消息管理</a>
+<a href="/admin/words" class="list-group-item">生词管理</a>
 <a href="/admin/videos" class="list-group-item">视频管理</a>
 <a href="/admin/news" class="list-group-item">新闻管理</a>
 <a href="/admin/papers" class="list-group-item">试卷管理</a>

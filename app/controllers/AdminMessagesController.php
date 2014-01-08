@@ -1,19 +1,18 @@
 <?php
 
-class PapersController extends BaseController {
+class AdminMessagesController extends BaseController {
 
+  protected $layout = "layouts.admin";
 	/**
-	 * Paper Repository
+	 * Message Repository
 	 *
-	 * @var Paper
+	 * @var Message
 	 */
-	protected $paper;
+	protected $message;
 
-  protected $layout = "layouts.member";
-
-	public function __construct(Paper $paper)
+	public function __construct(Message $message)
 	{
-		$this->paper = $paper;
+		$this->message = $message;
 	}
 
 	/**
@@ -23,9 +22,9 @@ class PapersController extends BaseController {
 	 */
 	public function index()
 	{
-		$papers = $this->paper->all();
+		$messages = $this->message->all();
 
-		return View::make('papers.index', compact('papers'));
+		return View::make('admin.messages.index', compact('messages'));
 	}
 
 	/**
@@ -35,7 +34,7 @@ class PapersController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('papers.create');
+		return View::make('admin.messages.create');
 	}
 
 	/**
@@ -46,16 +45,16 @@ class PapersController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, Paper::$rules);
+		$validation = Validator::make($input, Message::$rules);
 
 		if ($validation->passes())
 		{
-			$this->paper->create($input);
+			$this->message->create($input);
 
-			return Redirect::route('papers.index');
+			return Redirect::route('admin.messages.index');
 		}
 
-		return Redirect::route('papers.create')
+		return Redirect::route('admin.messages.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -69,9 +68,9 @@ class PapersController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$paper = $this->paper->findOrFail($id);
+		$message = $this->message->findOrFail($id);
 
-		return View::make('papers.show', compact('paper'));
+		return View::make('admin.messages.show', compact('message'));
 	}
 
 	/**
@@ -82,14 +81,14 @@ class PapersController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$paper = $this->paper->find($id);
+		$message = $this->message->find($id);
 
-		if (is_null($paper))
+		if (is_null($message))
 		{
-			return Redirect::route('papers.index');
+			return Redirect::route('admin.messages.index');
 		}
 
-		return View::make('papers.edit', compact('paper'));
+		return View::make('admin.messages.edit', compact('message'));
 	}
 
 	/**
@@ -101,17 +100,17 @@ class PapersController extends BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Paper::$rules);
+		$validation = Validator::make($input, Message::$rules);
 
 		if ($validation->passes())
 		{
-			$paper = $this->paper->find($id);
-			$paper->update($input);
+			$message = $this->message->find($id);
+			$message->update($input);
 
-			return Redirect::route('papers.show', $id);
+			return Redirect::route('admin.messages.show', $id);
 		}
 
-		return Redirect::route('papers.edit', $id)
+		return Redirect::route('admin.messages.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -125,9 +124,9 @@ class PapersController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->paper->find($id)->delete();
+		$this->message->find($id)->delete();
 
-		return Redirect::route('papers.index');
+		return Redirect::route('admin.messages.index');
 	}
 
 }

@@ -28,11 +28,13 @@
                                 </dt>
                                 <dd>作文批改服务</dd>                          
                             </dl>
+@unless(Session::has('current_user'))
                             <div class="btn-wrap-1">
                                 <a href="/registrations/new"><input class="btn btn-large btn-green css3" type="button" value="免费注册" /></a>
                                 <a href="/sessions/new"><input class="btn btn-large btn-blue css3" type="button" value="登 录" /></a>
                                 <a href="/topics"><input class="btn btn-large btn-gray css3" type="button" value="FAQ" /></a>
                             </div>
+@endunless
                     	</div>
                 	</div><!-- mod -->
                 </div>

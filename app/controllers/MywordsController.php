@@ -1,19 +1,17 @@
 <?php
 
-class PapersController extends BaseController {
+class MywordsController extends BaseController {
 
 	/**
-	 * Paper Repository
+	 * Myword Repository
 	 *
-	 * @var Paper
+	 * @var Myword
 	 */
-	protected $paper;
+	protected $myword;
 
-  protected $layout = "layouts.member";
-
-	public function __construct(Paper $paper)
+	public function __construct(Myword $myword)
 	{
-		$this->paper = $paper;
+		$this->myword = $myword;
 	}
 
 	/**
@@ -23,9 +21,9 @@ class PapersController extends BaseController {
 	 */
 	public function index()
 	{
-		$papers = $this->paper->all();
+		$mywords = $this->myword->all();
 
-		return View::make('papers.index', compact('papers'));
+		return View::make('mywords.index', compact('mywords'));
 	}
 
 	/**
@@ -35,7 +33,7 @@ class PapersController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('papers.create');
+		return View::make('mywords.create');
 	}
 
 	/**
@@ -46,16 +44,16 @@ class PapersController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, Paper::$rules);
+		$validation = Validator::make($input, Myword::$rules);
 
 		if ($validation->passes())
 		{
-			$this->paper->create($input);
+			$this->myword->create($input);
 
-			return Redirect::route('papers.index');
+			return Redirect::route('mywords.index');
 		}
 
-		return Redirect::route('papers.create')
+		return Redirect::route('mywords.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -69,9 +67,9 @@ class PapersController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$paper = $this->paper->findOrFail($id);
+		$myword = $this->myword->findOrFail($id);
 
-		return View::make('papers.show', compact('paper'));
+		return View::make('mywords.show', compact('myword'));
 	}
 
 	/**
@@ -82,14 +80,14 @@ class PapersController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$paper = $this->paper->find($id);
+		$myword = $this->myword->find($id);
 
-		if (is_null($paper))
+		if (is_null($myword))
 		{
-			return Redirect::route('papers.index');
+			return Redirect::route('mywords.index');
 		}
 
-		return View::make('papers.edit', compact('paper'));
+		return View::make('mywords.edit', compact('myword'));
 	}
 
 	/**
@@ -101,17 +99,17 @@ class PapersController extends BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Paper::$rules);
+		$validation = Validator::make($input, Myword::$rules);
 
 		if ($validation->passes())
 		{
-			$paper = $this->paper->find($id);
-			$paper->update($input);
+			$myword = $this->myword->find($id);
+			$myword->update($input);
 
-			return Redirect::route('papers.show', $id);
+			return Redirect::route('mywords.show', $id);
 		}
 
-		return Redirect::route('papers.edit', $id)
+		return Redirect::route('mywords.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -125,9 +123,9 @@ class PapersController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->paper->find($id)->delete();
+		$this->myword->find($id)->delete();
 
-		return Redirect::route('papers.index');
+		return Redirect::route('mywords.index');
 	}
 
 }

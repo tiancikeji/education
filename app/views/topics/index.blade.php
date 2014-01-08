@@ -29,19 +29,19 @@
                         <table class="table table-list">
                             <thead>
                                 <tr>
-                                    <th width="15%">浏览数量</th>
-                                    <th width="20%">标签一</th>
-                                    <th width="20%">标签二</th>
-                                    <th width="45%">帖子标题</th>
+                                    <th>帖子标题</th>
+                                    <th>帖子</th>
+                                    <th>标签</th>
+                                    <th>浏览数量</th>
                                 </tr>
                             </thead>
                             <tbody>
 			@foreach ($topics as $topic)
                                   <tr>
-                                    <td>6244</td>
-                                    <td>单词测验</td>
-                                    <td>考试模式</td>
+                                    <td>{{{ $topic->titile }}}</td>
                                     <td>{{{ $topic->body }}}</td>
+                                    <td>单词测验,考试模式</td>
+                                    <td>6244</td>
                                 </tr> 
 			@endforeach
                                                                

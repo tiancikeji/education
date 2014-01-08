@@ -1,19 +1,19 @@
-@extends('layouts.admin')
+@extends('layouts.scaffold')
 
 @section('main')
 
-<h1>Create Paper</h1>
+<h1>Create Word</h1>
 
-{{ Form::open(array('route' => 'admin.papers.store')) }}
+{{ Form::open(array('route' => 'words.store')) }}
 	<ul>
         <li>
-            {{ Form::label('name', 'Name:') }}
-            {{ Form::text('name') }}
+            {{ Form::label('english', 'English:') }}
+            {{ Form::text('english') }}
         </li>
 
         <li>
-            {{ Form::label('published_date', 'Published_date:') }}
-            {{ Form::text('published_date') }}
+            {{ Form::label('chinese', 'Chinese:') }}
+            {{ Form::text('chinese') }}
         </li>
 
 		<li>

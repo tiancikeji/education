@@ -4,7 +4,7 @@
 <div class="grid">
 <h1>发布新帖</h1>
 
-{{ Form::open(array('route' => 'admin.topics.store')) }}
+{{ Form::open(array('route' => 'topics.store')) }}
 	<ul>
         <li>
             {{ Form::label('author', 'Author:') }}

@@ -35,9 +35,22 @@
 <div class="fl">
 我们竭尽所能为您提供出色的SAT考试服务
 </div>
+
+@if(Session::has('current_user'))
+<div class="fr">
+                <ul class="toolbar-menu l-gray l-line">
+                    <li>Zack</li>
+                    <li><a href="/upgrade">升级为付费版</a></li>
+                    <li><a href="/usercenter">账户中心</a></li>
+                    <li><a href="/messages">提醒（<span class="c-red">5</span>）</a></li>
+                    <li><a href="/sessions/delete">安全退出</a></li>
+                </ul>
+            </div>
+@else
 <div class="fr">
 友情链接：<a href="#">金吉列</a> — 帮助你制定出国战略的公司
 </div>
+@endif
 
 </div>
 </div><!-- //toolbar -->

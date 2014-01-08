@@ -14,6 +14,8 @@
 Route::get('/', 'HomeController@showWelcome');
 
 Route::get('/sessions/new', 'SessionsController@newpage');
+Route::post('/sessions/save', 'SessionsController@save');
+Route::get('/sessions/delete', 'SessionsController@delete');
 
 Route::get('/registrations/new', 'RegistrationsController@newpage');
 Route::post('/registrations/store', 'RegistrationsController@store');
@@ -21,10 +23,17 @@ Route::post('/registrations/store', 'RegistrationsController@store');
 
 Route::get('/plan', 'PlansController@index');
 
+Route::get('/upgrade', 'UpgradeController@index');
+Route::get('/usercenter', 'UserCenterController@index');
+Route::get('/usercenter/updatepassword', 'UserCenterController@updatepassword');
+
 Route::resource('news', 'NewsController');
 Route::resource('topics', 'TopicsController');
-
 Route::resource('videos', 'VideosController');
+Route::resource('papers', 'PapersController');
+Route::resource('messages', 'MessagesController');
+Route::resource('mywords', 'MywordsController');
+Route::resource('words', 'WordsController');
 
 Route::group(array('prefix' => 'admin'), function()
 {
@@ -37,7 +46,14 @@ Route::group(array('prefix' => 'admin'), function()
     Route::resource('exercises', 'AdminExercisesController');
     Route::resource('answers', 'AdminAnswersController');
     Route::resource('news', 'AdminNewsController');
+    Route::resource('messages', 'AdminMessagesController');
+    Route::resource('words', 'AdminWordsController');
 });
+
+
+
+
+
 
 
 
