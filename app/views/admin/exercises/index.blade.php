@@ -22,7 +22,8 @@
 				<tr>
 					<td>{{{ $exercise->no }}}</td>
 					<td>{{{ $exercise->description }}}</td>
-          <td>@foreach (Answer::where('exercises_id','=',$exercise->id)->get() as $answer) 
+          <td>
+              @foreach (Answer::where('exercises_id','=',$exercise->id)->get() as $answer) 
                 {{{$answer->description}}}
               @endforeach
           </td>

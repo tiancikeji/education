@@ -21,7 +21,7 @@ class ExercisesController extends BaseController {
 	 */
 	public function index()
 	{
-		$exercises = $this->exercise->all();
+		$exercises = $this->exercise->orderBy('no')->get();
 
 		return View::make('exercises.index', compact('exercises'));
 	}
