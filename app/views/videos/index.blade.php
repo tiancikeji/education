@@ -40,23 +40,23 @@
                     </div><!-- video search -->                      
 
                     <div class="md-simple">
-                        <h4 class="hd-simple">2003年5月 - section1 - 第三题  （共15条）</h4>
+                        <h4 class="hd-simple">2003年5月 （共0条）</h4>
                         <div class="video-list l-black cf">
                             <ul>
 @if ($videos->count())
       @foreach ($videos as $video)
                                 <li>
-                                    <a href="video-details.html">
+                                    <a href="/videos/{{{ $video->id }}}">
                                         <div class="pic-video-normal">
-                                            <img src="images/video/pic-video-normal.jpg" alt="video" />
+                                            <img src="{{{ $video->overlay }}}" alt="video" />
                                             <i class="icon-play"></i>
                                         </div>
                                     </a>
                                     <dl>
-                                        <dt><a href="#">{{{ $video->url}}}</a></dt>
+                                        <dt><a href="#">{{{ $video->title }}}</a></dt>
                                         <dd>标签：试题讲解 阅读</dd>
-                                        <dd>播放：2019</dd>
-                                        <dd>评论：333条</dd>
+                                        <dd>播放：0</dd>
+                                        <dd>评论：{{{Comment::where('video_id','=',$video->id)->count() }}}条</dd>
                                         <dd>讲师：{{{ $video->author}}}</dd>
                                     </dl>
                                 </li>
@@ -69,7 +69,7 @@
                         </div>
                     </div><!-- video list -->
 
-                    <div class="paging">
+                    <div class="paging" style="display:none;">
                         <a href="javascript:void(0);">上一页</a>
                         <a class="on" href="javascript:void(0);">1</a>
                         <a href="javascript:void(0);">2</a>

@@ -9,11 +9,14 @@ class VideosController extends BaseController {
 	 */
 	protected $video;
 
+	// protected $comment;
+
   protected $layout = "layouts.member";
 
 	public function __construct(Video $video)
 	{
 		$this->video = $video;
+    // $this->comment = $comment;
 	}
 
 	/**
@@ -71,7 +74,9 @@ class VideosController extends BaseController {
 	{
 		$video = $this->video->findOrFail($id);
 
-		return View::make('videos.show', compact('video'));
+		$comments = Comment::where('video_id','=',$id)->get();
+
+		return View::make('videos.show', array('video' => $video,'comments' => $comments));
 	}
 
 	/**

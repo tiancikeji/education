@@ -4,11 +4,19 @@
 
 <h1>Create Video</h1>
 
-{{ Form::open(array('route' => 'admin.videos.store')) }}
+{{ Form::open(array('route' => 'admin.videos.store','files'=>true)) }}
 	<ul>
         <li>
             {{ Form::label('author', 'Author:') }}
             {{ Form::text('author') }}
+        </li>
+        <li>
+            {{ Form::label('title', 'Title:') }}
+            {{ Form::text('title') }}
+        </li>
+         <li>
+            {{ Form::label('overlay', 'Overlay:') }}
+            {{ Form::file('overlay') }}
         </li>
 
         <li>

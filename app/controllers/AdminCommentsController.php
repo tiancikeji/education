@@ -1,17 +1,17 @@
 <?php
 
-class ExercisesController extends BaseController {
+class AdminCommentsController extends BaseController {
 
 	/**
-	 * Exercise Repository
+	 * Comment Repository
 	 *
-	 * @var Exercise
+	 * @var Comment
 	 */
-	protected $exercise;
+	protected $comment;
 
-	public function __construct(Exercise $exercise)
+	public function __construct(Comment $comment)
 	{
-		$this->exercise = $exercise;
+		$this->comment = $comment;
 	}
 
 	/**
@@ -21,9 +21,9 @@ class ExercisesController extends BaseController {
 	 */
 	public function index()
 	{
-		$exercises = $this->exercise->all();
+		$comments = $this->comment->all();
 
-		return View::make('exercises.index', compact('exercises'));
+		return View::make('admin.comments.index', compact('comments'));
 	}
 
 	/**
@@ -33,7 +33,7 @@ class ExercisesController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('exercises.create');
+		return View::make('admin.comments.create');
 	}
 
 	/**
@@ -44,16 +44,16 @@ class ExercisesController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, Exercise::$rules);
+		$validation = Validator::make($input, Comment::$rules);
 
 		if ($validation->passes())
 		{
-			$this->exercise->create($input);
+			$this->comment->create($input);
 
-			return Redirect::route('exercises.index');
+			return Redirect::route('admin.comments.index');
 		}
 
-		return Redirect::route('exercises.create')
+		return Redirect::route('admin.comments.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -67,9 +67,9 @@ class ExercisesController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$exercise = $this->exercise->findOrFail($id);
+		$comment = $this->comment->findOrFail($id);
 
-		return View::make('exercises.show', compact('exercise'));
+		return View::make('admin.comments.show', compact('comment'));
 	}
 
 	/**
@@ -80,14 +80,14 @@ class ExercisesController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$exercise = $this->exercise->find($id);
+		$comment = $this->comment->find($id);
 
-		if (is_null($exercise))
+		if (is_null($comment))
 		{
-			return Redirect::route('admin.exercises.index');
+			return Redirect::route('admin.comments.index');
 		}
 
-		return View::make('exercises.edit', compact('exercise'));
+		return View::make('admin.comments.edit', compact('comment'));
 	}
 
 	/**
@@ -99,17 +99,17 @@ class ExercisesController extends BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Exercise::$rules);
+		$validation = Validator::make($input, Comment::$rules);
 
 		if ($validation->passes())
 		{
-			$exercise = $this->exercise->find($id);
-			$exercise->update($input);
+			$comment = $this->comment->find($id);
+			$comment->update($input);
 
-			return Redirect::route('exercises.show', $id);
+			return Redirect::route('admin.comments.show', $id);
 		}
 
-		return Redirect::route('exercises.edit', $id)
+		return Redirect::route('admin.comments.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -123,9 +123,9 @@ class ExercisesController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->exercise->find($id)->delete();
+		$this->comment->find($id)->delete();
 
-		return Redirect::route('exercises.index');
+		return Redirect::route('admin.comments.index');
 	}
 
 }

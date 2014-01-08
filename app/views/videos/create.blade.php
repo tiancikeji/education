@@ -10,7 +10,10 @@
             {{ Form::label('author', 'Author:') }}
             {{ Form::text('author') }}
         </li>
-
+            <li>
+            {{ Form::label('author', 'Author:') }}
+            {{ Form::text('author') }}
+        </li>
         <li>
             {{ Form::label('url', 'Url:') }}
             {{ Form::text('url') }}

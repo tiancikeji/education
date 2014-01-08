@@ -7,6 +7,11 @@
                     <h3>注册</h3>
                 </div>
                 <div class="bd bd-2">
+@if ($errors->any())
+	<ul>
+		{{ implode('', $errors->all('<li class="error">:message</li>')) }}
+	</ul>
+@endif
 
 {{ Form::open(array('url' => 'registrations/store')) }}
                         <div class="form form-2">
@@ -26,14 +31,14 @@
                                 <tr>
                                     <th>密码：</th>
                                     <td>
-                                      {{ Form::text('password','',array('class'=>'ipt-txt ipt-large ipt-w2')) }}
+                                        <input class="ipt-txt ipt-large ipt-w2" type="password" name="password" id="" placeholder="请输入密码" />
                                         <span class="c-red">密码需包含大小写字母及数字，在6位以上</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>密码确认：</th>
                                     <td>
-                                        <input class="ipt-txt ipt-large ipt-w2" type="password" name="" id="" placeholder="请再次输入密码" />
+                                        <input class="ipt-txt ipt-large ipt-w2" type="password" name="password" id="" placeholder="请再次输入密码" />
                                     </td>
                                 </tr>
                             </table>

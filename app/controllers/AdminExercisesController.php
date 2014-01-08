@@ -9,9 +9,14 @@ class AdminExercisesController extends BaseController {
 	 */
 	protected $exercise;
 
-	public function __construct(Exercise $exercise)
+  protected $pager;
+
+  protected $answer;
+	public function __construct(Exercise $exercise,Paper $paper,Answer $answer)
 	{
 		$this->exercise = $exercise;
+    $this->paper = $paper;
+    $this->answer = $answer;
 	}
 
 	/**
@@ -33,7 +38,8 @@ class AdminExercisesController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.exercises.create');
+    $papers = Paper::all();
+		return View::make('admin.exercises.create',compact('papers'));
 	}
 
 	/**
@@ -43,12 +49,18 @@ class AdminExercisesController extends BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::all();
+		$input = Input::except('answers');
 		$validation = Validator::make($input, Exercise::$rules);
+    $answers = Input::get('answers');
 
 		if ($validation->passes())
 		{
-			$this->exercise->create($input);
+			$exercise = $this->exercise->create($input);
+
+      foreach($answers as $answer){
+        Answer::create(['exercises_id' => $exercise->id,
+          'description' => $answer]); 
+      } 
 
 			return Redirect::route('admin.exercises.index');
 		}
@@ -57,6 +69,7 @@ class AdminExercisesController extends BaseController {
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
+
 	}
 
 	/**

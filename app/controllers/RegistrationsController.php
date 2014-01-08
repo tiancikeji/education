@@ -26,7 +26,8 @@ class RegistrationsController extends BaseController {
       {
         $this->user->create($input);
 
-        return Redirect::to('/plan');
+        Session::put('current_user', $this->user);
+        return Redirect::to('/usercenter');
       }
 
       return Redirect::to('/registrations/new')

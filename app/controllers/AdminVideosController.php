@@ -48,7 +48,23 @@ class AdminVideosController extends BaseController {
 
 		if ($validation->passes())
 		{
-			$this->video->create($input);
+      
+
+      $destinationPath = '';
+      $filename        = '';
+
+      if (Input::hasFile('overlay')) {
+          $file            = Input::file('overlay');
+          $destinationPath = public_path().'/uploads/videos/';
+          $filename        = str_random(6) . '_' . $file->getClientOriginalName();
+          $uploadSuccess   = $file->move($destinationPath, $filename);
+      }
+
+			// $this->video->create($input);
+      $this->video = Video::create(['title' => Input::get('title'),
+                                    'author' => Input::get('author'),
+                                    'url' => Input::get('url'),
+                                    'overlay' => '/uploads/videos/'.$filename]);
 
 			return Redirect::route('admin.videos.index');
 		}

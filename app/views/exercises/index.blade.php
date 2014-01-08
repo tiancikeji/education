@@ -1,10 +1,10 @@
-@extends('layouts.scaffold')
+@extends('layouts.admin')
 
 @section('main')
 
 <h1>All Exercises</h1>
 
-<p>{{ link_to_route('exercises.create', 'Add new exercise') }}</p>
+<p>{{ link_to_route('admin.exercises.create', 'Add new exercise') }}</p>
 
 @if ($exercises->count())
 	<table class="table table-striped table-bordered">
@@ -22,7 +22,7 @@
 					<td>{{{ $exercise->no }}}</td>
 					<td>{{{ $exercise->description }}}</td>
 					<td>{{{ $exercise->paer_id }}}</td>
-                    <td>{{ link_to_route('exercises.edit', 'Edit', array($exercise->id), array('class' => 'btn btn-info')) }}</td>
+                    <td>{{ link_to_route('admin.exercises.edit', 'Edit', array($exercise->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('exercises.destroy', $exercise->id))) }}
                             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}

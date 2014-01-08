@@ -50,8 +50,10 @@
 <a href="/admin/messages" class="list-group-item">消息管理</a>
 <a href="/admin/words" class="list-group-item">生词管理</a>
 <a href="/admin/videos" class="list-group-item">视频管理</a>
+<a href="/admin/comments" class="list-group-item">评论管理</a>
 <a href="/admin/news" class="list-group-item">新闻管理</a>
 <a href="/admin/papers" class="list-group-item">试卷管理</a>
+<a href="/admin/exercises" class="list-group-item">试题管理</a>
 <a href="/admin/topics" class="list-group-item">常见问题</a>
 <a href="/admin/students" class="list-group-item">学生管理</a>
 <a href="/admin/teachers" class="list-group-item">教师管理</a>

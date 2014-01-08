@@ -82,7 +82,7 @@
                                 </table>
                             </div><!-- question list -->       
                         
-                            <div class="paging">
+                            <div class="paging" style="display:none;">
                                 <a href="javascript:void(0);">上一页</a>
                                 <a class="on" href="javascript:void(0);">1</a>
                                 <a href="javascript:void(0);">2</a>
@@ -145,7 +145,7 @@
                                 </table>
                             </div><!-- question list -->       
                         
-                            <div class="paging">
+                            <div class="paging" style="display:none;">
                                 <a href="javascript:void(0);">上一页</a>
                                 <a class="on" href="javascript:void(0);">1</a>
                                 <a href="javascript:void(0);">2</a>

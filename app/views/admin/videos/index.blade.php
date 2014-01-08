@@ -11,6 +11,8 @@
 		<thead>
 			<tr>
 				<th>Author</th>
+        <th>Title</th>
+        <th>Overlay</th>
 				<th>Url</th>
 			</tr>
 		</thead>
@@ -19,6 +21,8 @@
 			@foreach ($videos as $video)
 				<tr>
 					<td>{{{ $video->author }}}</td>
+					<td>{{{ $video->title }}}</td>
+					<td><img src="{{{ $video->overlay }}}" alt="" /></td>
 					<td>{{{ $video->url }}}</td>
                     <td>{{ link_to_route('admin.videos.edit', 'Edit', array($video->id), array('class' => 'btn btn-info')) }}</td>
                     <td>

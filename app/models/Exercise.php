@@ -6,6 +6,6 @@ class Exercise extends Eloquent {
 	public static $rules = array(
 		'no' => 'required',
 		'description' => 'required',
-		'paer_id' => 'required'
+		'paper_id' => 'required'
 	);
 }

@@ -34,6 +34,8 @@ Route::resource('papers', 'PapersController');
 Route::resource('messages', 'MessagesController');
 Route::resource('mywords', 'MywordsController');
 Route::resource('words', 'WordsController');
+Route::resource('exercises', 'ExercisesController');
+Route::resource('comments', 'CommentsController');
 
 Route::group(array('prefix' => 'admin'), function()
 {
@@ -41,6 +43,7 @@ Route::group(array('prefix' => 'admin'), function()
     Route::get('main','AdminController@main' );
     Route::resource('topics', 'AdminTopicsController');
     Route::resource('videos', 'AdminVideosController');
+    Route::resource('comments', 'AdminCommentsController');
     Route::resource('users', 'AdminUsersController');
     Route::resource('papers', 'AdminPapersController');
     Route::resource('exercises', 'AdminExercisesController');
@@ -49,6 +52,8 @@ Route::group(array('prefix' => 'admin'), function()
     Route::resource('messages', 'AdminMessagesController');
     Route::resource('words', 'AdminWordsController');
 });
+
+
 
 
 
