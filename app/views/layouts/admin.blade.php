@@ -46,22 +46,58 @@
 
 
 <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
 <div class="list-group">
-<a href="/admin/users" class="list-group-item active">用户管理</a>
-<a href="/admin/messages" class="list-group-item">消息管理</a>
-<a href="/admin/words" class="list-group-item">生词管理</a>
-<a href="/admin/videos" class="list-group-item">视频管理</a>
-<a href="/admin/comments" class="list-group-item">评论管理</a>
-<a href="/admin/news" class="list-group-item">新闻管理</a>
-<a href="/admin/papers" class="list-group-item">试卷管理</a>
-<a href="/admin/exercises" class="list-group-item">试题管理</a>
-<a href="/admin/topics" class="list-group-item">常见问题</a>
-<a href="/admin/students" class="list-group-item">学生管理</a>
-<a href="/admin/teachers" class="list-group-item">教师管理</a>
-<a href="/admin/classes" class="list-group-item">课程管理</a>
-<a href="/admin/homeworks" class="list-group-item">作业管理</a>
-</div>
+<a href="#" class="list-group-item">咨询管理</a>
+<ul>
+<li><a href="/admin/news/create" class="list-group-item">新建咨询</a></li>
+<li><a href="/admin/news" class="list-group-item">咨询列表</a></li>
+</ul>
+
+  
+<a href="#" class="list-group-item">用户管理</a>
+<ul>
+<li><a href="/admin/users" class="list-group-item">学生列表</a></li>
+<li><a href="/admin" class="list-group-item">评级报告</a></li>
+<li><a href="/admin" class="list-group-item">做题历史</a></li>
+<li><a href="/admin" class="list-group-item">日程安排</a></li>
+<li><a href="/admin" class="list-group-item">编辑日程</a></li>
+<li><a href="/admin" class="list-group-item">分配教师 </a></li>
+<li><a href="/admin" class="list-group-item">批改作文 </a></li>
+<li><a href="/admin" class="list-group-item">消费记录 </a></li>
+<li><a href="/admin/messages" class="list-group-item">发送信息 </a></li>
+<li><a href="/admin" class="list-group-item">新建教师</a></li>
+</ul>
+
+<a href="#" class="list-group-item">视频管理</a>
+<ul>
+  <li><a href="/admin/videos" class="list-group-item">视频列表</a></li>
+  <li><a href="/admin/videos/create" class="list-group-item">新建视频</a></li>
+</ul>
+
+<!-- <a href="/admin/words" class="list-group-item">生词管理</a> -->
+<!-- <a href="/admin/comments" class="list-group-item">评论管理</a> -->
+<!-- <a href="/admin/papers" class="list-group-item">试卷管理</a> -->
+<!-- <a href="/admin/exercises" class="list-group-item">试题管理</a> -->
+<!-- <a href="/admin/topics" class="list-group-item">常见问题</a> -->
+<!-- <a href="/admin/students" class="list-group-item">学生管理</a> -->
+<!-- <a href="/admin/teachers" class="list-group-item">教师管理</a> -->
+<!-- <a href="/admin/classes" class="list-group-item">课程管理</a> -->
+
+<a href="#" class="list-group-item">日程管理</a>
+<ul>
+  <li><a href="/admin/plans" class="list-group-item">日程模板</a></li>
+  <li><a href="/admin/plans/create" class="list-group-item">新建模板</a></li>
+</ul>
+
+<a href="#" class="list-group-item">作业管理</a>
+<ul>
+  <li><a href="/admin/papers" class="list-group-item">题库列表</a></li>
+  <li><a href="/admin/messages" class="list-group-item">上传试题</a></li>
+</ul>
+
 </div><!--/span-->
+</div>
 
 <div class="col-xs-12 col-sm-9">
   @if (Session::has('message'))
