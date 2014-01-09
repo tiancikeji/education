@@ -60,7 +60,7 @@
                                             </select>
                                         </li>
                                         <li>
-                                            <input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索阅读真题解析" />
+                                            <a href="/exercises"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索阅读真题解析" /></a>
                                         </li>
                                         <li>
                                             <select class="select">
@@ -74,37 +74,32 @@
                                             </select>
                                         </li>
                                         <li>
-                                            <input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索语法真题解析" />
+                                            <a href="/exercises"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索语法真题解析" /></a>
                                         </li>
                                         <li>
-                                            <input class="ipt-txt ipt-normal ipt-block" type="text" name="" id="" placeholder="输入想要查找的词汇" />
+                                            <a href="/exercises"><input class="ipt-txt ipt-normal ipt-block" type="text" name="" id="" placeholder="输入想要查找的词汇" /></a>
                                         </li>
                                         <li>
-                                            <input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索语法真题解析" />
+                                            <a href="/exercises"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索语法真题解析" /></a>
                                         </li>
                                     </ul>
                                 </div>
                             </form>
                             <div class="video-index l-black">
                                 <ul>
+
+			@foreach ($videos as $video)
                                     <li>
-                                        <a href="#">
+                                        <a href="/videos/{{{$video->id}}}">
                                             <div class="pic-video-mini">
-                                                <img src="images/video/pic-video.jpg" alt="video" />
+                                                <img src="{{{$video->overlay}}}" alt="video" />
                                                 <i class="icon-play"></i>
                                             </div>
-                                            <p>视频标题</p>
+                                            <p>{{{$video->title}}}</p>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pic-video-mini">
-                                                <img src="images/video/pic-video.jpg" alt="video" />
-                                                <i class="icon-play"></i>
-                                            </div>
-                                            <p>视频标题</p>
-                                        </a>
-                                    </li>                                
+			@endforeach
+
                                 </ul>
                             </div>
                         </div>
@@ -123,16 +118,16 @@
                     <div class="news-index l-black cf">
                         <ul>
 
-			@foreach ($news as $news)
+			@foreach ($news as $n)
                             <li>
-                                <a href="/news/{{{ $news->id }}}">
+                                <a href="/news/{{{ $n->id }}}">
                                     <div class="pic-news">
-                                        <img src="images/news/pic-news.jpg" alt="news" />
+                                        <img src="{{{ $n->overlay }}}" alt="" />
                                     </div>
                                 </a>
                                 <dl>
-                                    <dt><a href="/news/{{{ $news->id }}}">{{{ $news->title }}}</a></dt>
-                                    <dd>{{{ $news->body }}}</dd>
+                                    <dt><a href="/news/{{{ $n->id }}}">{{{ $n->title }}}</a></dt>
+                                    <dd>{{{ $n->body }}}</dd>
                                 </dl>
                             </li>
 			@endforeach

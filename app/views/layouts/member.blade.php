@@ -51,7 +51,7 @@ $(document).ready(function(){
                     <li>{{{Session::get('current_user')->name}}}</li>
                     <li><a href="/upgrade">升级为付费版</a></li>
                     <li><a href="/usercenter">账户中心</a></li>
-                    <li><a href="/messages">提醒（<span class="c-red">5</span>）</a></li>
+                    <li><a href="/messages">提醒（<span class="c-red">0</span>）</a></li>
                     <li><a href="/sessions/delete">安全退出</a></li>
                 </ul>
             </div>
@@ -64,7 +64,7 @@ $(document).ready(function(){
         <div class="grid">
 
         	<h1 class="logo fl">
-        		<a href="index.html">
+        		<a href="/">
         			<img src="/images/logo.png" alt="致远教育" title="致远教育" />
         		</a>
         	</h1><!-- logo -->

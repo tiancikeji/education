@@ -9,6 +9,7 @@
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
+      <th>overlay</th>
 			<th>Author</th>
 				<th>Published_date</th>
 				<th>Body</th>
@@ -18,6 +19,7 @@
 
 	<tbody>
 		<tr>
+      <td><img src="{{{ $news->overlay }}}" alt="" /></td>
 			<td>{{{ $news->author }}}</td>
 					<td>{{{ $news->published_date }}}</td>
 					<td>{{{ $news->body }}}</td>

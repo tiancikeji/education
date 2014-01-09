@@ -26,11 +26,11 @@
       </li>
       
       <li>
-answers:
-        <input type="text" name="answers[]" value="" />
-        <input type="text" name="answers[]" value="" />
-        <input type="text" name="answers[]" value="" />
-        <input type="text" name="answers[]" value="" />
+answers:<br/>
+        是否是正确答案：<input type="input" name="is_rights[]" value="0" > 选项：<input type="text" name="answers[]" value="" /><br>
+        是否是正确答案：<input type="input" name="is_rights[]" value="0" >选项：<input type="text" name="answers[]" value="" /><br>
+        是否是正确答案：<input type="input" name="is_rights[]" value="0" >选项：<input type="text" name="answers[]" value="" /><br>
+        是否是正确答案：<input type="input" name="is_rights[]" value="0" >选项：<input type="text" name="answers[]" value="" /><br>
       </li>
 		<li>
 			{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
@@ -44,7 +44,6 @@ answers:
 		{{ implode('', $errors->all('<li class="error">:message</li>')) }}
 	</ul>
 @endif
-
 @stop
 
 

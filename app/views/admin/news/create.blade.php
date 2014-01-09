@@ -4,7 +4,7 @@
 
 <h1>Create News</h1>
 
-{{ Form::open(array('route' => 'admin.news.store')) }}
+{{ Form::open(array('route' => 'admin.news.store','files'=>true)) }}
 	<ul>
         <li>
             {{ Form::label('author', 'Author:') }}
@@ -14,6 +14,10 @@
         <li>
             {{ Form::label('published_date', 'Published_date:') }}
             {{ Form::text('published_date') }}
+        </li>
+        <li>
+            {{ Form::label('overlay', 'Overlay:') }}
+            {{ Form::file('overlay') }}
         </li>
 
         <li>

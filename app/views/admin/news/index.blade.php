@@ -10,6 +10,7 @@
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
+        <th>Overlay</th>
 				<th>Author</th>
 				<th>Published_date</th>
 				<th>Body</th>
@@ -20,6 +21,7 @@
 		<tbody>
 			@foreach ($news as $news)
 				<tr>
+<td><img src="{{{ $news->overlay }}}" alt="" /></td>
 					<td>{{{ $news->author }}}</td>
 					<td>{{{ $news->published_date }}}</td>
 					<td>{{{ $news->body }}}</td>

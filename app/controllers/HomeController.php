@@ -4,17 +4,20 @@ class HomeController extends BaseController {
   protected $layout = 'layouts.main';
 
 	protected $news;
+  protected $video;
 
-  public function __construct(News $news)
+  public function __construct(News $news,Video $video)
 	{
+    $this->video = $video;
 		$this->news = $news;
 	}
 
   public function showWelcome()
 	{
 
-		$news = $this->news->all();
-    $this->layout->content = View::make('home', compact('news'));
+		$news = $this->news->take(4)->get();
+    $videos = $this->video->take(3)->get();
+    $this->layout->content = View::make('home', compact('news','videos'));
 	}
 
 }

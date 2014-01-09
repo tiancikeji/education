@@ -49,7 +49,23 @@ class AdminNewsController extends BaseController {
 
 		if ($validation->passes())
 		{
-			$this->news->create($input);
+			// $this->news->create($input);
+      
+      $destinationPath = '';
+      $filename        = '';
+
+      if (Input::hasFile('overlay')) {
+          $file            = Input::file('overlay');
+          $destinationPath = public_path().'/uploads/news/';
+          $filename        = str_random(6) . '_' . $file->getClientOriginalName();
+          $uploadSuccess   = $file->move($destinationPath, $filename);
+      }
+
+      $this->news = News::create(['author' => Input::get('author'),
+        'published_date' => Input::get('published_date'),
+        'body' => Input::get('body'),
+        'title' => Input::get('title'),
+        'overlay' =>'/uploads/news/'.$filename ]);
 
 			return Redirect::route('admin.news.index');
 		}
@@ -129,4 +145,4 @@ class AdminNewsController extends BaseController {
 		return Redirect::route('admin.news.index');
 	}
 
-}
+} 

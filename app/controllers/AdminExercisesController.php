@@ -49,17 +49,20 @@ class AdminExercisesController extends BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::except('answers');
+		$input = Input::except('answers','is_rights');
 		$validation = Validator::make($input, Exercise::$rules);
     $answers = Input::get('answers');
-
+    $is_rights = Input::get('is_rights');
 		if ($validation->passes())
 		{
 			$exercise = $this->exercise->create($input);
-
-      foreach($answers as $answer){
+      // print_r($is_rights);
+      // print_r($answers);
+      for($i=0;$i < count($answers); $i++){
         Answer::create(['exercises_id' => $exercise->id,
-          'description' => $answer]); 
+          'description' => $answers[$i],
+        'is_right' => $is_rights[$i]]); 
+
       } 
 
 			return Redirect::route('admin.exercises.index');
