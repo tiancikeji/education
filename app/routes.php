@@ -21,7 +21,7 @@ Route::get('/registrations/new', 'RegistrationsController@newpage');
 Route::post('/registrations/store', 'RegistrationsController@store');
 
 
-Route::get('/plan', 'PlansController@index');
+// Route::get('/plan', 'PlansController@index');
 
 Route::get('/upgrade', 'UpgradeController@index');
 Route::get('/usercenter', 'UserCenterController@index');
@@ -36,6 +36,7 @@ Route::resource('mywords', 'MywordsController');
 Route::resource('words', 'WordsController');
 Route::resource('exercises', 'ExercisesController');
 Route::resource('comments', 'CommentsController');
+Route::resource('teachers', 'TeachersController');
 
 Route::group(array('prefix' => 'admin'), function()
 {
@@ -51,6 +52,8 @@ Route::group(array('prefix' => 'admin'), function()
     Route::resource('news', 'AdminNewsController');
     Route::resource('messages', 'AdminMessagesController');
     Route::resource('words', 'AdminWordsController');
+    Route::resource('teachers', 'AdminTeachersController');
+    Route::resource('plans', 'AdminPlansController');
 });
 
 
@@ -63,3 +66,8 @@ Route::group(array('prefix' => 'admin'), function()
 
 
 
+
+
+
+
+Route::resource('plans', 'PlansController');

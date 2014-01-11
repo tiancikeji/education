@@ -1,6 +1,6 @@
 <?php
 
-class PlansController extends BaseController {
+class AdminPlansController extends BaseController {
 
 	/**
 	 * Plan Repository
@@ -23,7 +23,7 @@ class PlansController extends BaseController {
 	{
 		$plans = $this->plan->all();
 
-		return View::make('plans.index', compact('plans'));
+		return View::make('admin.plans.index', compact('plans'));
 	}
 
 	/**
@@ -33,7 +33,7 @@ class PlansController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('plans.create');
+		return View::make('admin.plans.create');
 	}
 
 	/**
@@ -50,10 +50,10 @@ class PlansController extends BaseController {
 		{
 			$this->plan->create($input);
 
-			return Redirect::route('plans.index');
+			return Redirect::route('admin.plans.index');
 		}
 
-		return Redirect::route('plans.create')
+		return Redirect::route('admin.plans.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -69,7 +69,7 @@ class PlansController extends BaseController {
 	{
 		$plan = $this->plan->findOrFail($id);
 
-		return View::make('plans.show', compact('plan'));
+		return View::make('admin.plans.show', compact('plan'));
 	}
 
 	/**
@@ -84,10 +84,10 @@ class PlansController extends BaseController {
 
 		if (is_null($plan))
 		{
-			return Redirect::route('plans.index');
+			return Redirect::route('admin.plans.index');
 		}
 
-		return View::make('plans.edit', compact('plan'));
+		return View::make('admin.plans.edit', compact('plan'));
 	}
 
 	/**
@@ -106,10 +106,10 @@ class PlansController extends BaseController {
 			$plan = $this->plan->find($id);
 			$plan->update($input);
 
-			return Redirect::route('plans.show', $id);
+			return Redirect::route('admin.plans.show', $id);
 		}
 
-		return Redirect::route('plans.edit', $id)
+		return Redirect::route('admin.plans.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -125,7 +125,7 @@ class PlansController extends BaseController {
 	{
 		$this->plan->find($id)->delete();
 
-		return Redirect::route('plans.index');
+		return Redirect::route('admin.plans.index');
 	}
 
 }

@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call('MywordsTableSeeder');
 		$this->call('WordsTableSeeder');
 		$this->call('CommentsTableSeeder');
+		$this->call('TeachersTableSeeder');
+		$this->call('PlansTableSeeder');
 	}
 
 }

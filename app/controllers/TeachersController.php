@@ -1,17 +1,17 @@
 <?php
 
-class PlansController extends BaseController {
+class TeachersController extends BaseController {
 
 	/**
-	 * Plan Repository
+	 * Teacher Repository
 	 *
-	 * @var Plan
+	 * @var Teacher
 	 */
-	protected $plan;
+	protected $teacher;
 
-	public function __construct(Plan $plan)
+	public function __construct(Teacher $teacher)
 	{
-		$this->plan = $plan;
+		$this->teacher = $teacher;
 	}
 
 	/**
@@ -21,9 +21,9 @@ class PlansController extends BaseController {
 	 */
 	public function index()
 	{
-		$plans = $this->plan->all();
+		$teachers = $this->teacher->all();
 
-		return View::make('plans.index', compact('plans'));
+		return View::make('teachers.index', compact('teachers'));
 	}
 
 	/**
@@ -33,7 +33,7 @@ class PlansController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('plans.create');
+		return View::make('teachers.create');
 	}
 
 	/**
@@ -44,16 +44,16 @@ class PlansController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, Plan::$rules);
+		$validation = Validator::make($input, Teacher::$rules);
 
 		if ($validation->passes())
 		{
-			$this->plan->create($input);
+			$this->teacher->create($input);
 
-			return Redirect::route('plans.index');
+			return Redirect::route('teachers.index');
 		}
 
-		return Redirect::route('plans.create')
+		return Redirect::route('teachers.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -67,9 +67,9 @@ class PlansController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$plan = $this->plan->findOrFail($id);
+		$teacher = $this->teacher->findOrFail($id);
 
-		return View::make('plans.show', compact('plan'));
+		return View::make('teachers.show', compact('teacher'));
 	}
 
 	/**
@@ -80,14 +80,14 @@ class PlansController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$plan = $this->plan->find($id);
+		$teacher = $this->teacher->find($id);
 
-		if (is_null($plan))
+		if (is_null($teacher))
 		{
-			return Redirect::route('plans.index');
+			return Redirect::route('teachers.index');
 		}
 
-		return View::make('plans.edit', compact('plan'));
+		return View::make('teachers.edit', compact('teacher'));
 	}
 
 	/**
@@ -99,17 +99,17 @@ class PlansController extends BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Plan::$rules);
+		$validation = Validator::make($input, Teacher::$rules);
 
 		if ($validation->passes())
 		{
-			$plan = $this->plan->find($id);
-			$plan->update($input);
+			$teacher = $this->teacher->find($id);
+			$teacher->update($input);
 
-			return Redirect::route('plans.show', $id);
+			return Redirect::route('teachers.show', $id);
 		}
 
-		return Redirect::route('plans.edit', $id)
+		return Redirect::route('teachers.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -123,9 +123,9 @@ class PlansController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->plan->find($id)->delete();
+		$this->teacher->find($id)->delete();
 
-		return Redirect::route('plans.index');
+		return Redirect::route('teachers.index');
 	}
 
 }

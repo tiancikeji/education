@@ -16,7 +16,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-     <script src="/js/jquery/jquery.js"></script>
+    <script src="/js/jquery/jquery.js"></script>
 </head>
 
 <body>
@@ -66,7 +66,7 @@
 <li><a href="/admin/" class="list-group-item">批改作文 </a></li>
 <li><a href="/admin/" class="list-group-item">消费记录 </a></li>
 <li><a href="/admin/messages" class="list-group-item">发送信息 </a></li>
-<li><a href="/admin/" class="list-group-item">新建教师</a></li>
+<li><a href="/admin/teachers" class="list-group-item">新建教师</a></li>
 </ul>
 
 <a href="#" class="list-group-item">视频管理</a>
@@ -77,7 +77,6 @@
 
 <!-- <a href="/admin/words" class="list-group-item">生词管理</a> -->
 <!-- <a href="/admin/comments" class="list-group-item">评论管理</a> -->
-<!-- <a href="/admin/papers" class="list-group-item">试卷管理</a> -->
 <!-- <a href="/admin/exercises" class="list-group-item">试题管理</a> -->
 <!-- <a href="/admin/topics" class="list-group-item">常见问题</a> -->
 <!-- <a href="/admin/students" class="list-group-item">学生管理</a> -->
@@ -93,7 +92,7 @@
 <a href="#" class="list-group-item">作业管理</a>
 <ul>
   <li><a href="/admin/papers" class="list-group-item">题库列表</a></li>
-  <li><a href="/admin/messages" class="list-group-item">上传试题</a></li>
+  <li><a href="/admin/exercises" class="list-group-item">上传试题</a></li>
 </ul>
 
 </div><!--/span-->
@@ -124,8 +123,6 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="/js/jquery/jquery.js"></script>
-<script src="/js/jquery/jquery.tools.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

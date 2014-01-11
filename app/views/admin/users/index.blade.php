@@ -2,25 +2,68 @@
 
 @section('main')
 
-<h1>All Users</h1>
+<h1>学生列表</h1>
+
+<form action="/users/students/search" method="get" accept-charset="utf-8">
+付费状况： 
+<select name="" id="">
+  <option value="">全部</option>
+</select>
+所属教师： 
+<select name="" id="">
+  <option value="">全部</option>
+</select>
+评级状况： 
+<select name="" id="">
+  <option value="">全部</option>
+</select>
+作文状态： 
+<select name="" id="">
+  <option value="">全部</option>
+</select>
+注册日期： 
+<select name="" id="">
+  <option value="">全部</option>
+</select>
+付费时间： 
+<select name="" id="">
+  <option value="">全部</option>
+</select>
+日程状态：
+<select name="" id="">
+  <option value="">全部</option>
+</select>
+<input type="submit" value="go" />
+</form>
 
 <p>{{ link_to_route('admin.users.create', 'Add new user') }}</p>
+全部: {{{ $users->count() }}}
 @if ($users->count())
-	<table class="table table-striped table-bordered">
+	<table class="table  table-bordered">
 		<thead>
 			<tr>
-				<th>email</th>
-        <th>name</th>
+        <th>用户id</th>
+				<th>用户名</th>
+        <th>昵称</th>
+        <th>付费情况</th>
+        <th>注册日期</th>
+        <th>水平评级</th>
+        <th>操作</th>
 			</tr>
 		</thead>
 
 		<tbody>
 			@foreach ($users as $user)
 				<tr>
-					<td>{{{ $user->email }}}</td>
-					<td>{{{ $user->name }}}</td>
-                    <td>{{ link_to_route('admin.users.edit', 'Edit', array($user->id), array('class' => 'btn btn-info')) }}</td>
+<td>{{{ $user->id }}}</td>
+<td>{{{ $user->email }}}</td>
+<td>{{{ $user->name }}}</td>
+<td></td>
+<td>{{{ $user->created_at }}}</td>
+<td></td>
                     <td>
+ {{ link_to_route('admin.users.edit', 'Edit', array($user->id), array('class' => 'btn btn-info')) }}
+查看学生信息 发送信息   安排日程
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.users.destroy', $user->id))) }}
                             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
