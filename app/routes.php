@@ -25,6 +25,8 @@ Route::resource('payments', 'PaymentsController');
 
 Route::get('/upgrade', 'UpgradeController@index');
 Route::get('/usercenter', 'UserCenterController@index');
+Route::post('/usercenter/update', 'UserCenterController@update');
+
 Route::get('/usercenter/updatepassword', 'UserCenterController@updatepassword');
 Route::get('/plan', 'UserCenterController@plan');
 
