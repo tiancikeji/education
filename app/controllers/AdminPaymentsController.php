@@ -21,7 +21,13 @@ class AdminPaymentsController extends BaseController {
 	 */
 	public function index()
 	{
-		$payments = $this->payment->where("user_id",'=',Input::get("user_id"))->get();
+    $user_id = Input::get("user_id");
+    if(empty($user_id)){
+		  $payments = $this->payment->all();
+    }else{
+		  $payments = $this->payment->where("user_id",'=',$user_id)->get();
+    }
+    
 
 		return View::make('admin.payments.index', compact('payments'));
 	}

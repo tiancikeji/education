@@ -26,7 +26,7 @@
 					<td>{{{ $plan->is_sprint }}}</td>
 					<td>{{{ $plan->type }}}</td>
                     <td>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('plans.destroy', $plan->id))) }}
+                        {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.plans.destroy', $plan->id))) }}
                             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>

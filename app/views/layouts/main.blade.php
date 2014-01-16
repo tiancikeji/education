@@ -40,7 +40,6 @@
 <div class="fr">
                 <ul class="toolbar-menu l-gray l-line">
                     <li>{{{Session::get('current_user')->name}}}</li>
-                      {{{ Payment::where("user_id",'=',Session::get('current_user')->id)->get()}}}
   @if(count(Payment::where("user_id",'=',Session::get('current_user')->id)->get()) > 0)
                     <li><font color="red">付费版</font></li>
                     @else
