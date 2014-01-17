@@ -26,9 +26,15 @@ Route::resource('payments', 'PaymentsController');
 Route::get('/upgrade', 'UpgradeController@index');
 Route::get('/usercenter', 'UserCenterController@index');
 Route::post('/usercenter/update', 'UserCenterController@update');
+Route::get('/update_user', 'UserCenterController@update_user');
 
 Route::get('/usercenter/updatepassword', 'UserCenterController@updatepassword');
 Route::get('/plan', 'UserCenterController@plan');
+
+Route::post('/videos/check', 'VideosController@check');
+
+Route::post('/topics/check', 'TopicsController@check');
+
 
 Route::resource('news', 'NewsController');
 Route::resource('topics', 'TopicsController');

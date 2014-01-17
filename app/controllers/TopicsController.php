@@ -24,9 +24,28 @@ class TopicsController extends BaseController {
 	public function index()
 	{
 		$topics = $this->topic->all();
+    $numb=$this->topic->count();
+		return View::make('topics.index', compact('topics','numb'));
+  
+  }
 
-		return View::make('topics.index', compact('topics'));
-	}
+
+
+/**
+ * check
+ */
+  public function check(){
+ $check=Input::get("check"); 
+ $topics=$this->topic->where('titile','like',$check)->get();
+ $numb=$this->topic->count();
+		return View::make('topics.index', compact('topics','numb'));
+  }
+    
+
+
+
+
+
 
 	/**
 	 * Show the form for creating a new resource.

@@ -13,34 +13,44 @@
                     <div class="video-search cf">
                         <ul class="fl">
                             <li>
-                                <p>试题日期：</p>
-                                <select class="select">
-                                    <option value="">1990年</option>
+               <form action="/videos/check" method="post"> 
+                                <p>试题日期：
+                              @foreach ($videos as $video)
+                                <select name="created_at" class="select">
+                                    <option value={{{ $video->created_at}}}>{{{ $video->created_at}}}</option>
                                 </select>
-                                <select class="select">
-                                    <option value="">12月</option>
-                                </select>                                                              
+                              @endforeach
+                                <!-- <select class="select"> -->
+                                    <!-- <option value="">12月</option> -->
+                                <!-- </select>                                                               -->
+                                </p>
                             </li>
+                            <!-- <li> -->
+                                <!-- <p>Section选择：</p> -->
+                                <!-- <label for="radio334"><input type="radio" name="radio" id="radio334" /> section 1</label> -->
+                                <!-- <label for="radio335"><input type="radio" name="radio" id="radio335" /> section 2</label> -->
+                                <!-- <label for="radio336"><input type="radio" name="radio" id="radio336" /> section 3</label>                                                   -->
+                            <!-- </li> -->
                             <li>
-                                <p>Section选择：</p>
-                                <label for="radio334"><input type="radio" name="radio" id="radio334" /> section 1</label>
-                                <label for="radio335"><input type="radio" name="radio" id="radio335" /> section 2</label>
-                                <label for="radio336"><input type="radio" name="radio" id="radio336" /> section 3</label>                                                  
-                            </li>
-                            <li>
-                                <p>题目编号：</p>
-                                <select class="select">
-                                    <option value="">第一题</option>
+                                <p>题目编号：
+                                <select name="title" class="select">
+                                @foreach ($videos as $video)
+                                    <option value={{{ $video->title}}}>{{{ $video->title}}}</option>
+                                @endforeach
                                 </select>
+                                </p>
                             </li>                          
                         </ul>
                         <div class="fr">
-                            <input class="btn btn-large btn-gray css3" type="button" value="搜 索" />                    
+                            <input class="btn btn-large btn-gray css3" type="submit" value="搜 索" />                    
                         </div>
+                        </form>
                     </div><!-- video search -->                      
 
                     <div class="md-simple">
-                        <h4 class="hd-simple">2003年5月 （共0条）</h4>
+                          @foreach($videos as $video)
+                        <h4 class="hd-simple">{{{$video->created_at}}} （共{{{$num}}}条）</h4>
+                          @endforeach     
                         <div class="video-list l-black cf">
                             <ul>
 @if ($videos->count())

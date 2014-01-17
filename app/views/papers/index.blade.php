@@ -23,6 +23,7 @@
                     <div class="panes-2">
                         <div>
                             <h4 class="hd-simple-2">试题分类检索：</h4>
+                      <form action="" method="post">
                             <div class="video-search cf">
                                 <ul class="fl">
                                     <li>
@@ -52,8 +53,9 @@
                                     <input class="btn btn-large btn-gray css3" type="button" value="搜 索" />                    
                                 </div>
                             </div><!-- search -->
+                        </form>
                             <div class="md-simple">
-                                <h4 class="hd-simple">2003年5月 - 2003年7月 （共115条）</h4>
+                                <h4 class="hd-simple">2003年5月 - 2003年7月 （共{{{$numbers}}}条）</h4>
                                 <table class="table table-fixed table-list">
                                     <thead>
                                         <tr>

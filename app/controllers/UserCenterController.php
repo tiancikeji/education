@@ -23,17 +23,43 @@ class UserCenterController extends BaseController{
     return View::make('plan') ;
   }
 
+
+  public function update_user(){
+
+    $user = User::find(Session::get('current_user')->id);
+    return View::make('update_user',compact('user')) ;
+  }
+
   public function update(){
     $number=Input::get("number");
     $name=Input::get("name");
     $gender=Input::get("gender");
     $birthday=Input::get("birthday");
     $school=Input::get("school");
+    $location=Input::get("location");
+    $grade=Input::get("grade");
+    $dream_school=Input::get("dream_school");
+    $reason=Input::get("reason");
+    $sat_hope_grade=Input::get("sat_hope_grade");
+    $study_time_everyweek=Input::get("study_time_everyweek");
+    $learn_words=Input::get("learn_words");
+    $hope_learn_words=Input::get("hope_learn_words");
+    $hope_compisition_times=Input::get("hope_compisition_times");
     $user=User::find($number) ;
     $user->name=$name;
     $user->gender=$gender;
     $user->birthday=$birthday;
     $user->school=$school;
+    $user->location=$location;
+    $user->grade=$grade;
+    $user->dream_school=$dream_school;
+    $user->reason=$reason;
+    $user->sat_hope_grade=$sat_hope_grade;
+    $user->study_time_everyweek=$study_time_everyweek;
+    $user->learn_words=$learn_words;
+    $user->hope_learn_words=$hope_learn_words;
+    $user->hope_compisition_times=$hope_compisition_times;
+
     $user->save();
     return Redirect::to('/usercenter');
   }

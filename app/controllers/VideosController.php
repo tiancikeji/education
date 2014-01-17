@@ -27,9 +27,28 @@ class VideosController extends BaseController {
 	public function index()
 	{
 		$videos = $this->video->all();
-
-		return View::make('videos.index', compact('videos'));
+    $num=$this->video->count();
+		return View::make('videos.index', compact('videos','num'));
 	}
+
+
+
+/**
+ * check 
+ */
+
+  public function check(){
+ $created_at=Input::get("created_at"); 
+ $title=Input::get("title");
+ // $videos = $this->video->where("title = '".$title."' and create_at='".$created_at.'")->get();
+ // $videos=$this->video->where('title','=',$title)->get();
+  $videos=$this->video->where('title','=',$title,'and ','created_at','=',$created_at)->get();
+ $num=$this->video->count();
+  return View::make('videos.index',compact('videos','num'));
+
+  }
+
+
 
 	/**
 	 * Show the form for creating a new resource.

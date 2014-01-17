@@ -24,8 +24,8 @@ class PapersController extends BaseController {
 	public function index()
 	{
 		$papers = $this->paper->all();
-
-		return View::make('papers.index', compact('papers'));
+    $numbers= $this->paper->count();
+		return View::make('papers.index', compact('papers','numbers'));
 	}
 
 	/**

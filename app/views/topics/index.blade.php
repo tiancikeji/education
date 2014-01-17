@@ -18,14 +18,16 @@
                             <input type="button" class="btn btn-normal btn-white css3" value="按回帖时间排序" />
                             <input type="button" class="btn btn-normal btn-white css3" value="查看最热问题" />
                         </div>
+                <form action="/topics/check" method="post">
                         <div class="fr">
-                            <input type="text" class="ipt-txt ipt-normal" name="" id="" placeholder="输入标签" />
-                            <input type="button" class="btn btn-normal btn-white css3" value="搜索帖子" />                          
+                            <input type="text" class="ipt-txt ipt-normal" name="check" id="" placeholder="输入标签" />
+                            <input type="submit" class="btn btn-normal btn-white css3" value="搜索帖子" />                          
                         </div>
+                </form>
                     </div><!-- btn groups -->       
 
                     <div class="md-simple">
-                        <h4 class="hd-simple">按发帖时间排序 （共115条）</h4>
+                        <h4 class="hd-simple">按发帖时间排序 （共{{{ $numb}}}条）</h4>
                         <table class="table table-list">
                             <thead>
                                 <tr>
