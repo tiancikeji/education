@@ -19,14 +19,23 @@
                     </p>
                     <div class="tips tips-1">
 @if(count(Payment::where("user_id",'=',Session::get('current_user')->id)->get()) > 0)
-        <p>
-        </p>
+                   <p>
+                      @if(count(Userplan::where("user_id",'=',Session::get('current_user')->id)->get()) > 0)
+                         <p>
+                            <div id="calendar"> </div><!-- calendar -->
+                         </p>
+                      @else
+                              您当前没有日程计划
+                      @endif
+                   </p>
 
                     @else
-                        <p>
-                            您当前没有日程计划，这是因为日程计划属于我们的付费服务之一，您可以<span class="l-blue l-line"><a href="/upgrade">升级为付费版</a></span>使用
-                        </p>
+                        
+         您当前没有日程计划，这是因为日程计划属于我们的付费服务之一，您可以<span class="l-blue l-line"><a href="/upgrade">升级为付费版</a></span>使用
+
+
                       @endif
+
 
                     </div>                      
 

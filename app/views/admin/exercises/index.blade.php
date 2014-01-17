@@ -13,6 +13,7 @@
 				<th>编号</th>
 				<th>描述</th>
         <th>正确答案</th>
+        <th>难度</th>
         <th>  </th>
 			</tr>
 		</thead>
@@ -23,6 +24,7 @@
 					<td>{{{ $exercise->no }}}</td>
 					<td>{{{ $exercise->description }}}</td>
           <td>{{{ $exercise->right_answer }}}</td>
+          <td>{{{ $excercise->hard }}}</td>
               <td>{{ link_to_route('admin.exercises.edit', 'Edit', array($exercise->id), array('class' => 'btn btn-info')) }} {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.exercises.destroy', $exercise->id))) }}
                       {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                   {{ Form::close() }}

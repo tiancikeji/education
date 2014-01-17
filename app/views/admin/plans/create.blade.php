@@ -29,22 +29,6 @@
 <input type="radio" name="type" value="EXAM" />阶段测验
         </li>
 
-        <li>
-<div name="plan_task_div">
-    <div name="plan_task_div_item">
-开始时间： 
-<input type="text" name="start_date[]" value="" />
-----
-结束时间：
-<input type="text" name="end_date[]" value="" />
-内容：
-<input type="text" name="content[]" id="" value="" />
-           <input name="add_plan_task_btn" type="button" value="+" />
-    </div>
-</div>
-        </li>
-
-
     <li>
       {{ Form::submit('保存', array('class' => 'btn btn-info')) }}
     </li>
@@ -57,11 +41,5 @@
   </ul>
 @endif
 
-<script type="text/javascript" charset="utf-8">
-    var add_plan = function(){
-      $("div[name='plan_task_div']").append($("div[name='plan_task_div_item']").html());
-    }
-    $("input[name='add_plan_task_btn']").on('click',add_plan);
-</script>
 
 @stop
