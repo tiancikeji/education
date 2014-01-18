@@ -1,8 +1,7 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Application Routes
+|-------------------------------------------------------------------------- | Application Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register all of the routes for an application.
@@ -19,6 +18,8 @@ Route::get('/registrations/new', 'RegistrationsController@newpage');
 Route::post('/registrations/store', 'RegistrationsController@store');
 Route::resource('news', 'NewsController');
 Route::resource('exercises', 'ExercisesController');
+Route::post('/usercenter/updatepassword', 'UserCenterController@updatepassword');
+Route::post('/papers/search', 'PapersController@search');
 
 Route::group(array('before'=>'auth'),function(){
   Route::resource('payments', 'PaymentsController');

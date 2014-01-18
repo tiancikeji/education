@@ -2,18 +2,18 @@
 
 @section('main')
 
-<h1>All News</h1>
+<h1>全部消息  </h1>
 
-<p>{{ link_to_route('news.create', 'Add new news') }}</p>
+<p>{{ link_to_route('news.create', '增加新消息') }}</p>
 
 @if ($news->count())
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>Author</th>
-				<th>Published_date</th>
-				<th>Body</th>
-				<th>Title</th>
+				<th>作者</th>
+				<th>发布日期</th>
+				<th>内容</th>
+				<th>标题</th>
 			</tr>
 		</thead>
 

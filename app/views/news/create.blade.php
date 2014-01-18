@@ -2,7 +2,7 @@
 
 @section('main')
 
-<h1>Create News</h1>
+<h1>创建新消息</h1>
 
 {{ Form::open(array('route' => 'news.store')) }}
 	<ul>

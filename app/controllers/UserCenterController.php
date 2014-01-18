@@ -13,7 +13,6 @@ class UserCenterController extends BaseController{
   }
 
   public function index(){
-
     $payments = $this->payment->where('user_id','=',Session::get('current_user')->id)->get();
     $user = User::find(Session::get('current_user')->id);
     return View::make('usercenter',compact('payments','user'));
@@ -29,6 +28,20 @@ class UserCenterController extends BaseController{
     $user = User::find(Session::get('current_user')->id);
     return View::make('update_user',compact('user')) ;
   }
+  
+  public function updatepassword(){
+    $password=Input::get("newpassword");
+    $passwordone=Input::get("newpasswordone");
+    if($password==$passwordone||$passwod!=null||$passwordone!=null){
+    $user=User::find(Session::get('current_user')->id);
+    $user->password=$password;
+    $user->save();
+    }
+     return Redirect::to('/usercenter'); 
+  }
+
+
+
 
   public function update(){
     $number=Input::get("number");
@@ -59,7 +72,6 @@ class UserCenterController extends BaseController{
     $user->learn_words=$learn_words;
     $user->hope_learn_words=$hope_learn_words;
     $user->hope_compisition_times=$hope_compisition_times;
-
     $user->save();
     return Redirect::to('/usercenter');
   }
