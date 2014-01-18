@@ -28,6 +28,7 @@ class VideosController extends BaseController {
 	{
 		$videos = $this->video->all();
     $num=$this->video->count();
+
 		return View::make('videos.index', compact('videos','num'));
 	}
 

@@ -22,27 +22,29 @@
                                     <td>
                                       <!-- {{ Form::text('email','',array('class'=>'ipt-txt ipt-large ipt-w2')) }} -->
                                       <input type="text" name="email" class="ipt-txt ipt-large ipt-w2" id="email" onblur="em();">    
-                                      <span id="ema">邮箱不符，请重新输入！</span>
+                                      <span id="ema"class="c-red">邮箱不符，请重新输入！</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>昵称：</th>
                                     <td>
-                                      {{ Form::text('name','',array('class'=>'ipt-txt ipt-large ipt-w2')) }}
+                                      <input type="text" name="name" class="ipt-txt ipt-large ipt-w2" id="name" onblur="na();">    
+                                      <!-- {{ Form::text('name','',array('class'=>'ipt-txt ipt-large ipt-w2')) }} -->
+                                      <span id="na"class="c-red">昵称:5-15位字符，只包含字母数字</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>密码：</th>
                                     <td>
-                                        <input class="ipt-txt ipt-large ipt-w2" type="password" name="password" id="password" placeholder="请输入密码" />
-                                        <span class="c-red">密码需包含大小写字母及数字，在6位以上</span>
+                                        <input class="ipt-txt ipt-large ipt-w2" type="password" name="password" id="password" placeholder="请输入密码" onblur="passw();" />
+                                        <span id="mima"class="c-red">密码:1-16位字符，只包含字母数字</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>密码确认：</th>
                                     <td>
                                         <input class="ipt-txt ipt-large ipt-w2" type="password" name="password" id="passwordone" placeholder="请再次输入密码" onblur="com();" />
-                                    <span id="new">密码不能为空 </span >
+                                    <span id="new"class="c-red">密码不能为空 </span >
                                     </td>
                                 </tr>
                             </table>
@@ -58,7 +60,30 @@
 $(function(){
   $("#new").hide();
   $("#ema").hide();
+ $("#mima").hide();
+ $("#na").hide();
 })
+
+function na(){
+var name=$("#name").val();
+var myname=/^[0-9a-zA-Z]{5,15}$/;
+if(!myname.test(name)){
+$("#na").show();
+}else{
+$("#na").hide();
+}
+}
+
+function passw(){
+var password =$("#password").val();
+var mypassword=/^[0-9a-zA-Z]{1,16}$/;
+if(!mypassword.test(password)){
+  $("#mima").show();
+}else{
+$("#mima").hide();
+}
+
+}
 function em(){
   var email= $("#email").val();
   var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/;
