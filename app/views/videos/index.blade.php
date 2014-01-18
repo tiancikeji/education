@@ -52,13 +52,7 @@
                     </div><!-- video search -->                      
 
                     <div class="md-simple">
-<<<<<<< HEAD
-                          @foreach($videos as $video)
-                        <h4 class="hd-simple">{{{$video->created_at}}} （共{{{$videos->count()}}}条）</h4>
-                          @endforeach     
-=======
                         <h4 class="hd-simple">（共{{{$videos->count()}}}条）</h4>
->>>>>>> b5bcb2eda128be1985e86972e2f5841a46a5805e
                         <div class="video-list l-black cf">
                             <ul>
 @if ($videos->count())
