@@ -20,6 +20,18 @@
             {{ Form::label('password', ' 密码:') }}
             {{ Form::password('password') }}
         </li>
+        
+        <li>
+          <label for="">权限：</label>
+          <ul>
+
+			@foreach ($permissions as $permission)
+            <li>
+              <input type="checkbox" name="permission_ids[]" value="{{{ $permission->id }}}" />{{{ $permission->name }}}
+            </li>
+			@endforeach
+          </ul>
+        </li>
 
 		<li>
 			{{ Form::submit(' 提交', array('class' => 'btn btn-info')) }}

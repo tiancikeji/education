@@ -25,7 +25,7 @@
           <td>{{{ $homework->type }}}</td>
 					<!-- <td>{{{ $homework->exercise_ids }}}</td> -->
 					<!-- <td>{{{ $homework->teacher_id }}}</td> -->
-                    <td>{{ link_to_route('admin.homeworks.edit', '编辑', array($homework->id), array('class' => 'btn btn-info')) }}
+                    <td>{{ link_to_route('admin.homeworks.show', '添加试题', array($homework->id), array('class' => 'btn btn-info')) }}
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.homeworks.destroy', $homework->id))) }}
                             {{ Form::submit(' 删除', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}

@@ -49,30 +49,73 @@ class AdminExercisesController extends BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::except('answers','numbers');
-		$validation = Validator::make($input, Exercise::$rules);
-    $answers = Input::get('answers');
-    $numbers = Input::get('numbers');
-		if ($validation->passes())
-		{
-			$exercise = $this->exercise->create($input);
+		// $input = Input::except('answers','numbers');
+		// $validation = Validator::make($input, Exercise::$rules);
+    // $answers = Input::get('answers');
+    // $numbers = Input::get('numbers');
+		// if ($validation->passes())
+		//{
+
+			// $exercise = $this->exercise->create($input);
       // print_r($is_rights);
       // print_r($answers);
-      for($i=0;$i < count($answers); $i++){
-        if(!empty($numbers[$i])) {
+      
+      // for($i=0;$i < count($answers); $i++){
+      //   if(!empty($numbers[$i])) {
+      //     Answer::create(['exercises_id' => $exercise->id,
+      //       'description' => $answers[$i],
+      //       'number' => $numbers[$i]]);  
+      //   }
+      // } 
+     $destinationPath = '';
+     $filename        = '';
+
+      if (Input::hasFile('excel')) {
+          $file            = Input::file('excel');
+          $destinationPath = public_path().'/uploads/exercises/';
+          $filename        = str_random(6) . '_' . $file->getClientOriginalName();
+          $uploadSuccess   = $file->move($destinationPath, $filename);
+      }
+
+      $excel =  public_path()."/uploads/exercises/".$filename;
+      // echo $excel;
+      $arr = Excel::load($excel)->toArray()['阅读表1']; 
+      $paper_id = Input::get("paper_id");
+      for($i=1; $i<count($arr)-1;$i++){
+        $no =  $arr[$i][2];
+        $description =  $arr[$i][4];
+        $right_answer =  $arr[$i][5];
+        $hard =  $arr[$i][11];
+        $note =  $arr[$i][14];
+        // echo $note; 
+
+        $exercise = Exercise::create(
+          [
+          'paper_id'=>$paper_id,
+          'no'=> $no,
+          'description' => $description,
+          'right_answer' => $right_answer,
+          'hard' => $hard,
+          'note' => $note
+          ]
+         );
+
+        $numberarr = ["A","B","C","D","E"];
+        for($j=0;$j < count($numberarr); $j++){
+            $answer_option =  $arr[$i][6+$j] ;
           Answer::create(['exercises_id' => $exercise->id,
-            'description' => $answers[$i],
-            'number' => $numbers[$i]]);  
-        }
-      } 
+          'description' => $answer_option,
+          'number' => $numberarr[$j]]);  
+        }  
 
-			return Redirect::route('admin.exercises.index');
-		}
+      }
+			return Redirect::to('/admin/exercises?paper_id='.$paper_id);
+    //}
 
-		return Redirect::route('admin.exercises.create')
-			->withInput()
-			->withErrors($validation)
-			->with('message', 'There were validation errors.');
+		// return Redirect::route('admin.exercises.create')
+		// 	->withInput()
+		// 	->withErrors($validation)
+		// 	->with('message', 'There were validation errors.');
 
 	}
 

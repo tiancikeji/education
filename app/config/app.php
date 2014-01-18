@@ -114,7 +114,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
     'Way\Generators\GeneratorsServiceProvider',
-    'Wehnhew\Payments\PaymentServiceProvider'
+    'Wehnhew\Payments\PaymentServiceProvider',
+    'Maatwebsite\Excel\ExcelServiceProvider',
 	),
 
 	/*
@@ -180,7 +181,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
     'AlipayPayment' => 'Wehnhew\Payments\Facades\Payment',
-
+    'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 	),
 
 );

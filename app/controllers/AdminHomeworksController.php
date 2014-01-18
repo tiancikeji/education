@@ -18,6 +18,31 @@ class AdminHomeworksController extends BaseController {
 		$this->exercise = $exercise;
 	}
 
+  public function add_exercise(){
+    $homework_id = Input::get("homework_id");
+
+    $exercise_id = Input::get("exercise_id");
+    $homework = Homework::find($homework_id);
+    $homework->exercise_ids = $homework->exercise_ids.",".$exercise_id;
+    $homework->save();
+    echo $homework_id;
+  }
+  public function delete_exercise(){
+    $homework_id = Input::get("homework_id");
+
+    $homework = Homework::find($homework_id);
+    $exercise_id = Input::get("exercise_id");
+    $arrs = explode(",",$homework->exercise_ids);
+    for($i=0;$i<count($arrs);$i++){
+      if($arrs[$i]==$exercise_id) {
+          unset($arrs[$i]);
+      }
+    }
+    $homework->exercise_ids = implode(",",$arrs);
+
+    $homework->save();
+    echo $homework_id;
+  }
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -36,8 +61,7 @@ class AdminHomeworksController extends BaseController {
 	 */
 	public function create()
 	{
-		$exercises = $this->exercise->all();
-		return View::make('admin.homeworks.create',compact('exercises'));
+		return View::make('admin.homeworks.create');
 	}
 
 	/**
@@ -53,7 +77,7 @@ class AdminHomeworksController extends BaseController {
 		if ($validation->passes())
 		{
 			$homework = $this->homework->create($input);
-      $homework->exercise_ids = implode(',',Input::get('exercise_ids'));
+      // $homework->exercise_ids = implode(',',Input::get('exercise_ids'));
       $homework->save();
 			return Redirect::route('admin.homeworks.index');
 		}
@@ -74,7 +98,9 @@ class AdminHomeworksController extends BaseController {
 	{
 		$homework = $this->homework->findOrFail($id);
 
-		return View::make('admin.homeworks.show', compact('homework'));
+    $arrs = explode(",",$homework->exercise_ids);
+		$exercises = $this->exercise->all();
+		return View::make('admin.homeworks.show', compact('homework','exercises','arrs'));
 	}
 
 	/**

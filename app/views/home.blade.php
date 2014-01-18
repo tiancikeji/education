@@ -50,37 +50,63 @@
                                     <ul>
                                         <li>
                                             <select class="select">
-                                                <option value="">试题年月</option>
+                                                <option value="2006-1-1">2006-1-1</option>
+                                                <option value="2007-1-1">2007-1-1</option>
+                                                <option value="2008-1-1">2008-1-1</option>
+                                                <option value="2009-1-1">2009-1-1</option>
+                                                <option value="2010-1-1">2010-1-1</option>
+                                                <option value="2011-1-1">2011-1-1</option>
+                                                <option value="2012-1-1">2012-1-1</option>
+                                                <option value="2013-1-1">2013-1-1</option>
+                                                <option value="2014-1-1">2014-1-1</option>
                                             </select>
                                             <select class="select">
-                                                <option value="">section</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
                                             </select>
                                             <select class="select">
-                                                <option value="">试题编号</option>
+        @for($i=1;$i<=30;$i++)
+                                                <option value="{{{$i}}}">{{{$i}}}</option>
+@endfor
                                             </select>
                                         </li>
                                         <li>
-                                            <a href="/papers/search?type=阅读"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索阅读真题解析" /></a>
+                                            <a href="/exercises?type=阅读"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索阅读真题解析" /></a>
                                         </li>
                                         <li>
                                             <select class="select">
-                                                <option value="">试题年月</option>
+                                                <option value="2006-1-1">2006-1-1</option>
+                                                <option value="2007-1-1">2007-1-1</option>
+                                                <option value="2008-1-1">2008-1-1</option>
+                                                <option value="2009-1-1">2009-1-1</option>
+                                                <option value="2010-1-1">2010-1-1</option>
+                                                <option value="2011-1-1">2011-1-1</option>
+                                                <option value="2012-1-1">2012-1-1</option>
+                                                <option value="2013-1-1">2013-1-1</option>
+                                                <option value="2014-1-1">2014-1-1</option>
                                             </select>
                                             <select class="select">
-                                                <option value="">section</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
                                             </select>
                                             <select class="select">
-                                                <option value="">试题编号</option>
+        @for($i=1;$i<=30;$i++)
+                                                <option value="{{{$i}}}">{{{$i}}}</option>
+@endfor
                                             </select>
                                         </li>
                                         <li>
-                                            <a href="/papers/search?type=语法"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索语法真题解析" /></a>
+                                            <a href="/exercises?type=语法"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索语法真题解析" /></a>
                                         </li>
                                         <li>
-                                            <a href="/papers/search?type="><input class="ipt-txt ipt-normal ipt-block" type="text" name="" id="" placeholder="输入想要查找的词汇" /></a>
+                                            <a href="/exercises?type="><input class="ipt-txt ipt-normal ipt-block" type="text" name="" id="" placeholder="输入想要查找的词汇" /></a>
                                         </li>
                                         <li>
-                                            <a href="/papers/search?type=整套"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索整套真题解析" /></a>
+                                            <a href="/exercises?type=整套"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索整套真题解析" /></a>
                                         </li>
                                     </ul>
                                 </div>

@@ -1,19 +1,19 @@
 <?php
 
-class AdminMessagesController extends BaseController {
+class PermissionsController extends BaseController {
 
-  protected $layout = "layouts.admin";
 	/**
-	 * Message Repository
+	 * Permission Repository
 	 *
-	 * @var Message
+	 * @var Permission
 	 */
-	protected $message;
+	protected $permission;
 
-	public function __construct(Message $message)
+	public function __construct(Permission $permission)
 	{
-		$this->message = $message;
+		$this->permission = $permission;
 	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -21,9 +21,9 @@ class AdminMessagesController extends BaseController {
 	 */
 	public function index()
 	{
-		$messages = $this->message->all();
+		$permissions = $this->permission->all();
 
-		return View::make('admin.messages.index', compact('messages'));
+		return View::make('permissions.index', compact('permissions'));
 	}
 
 	/**
@@ -33,7 +33,7 @@ class AdminMessagesController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.messages.create');
+		return View::make('permissions.create');
 	}
 
 	/**
@@ -44,16 +44,16 @@ class AdminMessagesController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, Message::$rules);
+		$validation = Validator::make($input, Permission::$rules);
 
 		if ($validation->passes())
 		{
-			$this->message->create($input);
+			$this->permission->create($input);
 
-			return Redirect::route('admin.messages.index');
+			return Redirect::route('permissions.index');
 		}
 
-		return Redirect::route('admin.messages.create')
+		return Redirect::route('permissions.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -67,9 +67,9 @@ class AdminMessagesController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$message = $this->message->findOrFail($id);
+		$permission = $this->permission->findOrFail($id);
 
-		return View::make('admin.messages.show', compact('message'));
+		return View::make('permissions.show', compact('permission'));
 	}
 
 	/**
@@ -80,14 +80,14 @@ class AdminMessagesController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$message = $this->message->find($id);
+		$permission = $this->permission->find($id);
 
-		if (is_null($message))
+		if (is_null($permission))
 		{
-			return Redirect::route('admin.messages.index');
+			return Redirect::route('permissions.index');
 		}
 
-		return View::make('admin.messages.edit', compact('message'));
+		return View::make('permissions.edit', compact('permission'));
 	}
 
 	/**
@@ -99,17 +99,17 @@ class AdminMessagesController extends BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Message::$rules);
+		$validation = Validator::make($input, Permission::$rules);
 
 		if ($validation->passes())
 		{
-			$message = $this->message->find($id);
-			$message->update($input);
+			$permission = $this->permission->find($id);
+			$permission->update($input);
 
-			return Redirect::route('admin.messages.show', $id);
+			return Redirect::route('permissions.show', $id);
 		}
 
-		return Redirect::route('admin.messages.edit', $id)
+		return Redirect::route('permissions.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -123,9 +123,9 @@ class AdminMessagesController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->message->find($id)->delete();
+		$this->permission->find($id)->delete();
 
-		return Redirect::route('admin.messages.index');
+		return Redirect::route('permissions.index');
 	}
 
 }

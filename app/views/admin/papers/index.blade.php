@@ -25,7 +25,9 @@
           <td>{{{ $paper->type }}}</td>
 					<td>{{{ $paper->published_date }}}</td>
 					<td>{{{ $paper->section }}}</td>
-          <td><a href="/admin/exercises?paper_id={{{ $paper->id }}}">所有习题</a>
+          <td>
+            <a href="/admin/exercises/create?paper_id={{{ $paper->id }}}" >上传试题</a>
+            <a href="/admin/exercises?paper_id={{{ $paper->id }}}">所有习题</a>
             {{ link_to_route('admin.papers.edit', ' 编辑 ', array($paper->id), array('class' => 'btn btn-info')) }}
             {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.papers.destroy', $paper->id))) }}
                {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
