@@ -17,7 +17,7 @@
                         <div class="form form-2">
                             <table>
                                 <tr>
-                                    <th>用户名：</th>
+                                    <th>邮箱：</th>
                                     <td>
                                         <input class="ipt-txt ipt-large ipt-w2" type="text" name="username" id="" placeholder="请输入邮箱" />
                                     </td>

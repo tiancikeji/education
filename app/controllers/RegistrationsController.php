@@ -23,7 +23,7 @@ class RegistrationsController extends BaseController {
     public function store(){
     	$input = Input::all();
       $validation = Validator::make($input, User::$rules);
-
+ 
       if ($validation->passes())
       {
         $token = Hash::make('secret');
@@ -40,7 +40,7 @@ class RegistrationsController extends BaseController {
         return Redirect::to('/registrations/success');
       }
 
-      return Redirect::to('/registrations/new')
+            return Redirect::to('/registrations/new')
         ->withInput()
         ->withErrors($validation)
         ->with('message', 'There were validation errors.');
