@@ -2,19 +2,19 @@
 
 @section('main')
 
-<h1>All News</h1>
+<h1>全部消息  </h1>
 
-<p>{{ link_to_route('admin.news.create', 'Add new news') }}</p>
+<p>{{ link_to_route('admin.news.create', '新增消息') }}</p>
 
 @if ($news->count())
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-        <th>Overlay</th>
-				<th>Author</th>
-				<th>Published_date</th>
-				<th>Body</th>
-				<th>Title</th>
+        <th>图像</th>
+				<th>作者</th>
+				<th>发布时间 </th>
+				<th>内容</th>
+				<th>标题</th>
 			</tr>
 		</thead>
 
@@ -26,10 +26,10 @@
 					<td>{{{ $news->published_date }}}</td>
 					<td>{{{ $news->body }}}</td>
 					<td>{{{ $news->title }}}</td>
-                    <td>{{ link_to_route('admin.news.edit', 'Edit', array($news->id), array('class' => 'btn btn-info')) }}</td>
+                    <td>{{ link_to_route('admin.news.edit', '编辑', array($news->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.news.destroy', $news->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                            {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>
 				</tr>

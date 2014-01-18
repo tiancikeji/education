@@ -2,20 +2,20 @@
 
 @section('main')
 
-<h1>All Compositions</h1>
+<h1>全部作文</h1>
 
-<p>{{ link_to_route('admin.compositions.create', 'Add new composition') }}</p>
+<p>{{ link_to_route('admin.compositions.create', '新建作文') }}</p>
 
 @if ($compositions->count())
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>User_id</th>
-				<th>Exam_id</th>
-				<th>Title</th>
-				<th>Content</th>
-				<th>Note</th>
-				<th>Teacher_id</th>
+				<th>用户id</th>
+				<th> 考试id</th>
+				<th>标题</th>
+				<th>内容</th>
+				<th>笔记</th>
+				<th>老师id</th>
 			</tr>
 		</thead>
 
@@ -28,10 +28,10 @@
 					<td>{{{ $composition->content }}}</td>
 					<td>{{{ $composition->note }}}</td>
 					<td>{{{ $composition->teacher_id }}}</td>
-                    <td>{{ link_to_route('admin.compositions.edit', 'Edit', array($composition->id), array('class' => 'btn btn-info')) }}</td>
+                    <td>{{ link_to_route('admin.compositions.edit', '编辑', array($composition->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.compositions.destroy', $composition->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                            {{ Form::submit(' 删除', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>
 				</tr>
@@ -39,7 +39,7 @@
 		</tbody>
 	</table>
 @else
-	There are no compositions
+	没有作文
 @endif
 
 @stop

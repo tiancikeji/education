@@ -2,7 +2,7 @@
 
 @section('main')
 
-<h1>Create Userteacher</h1>
+<h1>分配新教师 </h1>
 
 {{ Form::open(array('route' => 'admin.userteachers.store')) }}
 	<ul>
@@ -11,8 +11,8 @@
 		<thead>
 			<tr>
         <th></th>
-				<th>Name</th>
-				<th>Username</th>
+				<th>名称</th>
+				<th> 用户名称</th>
 			</tr>
 		</thead>
 
@@ -31,12 +31,12 @@
 @endif
 
         <li>
-            {{ Form::label('user_id', 'User_id:') }}
+            {{ Form::label('user_id', ' 用户id:') }}
             {{ Form::input('number', 'user_id',Input::get("user_id")) }}
         </li>
 
 		<li>
-			{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
+			{{ Form::submit('提交', array('class' => 'btn btn-info')) }}
 		</li>
 	</ul>
 {{ Form::close() }}

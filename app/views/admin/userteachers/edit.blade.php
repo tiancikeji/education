@@ -2,22 +2,22 @@
 
 @section('main')
 
-<h1>Edit Userteacher</h1>
+<h1>编辑修改教师</h1>
 {{ Form::model($userteacher, array('method' => 'PATCH', 'route' => array('admin.userteachers.update', $userteacher->id))) }}
 	<ul>
         <li>
-            {{ Form::label('user_id', 'User_id:') }}
+            {{ Form::label('user_id', '用户id :') }}
             {{ Form::input('number', 'user_id') }}
         </li>
 
         <li>
-            {{ Form::label('teacher_id', 'Teacher_id:') }}
+            {{ Form::label('teacher_id', '教师id:') }}
             {{ Form::input('number', 'teacher_id') }}
         </li>
 
 		<li>
-			{{ Form::submit('Update', array('class' => 'btn btn-info')) }}
-			{{ link_to_route('admin.userteachers.show', 'Cancel', $userteacher->id, array('class' => 'btn')) }}
+			{{ Form::submit(' 修改', array('class' => 'btn btn-info')) }}
+			{{ link_to_route('admin.userteachers.show', '取消', $userteacher->id, array('class' => 'btn')) }}
 		</li>
 	</ul>
 {{ Form::close() }}

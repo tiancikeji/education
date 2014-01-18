@@ -2,7 +2,7 @@
 
 @section('main')
 
-<h1>Create Userplan</h1>
+<h1>新建用户日程</h1>
 
 {{ Form::open(array('route' => 'admin.userplans.store')) }}
 	<ul>
@@ -32,7 +32,7 @@
 		</tbody>
 	</table>
 @else
-	There are no plans
+  没有日程安排
 @endif
 
         <li>
@@ -41,7 +41,7 @@
 
       
 		<li>
-			{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
+      {{ Form::submit('提交', array('class' => 'btn btn-info')) }}
 		</li>
 	</ul>
 {{ Form::close() }}

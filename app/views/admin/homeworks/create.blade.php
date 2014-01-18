@@ -7,7 +7,7 @@
 {{ Form::open(array('route' => 'admin.homeworks.store')) }}
 	<ul>
         <li>
-            {{ Form::label('name', 'Name:') }}
+            {{ Form::label('name', '名称:') }}
             {{ Form::text('name') }}
             <select name="type">
                 <option value="TEST">作业</option>
@@ -45,7 +45,7 @@
 		</tbody>
 	</table>
 @else
-	There are no exercises
+	没有作业
 @endif
 
 
@@ -58,7 +58,7 @@
 
 
 		<li>
-			{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
+			{{ Form::submit('提交', array('class' => 'btn btn-info')) }}
 		</li>
 	</ul>
 {{ Form::close() }}

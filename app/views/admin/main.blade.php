@@ -1,5 +1,5 @@
 @extends('layouts.admin')
 @section('main')
-  admin dashboard
+管理员控制台  admin dashboard
 
 @stop 

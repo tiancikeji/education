@@ -2,16 +2,16 @@
 
 @section('main')
 
-<h1>Show Teacher</h1>
+<h1>显示全部教师 </h1>
 
-<p>{{ link_to_route('teachers.index', 'Return to all teachers') }}</p>
+<p>{{ link_to_route('teachers.index', '返回全部教师') }}</p>
 
 <table class="table table-striped table-bordered">
 	<thead>
-		<tr>
-			<th>Name</th>
-				<th>Username</th>
-				<th>Password</th>
+    <tr>
+      	<th>名称</th>
+				<th>用户名称</th>
+				<th>密码 </th>
 		</tr>
 	</thead>
 
@@ -20,10 +20,10 @@
 			<td>{{{ $teacher->name }}}</td>
 					<td>{{{ $teacher->username }}}</td>
 					<td>{{{ $teacher->password }}}</td>
-                    <td>{{ link_to_route('teachers.edit', 'Edit', array($teacher->id), array('class' => 'btn btn-info')) }}</td>
+                    <td>{{ link_to_route('teachers.edit', '编辑', array($teacher->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('teachers.destroy', $teacher->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                            {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>
 		</tr>

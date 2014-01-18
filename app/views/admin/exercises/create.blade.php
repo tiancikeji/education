@@ -2,7 +2,7 @@
 
 @section('main')
 
-<h1>Create Exercise</h1>
+<h1>创建试题</h1>
 
 {{ Form::open(array('route' => 'admin.exercises.store')) }}
 	<ul>

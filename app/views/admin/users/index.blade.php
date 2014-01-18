@@ -36,7 +36,7 @@
 <input type="submit" value="go" />
 </form>
 
-<p>{{ link_to_route('admin.users.create', 'Add new user') }}</p>
+<p>{{ link_to_route('admin.users.create', '新增用户') }}</p>
 全部: {{{ $users->count() }}}
 @if ($users->count())
   <table class="table  table-bordered">
@@ -89,7 +89,7 @@
     </tbody>
   </table>
 @else
-  There are no users
+  没用用户
 @endif
 
 

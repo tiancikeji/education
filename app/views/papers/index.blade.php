@@ -19,7 +19,7 @@
                     <div class="panes-2">
                         <div>
                             <h4 class="hd-simple-2">试题分类检索：</h4>
-                      <form action="" method="post">
+                      <form action="/papers/check" method="post">
                             <div class="video-search cf">
                                 <ul class="fl">
                                     <li>
@@ -46,7 +46,7 @@
                                     </li>
                                 </ul>
                                 <div class="fr">
-                                    <input class="btn btn-large btn-gray css3" type="button" value="搜 索" />                    
+                                    <input class="btn btn-large btn-gray css3" type="submit" value="搜 索" />                    
                                 </div>
                             </div><!-- search -->
                         </form>

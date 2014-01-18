@@ -4,14 +4,14 @@
 
 <h1>作业测试模板</h1>
 
-<p>{{ link_to_route('admin.homeworks.create', 'Add new homework') }}</p>
+<p>{{ link_to_route('admin.homeworks.create', '新增作业测试模板 ') }}</p>
 
 @if ($homeworks->count())
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>Name</th>
-        <th>Type</th>
+				<th>名称</th>
+        <th>类型</th>
 				<!-- <th>Exercise_ids</th> -->
 				<!-- <th>Teacher_id</th> -->
       <th></th>
@@ -25,9 +25,9 @@
           <td>{{{ $homework->type }}}</td>
 					<!-- <td>{{{ $homework->exercise_ids }}}</td> -->
 					<!-- <td>{{{ $homework->teacher_id }}}</td> -->
-                    <td>{{ link_to_route('admin.homeworks.edit', 'Edit', array($homework->id), array('class' => 'btn btn-info')) }}
+                    <td>{{ link_to_route('admin.homeworks.edit', '编辑', array($homework->id), array('class' => 'btn btn-info')) }}
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.homeworks.destroy', $homework->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                            {{ Form::submit(' 删除', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>
 				</tr>
@@ -35,7 +35,7 @@
 		</tbody>
 	</table>
 @else
-	There are no homeworks
+	 没有作业测试模板
 @endif
 
 @stop

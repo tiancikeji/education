@@ -17,10 +17,10 @@ Route::post('/sessions/save', 'SessionsController@save');
 Route::get('/sessions/delete', 'SessionsController@delete');
 Route::get('/registrations/new', 'RegistrationsController@newpage');
 Route::post('/registrations/store', 'RegistrationsController@store');
-Route::resource('payments', 'PaymentsController');
-Route::get('/upgrade', 'UpgradeController@index');
 
 Route::group(array('before'=>'auth'),function(){
+  Route::resource('payments', 'PaymentsController');
+  Route::get('/upgrade', 'UpgradeController@index');
   Route::get('/plan', 'UserCenterController@plan');
   Route::get('/usercenter', 'UserCenterController@index');
   Route::post('/usercenter/update', 'UserCenterController@update');
@@ -72,6 +72,7 @@ Route::group(array('before'=>'admin','prefix' => 'admin'), function()
     Route::resource('compositions', 'AdminCompositionsController');
     Route::resource('userteachers', 'AdminUserteachersController');
 });
+
 
 
 

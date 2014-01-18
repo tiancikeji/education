@@ -2,7 +2,7 @@
 
 @section('main')
 
-<h1>Create News</h1>
+<h1>创建新消息</h1>
 
 {{ Form::open(array('route' => 'admin.news.store','files'=>true)) }}
 	<ul>
@@ -33,7 +33,7 @@
         </li>
 
 		<li>
-			{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
+			{{ Form::submit('提交', array('class' => 'btn btn-info')) }}
 		</li>
 	</ul>
 {{ Form::close() }}

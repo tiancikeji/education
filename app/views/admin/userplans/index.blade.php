@@ -10,7 +10,7 @@ User: {{{User::find(Input::get('user_id'))->email  }}}
           <!-- {{{PlanTask::where('plan_id','=',$userplan->plan_id)->get()  }}} -->
 			@endforeach
 @else
-	There are no userplans
+	 没有日程安排
 @endif
 
 <div id="calendar"> </div><!-- calendar -->

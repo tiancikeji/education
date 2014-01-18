@@ -2,9 +2,9 @@
 
 @section('main')
 
-<h1>All Exercises</h1>
+<h1>全部试题</h1>
 
-<p>{{ link_to_route('admin.exercises.create', 'Add new exercise') }}</p>
+<p>{{ link_to_route('admin.exercises.create', ' 新增试题') }}</p>
 
 @if ($exercises->count())
 	<table class="table table-striped table-bordered">
@@ -27,8 +27,8 @@
 					<td>{{{ $exercise->description }}}</td>
           <td>{{{ $exercise->right_answer }}}</td>
           <td>{{{ $exercise->hard }}}</td>
-              <td>{{ link_to_route('admin.exercises.edit', 'Edit', array($exercise->id), array('class' => 'btn btn-info')) }} {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.exercises.destroy', $exercise->id))) }}
-                      {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+              <td>{{ link_to_route('admin.exercises.edit', '编辑', array($exercise->id), array('class' => 'btn btn-info')) }} {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.exercises.destroy', $exercise->id))) }}
+                      {{ Form::submit(' 删除', array('class' => 'btn btn-danger')) }}
                   {{ Form::close() }}
               </td>
 				</tr>
@@ -47,7 +47,7 @@
 		</tbody>
 	</table>
 @else
-	There are no exercises
+没有习题	
 @endif
 
 @stop

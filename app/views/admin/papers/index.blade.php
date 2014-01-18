@@ -26,9 +26,9 @@
 					<td>{{{ $paper->published_date }}}</td>
 					<td>{{{ $paper->section }}}</td>
           <td><a href="/admin/exercises?paper_id={{{ $paper->id }}}">所有习题</a>
-            {{ link_to_route('admin.papers.edit', 'Edit', array($paper->id), array('class' => 'btn btn-info')) }}
+            {{ link_to_route('admin.papers.edit', ' 编辑 ', array($paper->id), array('class' => 'btn btn-info')) }}
             {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.papers.destroy', $paper->id))) }}
-               {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+               {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
             {{ Form::close() }}
           </td>
 				</tr>
@@ -36,7 +36,7 @@
 		</tbody>
 	</table>
 @else
-	There are no papers
+没有试卷
 @endif
 
 @stop

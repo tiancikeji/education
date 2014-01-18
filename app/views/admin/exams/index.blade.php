@@ -2,20 +2,20 @@
 
 @section('main')
 
-<h1>All Exams</h1>
+<h1>全部考试 </h1>
 
-<p>{{ link_to_route('admin.exams.create', 'Add new exam') }}</p>
+<p>{{ link_to_route('admin.exams.create', '新建考试') }}</p>
 
 @if ($exams->count())
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>Start_time</th>
-				<th>End_time</th>
-				<th>User_id</th>
-				<th>Paper_id</th>
-				<th>Answers</th>
-				<th>Score</th>
+				<th>开始时间</th>
+				<th>结束时间</th>
+				<th>用户id</th>
+				<th>文件id</th>
+				<th>答案</th>
+				<th>评分</th>
 			</tr>
 		</thead>
 
@@ -28,10 +28,10 @@
 					<td>{{{ $exam->paper_id }}}</td>
 					<td>{{{ $exam->answers }}}</td>
 					<td>{{{ $exam->score }}}</td>
-                    <td>{{ link_to_route('admin.exams.edit', 'Edit', array($exam->id), array('class' => 'btn btn-info')) }}</td>
+                    <td>{{ link_to_route('admin.exams.edit', ' 编辑', array($exam->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.exams.destroy', $exam->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                            {{ Form::submit(' 删除', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>
 				</tr>
@@ -39,7 +39,7 @@
 		</tbody>
 	</table>
 @else
-	There are no exams
+没有考试
 @endif
 
 @stop

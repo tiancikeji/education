@@ -133,4 +133,18 @@ class PapersController extends BaseController {
 		return Redirect::route('papers.index');
 	}
 
+/**
+ *check
+ */
+
+    public function check(){
+    
+    
+    
+    
+    
+    }
+
+
+
 }

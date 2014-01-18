@@ -2,18 +2,18 @@
 
 @section('main')
 
-<h1>All Reports</h1>
+<h1>全部报告</h1>
 
-<p>{{ link_to_route('admin.reports.create', 'Add new report') }}</p>
+<p>{{ link_to_route('admin.reports.create', '新建报告') }}</p>
 
 @if ($reports->count())
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>User_id</th>
-				<th>Exam_id</th>
-				<th>Content</th>
-				<th>Teacher_id</th>
+				<th>用户id</th>
+				<th>考试id</th>
+				<th>内容</th>
+				<th>老师id</th>
 			</tr>
 		</thead>
 
@@ -24,10 +24,10 @@
 					<td>{{{ $report->exam_id }}}</td>
 					<td>{{{ $report->content }}}</td>
 					<td>{{{ $report->teacher_id }}}</td>
-                    <td>{{ link_to_route('admin.reports.edit', 'Edit', array($report->id), array('class' => 'btn btn-info')) }}</td>
+                    <td>{{ link_to_route('admin.reports.edit', '编辑', array($report->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.reports.destroy', $report->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                            {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>
 				</tr>
@@ -35,7 +35,7 @@
 		</tbody>
 	</table>
 @else
-	There are no reports
+	 没有报告
 @endif
 
 @stop

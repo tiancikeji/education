@@ -37,10 +37,10 @@
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>Start_date</th>
-				<th>End_date</th>
-				<th>Content</th>
-				<th>Type</th>
+				<th>开始日期</th>
+				<th>结束日期</th>
+				<th>内容</th>
+				<th>类型</th>
 			</tr>
 		</thead>
 
@@ -52,10 +52,10 @@
 					<td>{{{ $plan_task->end_date }}}</td>
 					<td>{{{ $plan_task->content }}}</td>
 					<td>{{{ $plan_task->type }}}</td>
-                    <td>{{ link_to_route('admin.plantasks.edit', 'Edit', array($plan_task->id), array('class' => 'btn btn-info')) }}</td>
+                    <td>{{ link_to_route('admin.plantasks.edit', '编辑', array($plan_task->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.plantasks.destroy', $plan_task->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                            {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>
 				</tr>
@@ -69,7 +69,7 @@
 		</tbody>
 	</table>
 @else
-	There are no plans
+没有模板
 @endif
 
 @stop

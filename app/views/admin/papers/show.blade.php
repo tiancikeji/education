@@ -2,15 +2,15 @@
 
 @section('main')
 
-<h1>Show Paper</h1>
+<h1>显示试卷 </h1>
 
-<p>{{ link_to_route('papers.index', 'Return to all papers') }}</p>
+<p>{{ link_to_route('papers.index', '返回全部试卷') }}</p>
 
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th>Name</th>
-				<th>Published_date</th>
+			<th> 名称</th>
+				<th> 发布日期</th>
 		</tr>
 	</thead>
 
@@ -18,10 +18,10 @@
 		<tr>
 			<td>{{{ $paper->name }}}</td>
 					<td>{{{ $paper->published_date }}}</td>
-                    <td>{{ link_to_route('papers.edit', 'Edit', array($paper->id), array('class' => 'btn btn-info')) }}</td>
+                    <td>{{ link_to_route('papers.edit', ' 编辑', array($paper->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('papers.destroy', $paper->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                            {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>
 		</tr>

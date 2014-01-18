@@ -2,26 +2,26 @@
 
 @section('main')
 
-<h1>Edit Message</h1>
+<h1>编辑消息   </h1>
 {{ Form::model($message, array('method' => 'PATCH', 'route' => array('admin.messages.update', $message->id))) }}
 	<ul>
         <li>
-            {{ Form::label('title', 'Title:') }}
+            {{ Form::label('title', '标题:') }}
             {{ Form::text('title') }}
         </li>
 
         <li>
-            {{ Form::label('body', 'Body:') }}
+            {{ Form::label('body', '内容:') }}
             {{ Form::textarea('body') }}
         </li>
 
         <li>
-            {{ Form::label('is_read', 'Is_read:') }}
+            {{ Form::label('is_read', '已读:') }}
             {{ Form::input('number', 'is_read') }}
         </li>
 
         <li>
-            {{ Form::label('type', 'Type:') }}
+            {{ Form::label('type', '类型:') }}
             {{ Form::text('type') }}
         </li>
 
@@ -31,8 +31,8 @@
         </li>
 
 		<li>
-			{{ Form::submit('Update', array('class' => 'btn btn-info')) }}
-			{{ link_to_route('messages.show', 'Cancel', $message->id, array('class' => 'btn')) }}
+			{{ Form::submit('编辑', array('class' => 'btn btn-info')) }}
+      {{ link_to_route('messages.show', '取消', $message->id, array('class' => 'btn')) }}
 		</li>
 	</ul>
 {{ Form::close() }}

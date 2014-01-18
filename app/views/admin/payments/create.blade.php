@@ -2,37 +2,37 @@
 
 @section('main')
 
-<h1>Create Payment</h1>
+<h1>新建付款</h1>
 
 {{ Form::open(array('route' => 'admin.payments.store')) }}
 	<ul>
         <li>
-            {{ Form::label('type', 'Type:') }}
+            {{ Form::label('type', '类型:') }}
             {{ Form::text('type') }}
         </li>
 
         <li>
-            {{ Form::label('count', 'Count:') }}
+            {{ Form::label('count', '计算:') }}
             {{ Form::input('number', 'count') }}
         </li>
 
         <li>
-            {{ Form::label('fee', 'Fee:') }}
+            {{ Form::label('fee', '付费:') }}
             {{ Form::text('fee') }}
         </li>
 
         <li>
-            {{ Form::label('total', 'Total:') }}
+            {{ Form::label('total', '总额:') }}
             {{ Form::input('number', 'total') }}
         </li>
 
         <li>
-            {{ Form::label('user_id', 'User_id:') }}
+            {{ Form::label('user_id', ' 用户id :') }}
             {{ Form::input('number', 'user_id') }}
         </li>
 
 		<li>
-			{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
+			{{ Form::submit('提交', array('class' => 'btn btn-info')) }}
 		</li>
 	</ul>
 {{ Form::close() }}

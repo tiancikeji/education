@@ -19,7 +19,6 @@
                                 <dd>
                                     <div id="change_div" class="user-option user-option-first cf" >
                                         <ul>
-                                        <!-- <input type="hidden" value="{{ Session::get('current_user')->id }}"  name ="idss" /> -->
                                             <li><div class="avatar avatar-normal"><img src="images/avatar.jpg" alt="头像" /></div></li>
                                             <li>姓名：<span id="checkname">{{{$user->name}}}</span></li>
                                             <li>性别：<span id="checkgender">{{{$user->gender}}}</span></li>
