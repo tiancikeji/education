@@ -26,24 +26,24 @@
             {{ Form::text('author') }}
         </li>
 
-        <li>
-            {{ Form::label('titile', '标题:') }}
-            {{ Form::text('titile') }}
+        <!-- <li> -->
+            <!-- {{ Form::label('titile', '标题:') }} -->
+            <!-- {{ Form::text('titile') }} -->
 
         <!-- <li> -->
             <!-- {{ Form::label('pic_url', 'Pic_url:') }} -->
             <!-- {{ Form::text('pic_url') }} -->
         <!-- </li> -->
 
-        <li>
-            {{ Form::label('type', '类型:') }}
-            {{ Form::text('type') }}
-        </li>
+        <!-- <li> -->
+            <!-- {{ Form::label('type', '类型:') }} -->
+            <!-- {{ Form::text('type') }} -->
+        <!-- </li> -->
 
-        <li>
-            {{ Form::label('status', '状态:') }}
-            {{ Form::text('status') }}
-        </li>
+        <!-- <li> -->
+            <!-- {{ Form::label('status', '状态:') }} -->
+            <!-- {{ Form::text('status') }} -->
+        <!-- </li> -->
 
         <li>
             {{ Form::label('body', '内容:') }}
