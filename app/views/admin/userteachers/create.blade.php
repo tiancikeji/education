@@ -30,10 +30,7 @@
 	There are no teachers
 @endif
 
-        <li>
-            {{ Form::label('user_id', ' 用户id:') }}
-            {{ Form::input('number', 'user_id',Input::get("user_id")) }}
-        </li>
+            {{ Form::input('hidden', 'user_id',Input::get("user_id")) }}
 
 		<li>
 			{{ Form::submit('提交', array('class' => 'btn btn-info')) }}

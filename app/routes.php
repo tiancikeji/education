@@ -20,6 +20,7 @@ Route::get('/sendemail', 'RegistrationsController@sendemail');
 Route::get('/registrations/success', 'RegistrationsController@success');
 Route::post('/registrations/store', 'RegistrationsController@store');
 
+Route::get('/adminpayments/search', 'AdminPaymentsController@search');
 Route::resource('news', 'NewsController');
 Route::resource('exercises', 'ExercisesController');
 Route::post('/usercenter/updatepassword', 'UserCenterController@updatepassword');
@@ -50,6 +51,7 @@ Route::group(array('before'=>'auth'),function(){
   Route::resource('reports', 'ReportsController');
   Route::resource('compositions', 'CompositionsController');
   Route::resource('userteachers', 'UserteachersController');
+
 
 });
 

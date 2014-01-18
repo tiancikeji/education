@@ -49,7 +49,7 @@
 
                     <div class="md-simple">
                           @foreach($videos as $video)
-                        <h4 class="hd-simple">{{{$video->created_at}}} （共{{{$num}}}条）</h4>
+                        <h4 class="hd-simple">{{{$video->created_at}}} （共{{{$videos->count()}}}条）</h4>
                           @endforeach     
                         <div class="video-list l-black cf">
                             <ul>

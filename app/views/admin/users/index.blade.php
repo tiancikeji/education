@@ -6,33 +6,42 @@
 
 <form action="/users/students/search" method="get" accept-charset="utf-8">
 付费状况： 
-<select name="" id="">
-  <option value="">全部</option>
+<select name="fee" id="">
+  <option value="已付">已付</option>
+  <option value="未付">未付</option>
 </select>
 所属教师： 
-<select name="" id="">
+<select name="name" id="">
   <option value="">全部</option>
 </select>
 评级状况： 
 <select name="" id="">
-  <option value="">全部</option>
+<option value="a">A</option>
+<option value="b">B</option>
+<option value="c">C</option>
+<option value="d">D</option>
 </select>
 作文状态： 
 <select name="" id="">
   <option value="">全部</option>
 </select>
-注册日期： 
-<select name="" id="">
-  <option value="">全部</option>
+
+注册日期：
+ <select name="created_at" >
+ @foreach ($users as $user)
+ <option value= {{{ $user->created_at }}}>{{{ $user->created_at }}}</option>
+@endforeach
 </select>
-付费时间： 
-<select name="" id="">
-  <option value="">全部</option>
-</select>
-日程状态：
-<select name="" id="">
-  <option value="">全部</option>
-</select>
+
+<!-- 付费时间：  -->
+
+<!-- <select name="" id=""> -->
+<!--   <option value="">全部</option> -->
+<!-- </select> -->
+<!-- 日程状态： -->
+<!-- <select name="" id=""> -->
+<!--   <option value="">全部</option> -->
+<!-- </select> -->
 <input type="submit" value="go" />
 </form>
 
@@ -49,7 +58,7 @@
         <th>注册日期</th>
         <th>水平评级</th>
         <th>是否有作文需要批改</th>
-        <th>日程</th>
+        <!-- <th>日程</th> -->
         <th>操作</th>
       </tr>
     </thead>
@@ -79,12 +88,12 @@
       <a href="/admin/compositions?user_id={{{$user->id}}}">批改</a>
 @endif
 </td>
-<td>
+<!-- <td> -->
 
-<a href="/admin/userplans?user_id={{{ $user->id }}}">
-{{ Userplan::where('user_id','=',$user->id)->count() }}
-</a>
-</td>
+<!-- <a href="/admin/userplans?user_id={{{ $user->id }}}"> -->
+<!-- {{ Userplan::where('user_id','=',$user->id)->count() }} -->
+<!-- </a> -->
+<!-- </td> -->
                     <td>
 <a href="/admin/users/{{{ $user->id }}}">查看学生信息</a> 
 <a href="/admin/messages/create?user_id={{{ $user->id }}} ">发送信息</a>   

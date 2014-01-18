@@ -60,7 +60,6 @@ class AdminUsersController extends BaseController {
     public function show($id)
     {
       $user = $this->user->findOrFail($id);
-
       return View::make('admin.users.show', compact('user'));
     }
 

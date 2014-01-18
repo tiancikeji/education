@@ -9,9 +9,13 @@ class AdminPaymentsController extends BaseController {
 	 */
 	protected $payment;
 
-	public function __construct(Payment $payment)
+  protected $user;
+
+	public function __construct(Payment $payment, User $user)
 	{
 		$this->payment = $payment;
+
+    $this->user =$user;
 	}
 
 	/**
@@ -27,10 +31,11 @@ class AdminPaymentsController extends BaseController {
     }else{
 		  $payments = $this->payment->where("user_id",'=',$user_id)->get();
     }
-    
-
-		return View::make('admin.payments.index', compact('payments'));
+    $users=$this->user->all();
+		return View::make('admin.payments.index', compact('payments','users'));
 	}
+ 
+ 
 
 	/**
 	 * Show the form for creating a new resource.
