@@ -25,14 +25,17 @@
 					<!-- <td>{{{ $topic->pic_url }}}</td> -->
 					<!-- <td>{{{ $topic->type }}}</td> -->
 					<!-- <td>{{{ $topic->status }}}</td> -->
-          <td><textarea rows="10" cols="30">{{{ $topic->body }}}</textarea>
-           <!-- <td>{{ link_to_route('topics.edit', '编辑', array($topic->id), array('class' => 'btn btn-info')) }}</td>  -->
-               {{ Form::open(array('method' => 'DELETE', 'route' => array('topics.destroy', $topic->id))) }}
-          <br/>  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <td > <!--<textarea rows="10" cols="30">{{{ $topic->body }}}</textarea> -->
+         {{{ $topic->body }}} </td>
+</tr>
+<tr>
+  <!-- <td>{{ link_to_route('topics.edit', '编辑', array($topic->id), array('class' => 'btn btn-info')) }}</td>  -->
+         <th></th> 
+       <th>{{ Form::open(array('method' => 'DELETE', 'route' => array('topics.destroy', $topic->id))) }}
          {{{$topic->created_at}}} 
-                   &nbsp;{{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
-                        {{ Form::close() }}
-                    </td>
+          {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
+              {{ Form::close() }}
+                    </th>
 		</tr>
 	</tbody>
 </table>
