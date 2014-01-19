@@ -10,11 +10,11 @@
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>名称</th>
+				<th>姓名</th>
         <th>教师ID</th>
 				<th>用户名</th>
         <td>创建时间</td>
-        <td>权限</td>
+        <!-- <td>权限</td> -->
 <td></td>
 			</tr>
 		</thead>
@@ -25,13 +25,8 @@
 					<td>{{{ $teacher->name }}}</td>
           <td>{{{ $teacher->id }}}</td>
 					<td>{{{ $teacher->username }}}</td>
-<td>{{{$teacher->created_at}}}</td>
-<td>
-			@foreach (Adminpermission::where("teacher_id","=",$teacher->id)->get() as $adminpermission)
-			{{{Permission::find($adminpermission->permission_id)->name  }}},
-			@endforeach
+<td>{{{substr($teacher->created_at,0,10)}}}</td>
 
-</td>
  <td>{{ link_to_route('admin.teachers.edit', '编辑 ', array($teacher->id), array('class' => 'btn btn-info')) }}</td>
 
                     <td>

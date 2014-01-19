@@ -31,7 +31,7 @@
         </li>
 
 		<li>
-			{{ Form::submit('编辑', array('class' => 'btn btn-info')) }}
+			{{ Form::submit('提交', array('class' => 'btn btn-info')) }}
 			{{ link_to_route('payments.show', '取消', $payment->id, array('class' => 'btn')) }}
 		</li>
 	</ul>

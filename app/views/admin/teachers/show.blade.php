@@ -4,7 +4,7 @@
 
 <h1>显示全部教师 </h1>
 
-<p>{{ link_to_route('teachers.index', '返回全部教师') }}</p>
+<p>{{ link_to_route('admin.teachers.index', '返回全部教师') }}</p>
 
 <table class="table table-striped table-bordered">
 	<thead>
@@ -20,9 +20,9 @@
 			<td>{{{ $teacher->name }}}</td>
 					<td>{{{ $teacher->username }}}</td>
 					<td>{{{ $teacher->password }}}</td>
-                    <td>{{ link_to_route('teachers.edit', '编辑', array($teacher->id), array('class' => 'btn btn-info')) }}</td>
+                    <td>{{ link_to_route('admin.teachers.edit', '编辑', array($teacher->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('teachers.destroy', $teacher->id))) }}
+                        {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.teachers.destroy', $teacher->id))) }}
                             {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>
