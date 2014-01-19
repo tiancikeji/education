@@ -40,10 +40,12 @@
           <div class="mod">
             <div class="hd hd-1">
               <h3>{{{$paper->name}}}</h3>
-                        <span><strong>考试模式</strong></span>
+                        <span><strong>{{{$exam->type}}}模式</strong></span>
+              @if($exam->type=="exam")
                     <div class="fr question-stat">
                         <div id='countdown'></div>
                     </div>
+              @endif
             </div>
               <div class="bd bd-2">
 @if ($errors->any())
@@ -57,7 +59,7 @@
       @foreach ($exercises as $exercise)
                             <li>
                                 <dl>
-                                    <dt>{{{$exercise->description}}}</dt>
+                                    <dt>{{{$paper->year}}}年{{{$paper->month}}} 月section{{{$exercise->section}}},{{{$exercise->no}}}   {{{$exercise->description}}}</dt>
                                     <dd>
            @foreach (Answer::where('exercises_id','=',$exercise->id)->get() as $answer) 
               <label for="radio3"><input type="radio" name="exercise_{{{ $exercise->id }}}" value="{{{ $answer->number }}}" /> {{{ $answer->number }}}.{{{ $answer->description }}}</label>

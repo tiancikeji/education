@@ -71,7 +71,9 @@
 
 {{ Form::open(array('route' => 'exams.store')) }}
 <input type="hidden" name="paper_id" id="" value="{{{$paper->id}}}" />
-<input type="submit" class="btn btn-normal btn-white css3" value="开始" />
+<input type="hidden" name="type"  value="" />
+<input type="button" name="exam_type" class="btn btn-normal btn-white css3" value="开始考试" />
+<input type="button" name="test_type" class="btn btn-normal btn-white css3" value="开始自测" />
 {{ Form::close() }}
 @if ($errors->any())
     {{ implode('', $errors->all('<li class="error">:message</li>')) }}
@@ -178,7 +180,15 @@ $(function() {
   // Tabs 1
   // http://jquerytools.org/demos/tabs/index.html
   $("ul#Tabs-2").tabs("div.panes-2 > div"); 
+  $("input[name='exam_type']").on('click',function(){
+      $("input[name='type']").val("exam");
+      $(this).parent().submit();
+  })
 
+  $("input[name='test_type']").on('click',function(){
+      $("input[name='type']").val("test");
+      $(this).parent().submit();
+  })
   });
 </script>
 
