@@ -78,6 +78,28 @@ class ExamsController extends BaseController {
 		return View::make('exams.show', compact('exam'));
 	}
 
+	public function review()
+	{
+		$exam = $this->exam->find(Input::get("exam_id"));
+
+		if (is_null($exam))
+		{
+			return Redirect::route('exams.index');
+		}
+
+    
+
+    // $current_date = date('Y-m-d H:i:s',time());
+    // $secs = strtotime($exam->end_time) - strtotime($current_date);// == <seconds between the two times>
+    // dd($current_date);
+    // dd($exam->end_time);
+    // $left = intval($secs/60);
+    $paper = $this->paper->find($exam->paper_id);
+		$exercises = $this->exercise->where('paper_id','=',$paper->id)->get();
+    // dd($left);
+		return View::make('exams.review', compact('exam','paper','exercises'));
+	}
+
 	/**
 	 * Show the form for editing the specified resource.
 	 *

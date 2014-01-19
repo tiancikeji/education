@@ -110,7 +110,7 @@ class AdminExercisesController extends BaseController {
         $exercise->paper_id=$paper_id;
         $exercise->type = $arr[$i][2];
         $exercise->section = $arr[$i][3];
-        $exercise->no =  $arr[$i][3];
+        $exercise->no =  $arr[$i][4];
         $exercise->article_no = $arr[$i][5];
         $exercise->description =  $arr[$i][6];
         $exercise->right_answer =  $arr[$i][12];

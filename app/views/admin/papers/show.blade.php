@@ -57,6 +57,9 @@
           <td>{{{ $exercise->hard }}}</td>
 				</tr>
 <tr>
+          <td colspan="8">{{{ $exercise->note }}}</td>
+</tr>
+<tr>
   <td>选项：</td>
      <td>
               @foreach (Answer::where('exercises_id','=',$exercise->id)->get() as $answer) 
