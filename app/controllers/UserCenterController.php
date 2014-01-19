@@ -64,12 +64,6 @@ class UserCenterController extends BaseController{
           $filename        = str_random(6) . '_' . $file->getClientOriginalName();
           $uploadSuccess   = $file->move($destinationPath, $filename);
       }
-    $this->user = User::create([
-        'overlay' =>'/uploads/news/'.$filename ]);
-
-
-
-
     $user=User::find($number) ;
     $user->name=$name;
     $user->gender=$gender;
@@ -84,6 +78,7 @@ class UserCenterController extends BaseController{
     $user->learn_words=$learn_words;
     $user->hope_learn_words=$hope_learn_words;
     $user->hope_compisition_times=$hope_compisition_times;
+    $user->overlay='/uploads/news/'.$filename; 
     $user->save();
     return Redirect::to('/usercenter');
   }

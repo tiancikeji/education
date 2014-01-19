@@ -19,7 +19,7 @@
                                 <dd>
                                     <div id="change_div" class="user-option user-option-first cf" >
                                         <ul>
-                                            <li><div class="avatar avatar-normal"><img src="images/avatar.jpg" alt="头像" /></div></li>
+                                            <li><div class="avatar avatar-normal"><img src='{{{$user->overlay}}}' alt="头像" /></div></li>
                                             <li>姓名：<span id="checkname">{{{$user->name}}}</span></li>
                                             <li>性别：<span id="checkgender">{{{$user->gender}}}</span></li>
                                             <li>出生日期：<span id="checkbirthday">{{{$user->birthday}}}</span></li>
