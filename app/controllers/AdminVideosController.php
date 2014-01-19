@@ -9,9 +9,13 @@ class AdminVideosController extends BaseController {
 	 */
 	protected $video;
 
-	public function __construct(Video $video)
+	protected $paper;
+
+	public function __construct(Video $video,Paper $paper)
 	{
 		$this->video = $video;
+
+		$this->paper = $paper;
 	}
 
 	/**
@@ -33,7 +37,8 @@ class AdminVideosController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.videos.create');
+		$papers = $this->paper->all();
+		return View::make('admin.videos.create', compact('papers'));
 	}
 
 	/**
@@ -43,36 +48,39 @@ class AdminVideosController extends BaseController {
 	 */
 	public function store()
 	{
+// print_r($_SERVER);
+    // print_r($_POST);
 		$input = Input::all();
-		$validation = Validator::make($input, Video::$rules);
 
-		if ($validation->passes())
-		{
-      
+		 $validation = Validator::make($input, Video::$rules);
+		 if ($validation->passes())
+    {
+     $destinationPath = '';
+     $filename        = '';
+     if (Input::hasFile('overlay')) {
+        $file            = Input::file('overlay');
+       $destinationPath = public_path().'/uploads/videos/';
+        $filename        = str_random(6) . '_' . $file->getClientOriginalName();
+        $uploadSuccess   = $file->move($destinationPath, $filename);
+    }
+     $videodestinationPath = '';
+     $videofilename        = '';
+    if (Input::hasFile('url')) {
+        $video            = Input::file('url');
+      $videodestinationPath = public_path().'/flvplayer/content/';
+    $videofilename        = str_random(6) . '_' . $video->getClientOriginalName();
+      $uploadSuccess   = $video->move($videodestinationPath, $videofilename);
+     }
+     $tags = Input::get("tags");
+     $this->video = Video::create(['title' => Input::get('title'),
+                                  'author' => Input::get('author'),
+                                   'url' => $videofilename,
+                                   'overlay' => "/uploads/videos/".$filename,
+                                   'paper_id'=>Input::get("paper_id"),
+                                   'tags'=>implode(",",$tags)]);
+	    return Redirect::route('admin.videos.index');
+	}
 
-      $destinationPath = '';
-      $filename        = '';
-
-      if (Input::hasFile('overlay')) {
-          $file            = Input::file('overlay');
-          $destinationPath = public_path().'/uploads/videos/';
-          $filename        = str_random(6) . '_' . $file->getClientOriginalName();
-          $uploadSuccess   = $file->move($destinationPath, $filename);
-      }
-
-			// $this->video->create($input);
-      $this->video = Video::create(['title' => Input::get('title'),
-                                    'author' => Input::get('author'),
-                                    'url' => Input::get('url'),
-                                    'overlay' => '/uploads/videos/'.$filename]);
-
-			return Redirect::route('admin.videos.index');
-		}
-
-		return Redirect::route('admin.videos.create')
-			->withInput()
-			->withErrors($validation)
-			->with('message', 'There were validation errors.');
 	}
 
 	/**

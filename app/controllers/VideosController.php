@@ -92,7 +92,8 @@ class VideosController extends BaseController {
 
 		$comments = Comment::where('video_id','=',$id)->get();
 
-		return View::make('videos.show', array('video' => $video,'comments' => $comments));
+
+		return View::make('videos.show', compact('video','comments'));
 	}
 
 	/**

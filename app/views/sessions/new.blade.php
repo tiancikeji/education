@@ -27,7 +27,7 @@
                                     <th>密码：</th>
                                     <td>
                                         <input class="ipt-txt ipt-large ipt-w2" type="password" name="password" id="" placeholder="请输入密码" />
-                                        <span class="l-blue"><a href="forget.html">忘记密码？</a></span>
+                                        <span class="l-blue"><a href="/forget">忘记密码？</a></span>
                                     </td>
                                 </tr>
                             </table>

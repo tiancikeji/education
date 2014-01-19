@@ -22,9 +22,11 @@ class NewsController extends BaseController {
 	 */
 	public function index()
 	{
-		$news = $this->news->all();
+		// $news = $this->news->all();
 
-		return View::make('news.index', compact('news'));
+		$newsarr = $this->news->paginate(5);
+    $news = $this->news->first();
+		return View::make('news.index', compact('news', 'newsarr'));
 	}
 
 	/**
@@ -68,7 +70,8 @@ class NewsController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$newsarr = $this->news->all();
+
+		$newsarr = $this->news->paginate(5);
 		$news = $this->news->findOrFail($id);
 
 		return View::make('news.show', compact('news','newsarr'));

@@ -20,6 +20,7 @@
                                 </ul>
                             </div><!-- list -->
 
+                                <?php echo $newsarr->links(); ?>
 
                         </div><!-- news list -->
 

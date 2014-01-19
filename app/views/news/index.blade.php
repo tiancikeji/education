@@ -1,41 +1,47 @@
-@extends('layouts.scaffold')
+@extends('layouts.main')
 
-@section('main')
+@section('content')
+        <div class="grid">
 
-<h1>全部消息  </h1>
+            <div class="mod">
+                <div class="hd hd-1">
+                    <h3>资讯列表</h3>
+                </div>
+                <div class="bd bd-1">
+                    <div class="details-wrap cf">
 
-<p>{{ link_to_route('news.create', '增加新消息') }}</p>
+                        <div class="grid-250 fl">
 
-@if ($news->count())
-	<table class="table table-striped table-bordered">
-		<thead>
-			<tr>
-				<th>作者</th>
-				<th>发布日期</th>
-				<th>内容</th>
-				<th>标题</th>
-			</tr>
-		</thead>
+                            <div class="news-list l-black f-16">
+                                <ul>
+			                            @foreach ($newsarr as $newsone)
+                                    <li ><a href="/news/{{{ $newsone->id }}}">{{{ $newsone->title }}}</a></li>
+			                            @endforeach
+                                </ul>
+                            </div><!-- list -->
 
-		<tbody>
-			@foreach ($news as $news)
-				<tr>
-					<td>{{{ $news->author }}}</td>
-					<td>{{{ $news->published_date }}}</td>
-					<td>{{{ $news->body }}}</td>
-					<td>{{{ $news->title }}}</td>
-                    <td>{{ link_to_route('news.edit', 'Edit', array($news->id), array('class' => 'btn btn-info')) }}</td>
-                    <td>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('news.destroy', $news->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                        {{ Form::close() }}
-                    </td>
-				</tr>
-			@endforeach
-		</tbody>
-	</table>
-@else
-	There are no news
-@endif
+
+                        </div><!-- news list -->
+
+                        <div class="grid-730 fr">
+                            <div class="details news-details">
+                                <div class="details-title">
+                                    <h1>{{{ $news->title }}}</h1>
+                                    <p>{{{ $news->author }}}--{{{ $news->created_at }}}</p>
+                                </div>
+                                <div class="details-cont">
+                                  <?php echo $news->body; ?>
+                                </div>
+                            </div>
+                        </div><!-- news details -->
+
+                    </div>
+                </div>
+            </div><!-- mod -->        
+
+        </div>
+    </div><!-- //container -->
+    <div class="footer-push"><!-- 有用不能删除 --></div>
+
 
 @stop

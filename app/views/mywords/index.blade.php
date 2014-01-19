@@ -34,109 +34,44 @@
                         <h4 class="hd-simple">生词本</h4>
                         <table class="table table-list">
                             <tbody>
+@if ($mywords->count())
+			@foreach ($mywords as $myword)
                                 <tr>
-                                    <td width="5%">1.</td>
-                                    <td width="15%">egg</td>
+                                    <td width="5%">{{{ $myword->id }}}</td>
+                                    <td width="15%">	{{{ $myword->english }}}</td>
                                     <td width="80%">
-                                        <span class="c-blue">蛋；鸡蛋</span>
+                                        <span class="c-blue">	{{{ $myword->chinese }}}</span>
                                     </td>
+      <td>
+                        {{ Form::open(array('method' => 'DELETE', 'route' => array('mywords.destroy', $myword->id))) }}
+                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                        {{ Form::close() }}
+                    </td>
                                 </tr>
-                                <tr>
-                                    <td width="5%">2.</td>
-                                    <td width="15%">egg</td>
-                                    <td width="80%">
-                                        <span class="c-blue">蛋；鸡蛋</span>
-                                    </td>
-                                </tr>                                
-                                <tr>
-                                    <td width="5%">3.</td>
-                                    <td width="15%">egg</td>
-                                    <td width="80%">
-                                        <span class="c-blue">蛋；鸡蛋</span>
-                                    </td>
-                                </tr>                                
-                                <tr>
-                                    <td width="5%">4.</td>
-                                    <td width="15%">egg</td>
-                                    <td width="80%">
-                                        <span class="c-blue">蛋；鸡蛋</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="5%">5.</td>
-                                    <td width="15%">egg</td>
-                                    <td width="80%">
-                                        <span class="c-blue">蛋；鸡蛋</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="5%">6.</td>
-                                    <td width="15%">egg</td>
-                                    <td width="80%">
-                                        <span class="c-blue">蛋；鸡蛋</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="5%">7.</td>
-                                    <td width="15%">egg</td>
-                                    <td width="80%">
-                                        <span class="c-blue">蛋；鸡蛋</span>
-                                    </td>
-                                </tr>                                
-                                <tr>
-                                    <td width="5%">8.</td>
-                                    <td width="15%">egg</td>
-                                    <td width="80%">
-                                        <span class="c-blue">蛋；鸡蛋</span>
-                                    </td>
-                                </tr>                                
-                                <tr>
-                                    <td width="5%">9.</td>
-                                    <td width="15%">egg</td>
-                                    <td width="80%">
-                                        <span class="c-blue">蛋；鸡蛋</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="5%">10.</td>
-                                    <td width="15%">egg</td>
-                                    <td width="80%">
-                                        <span class="c-blue">蛋；鸡蛋</span>
-                                    </td>
-                                </tr>                                                                                              
+
+			@endforeach
+@else
+	There are no mywords
+@endif
+
                             </tbody>
                         </table>
                     </div><!-- question list -->       
                 
-                    <div class="paging">
-                        <a href="javascript:void(0);">上一页</a>
-                        <a class="on" href="javascript:void(0);">1</a>
-                        <a href="javascript:void(0);">2</a>
-                        <a href="javascript:void(0);">3</a>
-                        <a href="javascript:void(0);">4</a>
-                        <a href="javascript:void(0);">5</a>
-                        <a href="javascript:void(0);">下一页</a>
-                    </div><!-- paging -->
+                    <!-- <div class="paging"> -->
+                    <!--     <a href="javascript:void(0);">上一页</a> -->
+                    <!--     <a class="on" href="javascript:void(0);">1</a> -->
+                    <!--     <a href="javascript:void(0);">2</a> -->
+                    <!--     <a href="javascript:void(0);">3</a> -->
+                    <!--     <a href="javascript:void(0);">4</a> -->
+                    <!--     <a href="javascript:void(0);">5</a> -->
+                    <!--     <a href="javascript:void(0);">下一页</a> -->
+                    <!-- </div> -->
 
             	</div>
         	</div><!-- mod -->
 
         </div>
 
-
-@if ($mywords->count())
-			@foreach ($mywords as $myword)
-					<td>{{{ $myword->word_id }}}</td>
-					<td>{{{ $myword->user_id }}}</td>
-                    <td>{{ link_to_route('mywords.edit', 'Edit', array($myword->id), array('class' => 'btn btn-info')) }}</td>
-                    <td>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('mywords.destroy', $myword->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                        {{ Form::close() }}
-                    </td>
-			@endforeach
-@else
-	There are no mywords
-@endif
 
 @stop

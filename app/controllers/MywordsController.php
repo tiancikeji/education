@@ -21,7 +21,7 @@ class MywordsController extends BaseController {
 	 */
 	public function index()
 	{
-		$mywords = $this->myword->all();
+		$mywords = $this->myword->where('user_id','=',Session::get("current_user")->id)->get();
 
 		return View::make('mywords.index', compact('mywords'));
 	}
@@ -35,6 +35,14 @@ class MywordsController extends BaseController {
 	{
 		return View::make('mywords.create');
 	}
+
+	public function add()
+	{
+			$myword = $this->myword->create(['user_id'=>Session::get("current_user")->id,'chinese'=>Input::get("chinese"),'english'=>Input::get('english')]);
+
+      echo $myword;
+	}
+
 
 	/**
 	 * Store a newly created resource in storage.

@@ -57,7 +57,7 @@ $(document).ready(function(){
                     <li><a href="/upgrade">升级为付费版</a></li>
                       @endif
                     <li><a href="/usercenter">账户中心</a></li>
-                    <li><a href="/messages">提醒（<span class="c-red">0</span>）</a></li>
+                    <li><a href="/messages">提醒（<span class="c-red">{{count(Message::where("user_id",'=',Session::get('current_user')->id)->get())}}</span>）</a></li>
                     <li><a href="/sessions/delete">安全退出</a></li>
                 </ul>
             </div>
@@ -117,15 +117,17 @@ $(document).ready(function(){
 </footer><!-- //footer -->
 
 
+@if(Session::has('current_user'))
 <div class="toolbar-user ac">
     <div class="grid">
         我的工具栏：
         <a href="/words"><input type="button" class="btn btn-normal btn-white css3" value="单词测试" /></a>
         <a href="/mywords"><input type="button" class="btn btn-normal btn-white css3" value="我的生词本" /></a>
-        <a href="toolbar-problem.html"><input type="button" class="btn btn-normal btn-white css3" value="我的难题集" /></a>
-        <a href="toolbar-search.html"><input type="button" class="btn btn-normal btn-white css3" value="真题搜索" /></a>
+        <a href="/myexercises"><input type="button" class="btn btn-normal btn-white css3" value="我的难题集" /></a>
+        <a href="/papers"><input type="button" class="btn btn-normal btn-white css3" value="真题搜索" /></a>
     </div>
 </div><!-- //toolbar user -->
+@endif
 
 
 </body>

@@ -15,16 +15,22 @@ Route::get('/sessions/new', 'SessionsController@newpage');
 Route::post('/sessions/save', 'SessionsController@save');
 Route::get('/confirm', 'SessionsController@confirm');
 Route::get('/sessions/delete', 'SessionsController@delete');
+Route::get('/forget', 'SessionsController@forgetpassword');
+Route::post('/resetpassword', 'SessionsController@resetpassword');
+
 Route::get('/registrations/new', 'RegistrationsController@newpage');
+
+
 Route::get('/sendemail', 'RegistrationsController@sendemail');
 Route::get('/registrations/success', 'RegistrationsController@success');
 Route::post('/registrations/store', 'RegistrationsController@store');
 
+Route::get('/myexercises/add', 'MyexercisesController@add');
 Route::get('/adminpayments/search', 'AdminPaymentsController@search');
 Route::resource('news', 'NewsController');
 Route::resource('exercises', 'ExercisesController');
 Route::post('/usercenter/updatepassword', 'UserCenterController@updatepassword');
-
+Route::get('/mywords/add', 'MywordsController@add');
 Route::resource('videos', 'VideosController');
 
 Route::group(array('before'=>'auth'),function(){
@@ -98,3 +104,6 @@ Route::group(array('before'=>'admin','prefix' => 'admin'), function()
 Route::resource('permissions', 'PermissionsController');
 
 Route::resource('adminpermissions', 'AdminpermissionsController');
+
+
+Route::resource('myexercises', 'MyexercisesController');

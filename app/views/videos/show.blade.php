@@ -1,6 +1,29 @@
 @extends('layouts.member')
 
 @section('content')
+
+<script type="text/javascript" src="/flvplayer/swfobject.js"></script>
+
+<script type="text/javascript">
+        var playervars = {    
+                contentpath: "/flvplayer/content",
+                video: "{{{$video->url}}}",
+                preview: "demo-preview.jpg",                                                    
+                skin: "skin-applestyle.swf",
+                skincolor: "0x2c8cbd"
+                // ...
+                //see documentation for all the parameters              
+        };      
+                        
+                var params = { scale: "noscale", allowfullscreen: "true", salign: "tl", bgcolor: "#ffffff", base: "." };        
+                var attributes = { align: "left"};
+                
+        swfobject.embedSWF("/flvplayer/flvplayer.swf", "videoCanvas", "1000", "650", "9.0.28", "/flvplayer/expressInstall.swf", playervars, params, attributes);
+         
+                // Playlist
+</script>
+                                
+
         <div class="grid">
 
         	<div class="mod">
@@ -10,9 +33,15 @@
             	<div class="bd bd-1">
                     
                     <h1 class="video-title">{{{ $video->title }}}<span>讲师：{{{ $video->author }}}</span></h1>
-                    <div class="video-cont">
-                        <embed src="{{{ $video->url }}}" quality="high" width="100%" height="100%" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"></embed>
-                    </div>
+        <div id="videoCanvas" class="video-cont" style="margin:0px">
+        
+            <p>This content requires the Adobe Flash Player.</p>
+
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a>
+            </p>
+
+        </div>
+
                     <div class="video-intro cf">
                         <div class="fl">标签：试题讲解 阅读</div>
                         <div class="fr">
@@ -21,6 +50,15 @@
                         </div>
                     </div><!-- video details -->
 
+			@foreach (Video::take(3)->get() as $video)
+                                        <a href="/videos/{{{$video->id}}}">
+                                            <div class="pic-video-mini">
+                                                <img src="{{{$video->overlay}}}" alt="video" />
+                                                <i class="icon-play"></i>
+                                            </div>
+                                            <p>{{{$video->title}}}</p>
+                                        </a>
+			@endforeach
 @if(Session::has('current_user'))
                     <div class="comment cf">
 {{ Form::open(array('route' => 'comments.store')) }}
@@ -71,8 +109,9 @@
                         <a href="javascript:void(0);">5</a>
                         <a href="javascript:void(0);">下一页</a>
                     </div><!-- paging -->                            
+@else
+请先<a href="/sessions/new">登录</a>
 @endif                    
-请先登录
             	</div>
         	</div><!-- mod -->
 

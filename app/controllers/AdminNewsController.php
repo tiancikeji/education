@@ -155,7 +155,8 @@ class AdminNewsController extends BaseController {
 
 
 
-			return Redirect::route('admin.news.show', $id);
+
+			return Redirect::route('admin.news.index');
 		}
 
 		return Redirect::route('admin.news.edit', $id)
