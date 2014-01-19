@@ -32,7 +32,7 @@
 
 		<li>
 			{{ Form::submit('提交', array('class' => 'btn btn-info')) }}
-			{{ link_to_route('payments.show', '取消', $payment->id, array('class' => 'btn')) }}
+			{{ link_to_route('admin.payments.show', '取消', $payment->id, array('class' => 'btn')) }}
 		</li>
 	</ul>
 {{ Form::close() }}
