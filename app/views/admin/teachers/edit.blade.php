@@ -6,12 +6,12 @@
 {{ Form::model($teacher, array('method' => 'PATCH', 'route' => array('teachers.update', $teacher->id))) }}
 	<ul>
         <li>
-            {{ Form::label('name', '名称 :') }}
+            {{ Form::label('name', '姓名 :') }}
             {{ Form::text('name') }}
         </li>
 
         <li>
-            {{ Form::label('username', '用户名称 :') }}
+            {{ Form::label('username', '用户名 :') }}
             {{ Form::text('username') }}
         </li>
 
