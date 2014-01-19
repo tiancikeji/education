@@ -19,6 +19,7 @@
 				<th>开始时间</th>
 				<th>结束时间</th>
 				<th>内容</th>
+<th></th>
 			</tr>
 		</thead>
 
@@ -28,8 +29,15 @@
 				<tr>
 					<td>{{{ $plan_task->start_date }}}</td>
 					<td>{{{ $plan_task->end_date }}}</td>
-					<td>{{{ Homework::find($plan_task->content)->name  }}}</td>
-					<!-- <td>{{{ $plan_task->type }}}</td> -->
+          <td><?php if($plan_task->type=="HOMEWORK") {echo Homework::find($plan_task->content)->name;  }?>
+
+          <?php if($plan_task->type=="TEST") {echo Homework::find($plan_task->content)->name;  }?>
+
+          <?php if($plan_task->type=="VIDEO") {echo Video::find($plan_task->content)->title;  }?>
+
+          <?php if($plan_task->type=="EXAM") {echo ($plan_task->content);  }?>
+</td>
+					<td>{{{ $plan_task->type }}}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.plantasks.destroy', $plan_task->id))) }}
                             {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}

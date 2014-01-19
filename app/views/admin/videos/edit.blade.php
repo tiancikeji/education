@@ -31,7 +31,7 @@
             {{ Form::input('hidden','author','作者') }}
         <li>
             {{ Form::label('title', ' 标题 :') }}
-            <input type="text" name="title" size="18" maxlength="18" />
+            <input type="text" name="title" size="18" maxlength="18" value="{{{$video->title}}}" />
         </li>
          <li>
             {{ Form::label('overlay', '图像 :') }}
@@ -45,9 +45,9 @@
 
         <li>  
         Tags:
-        <input type="text" name="tags[]" value="" size=10 maxlength=18/>
-        <input type="text" name="tags[]" value="" size=10 maxlength=18/>
-        <input type="text" name="tags[]" value="" size=10 maxlength=18/>
+        <input type="text" name="tags[]" value="{{{explode(",",$video->tags)[0]}}}" size=10 maxlength=18/>
+        <input type="text" name="tags[]" value="{{{explode(",",$video->tags)[1]}}}" size=10 maxlength=18/>
+        <input type="text" name="tags[]" value="{{{explode(",",$video->tags)[2]}}}" size=10 maxlength=18/>
       </li>
 
 		<li>

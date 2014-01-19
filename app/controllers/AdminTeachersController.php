@@ -9,11 +9,12 @@ class AdminTeachersController extends BaseController {
 	 */
 	protected $teacher;
   protected $permission;
-
-	public function __construct(Teacher $teacher,Permission $permission)
+  protected $adminpermission;
+	public function __construct(Teacher $teacher,Permission $permission, Adminpermission $adminpermission)
 	{
     $this->teacher = $teacher;
     $this->permission = $permission;
+    $this->adminpermission = $adminpermission;
 	}
 
 	/**
@@ -49,6 +50,7 @@ class AdminTeachersController extends BaseController {
 		$input = Input::except("permission_ids");
 		$validation = Validator::make($input, Teacher::$rules);
     $permission_ids = Input::get("permission_ids");
+    var_dump($permission_ids);
 		if ($validation->passes())
 		{
       $password  = Input::get('password');
@@ -87,13 +89,19 @@ class AdminTeachersController extends BaseController {
 	public function edit($id)
 	{
 		$teacher = $this->teacher->find($id);
-
-		if (is_null($teacher))
+    $adminpermissions=Adminpermission::where('teacher_id','=',$teacher->id)->get();
+    $permission_ids = array();
+  
+    foreach($adminpermissions as $adminpermission){
+        $permission_ids[] = $adminpermission->permission_id;
+    }
+ 		if (is_null($teacher))
 		{
 			return Redirect::route('admin.teachers.index');
-		}
+    }
+    $permissions = $this->permission->all();
 
-		return View::make('admin.teachers.edit', compact('teacher'));
+		return View::make('admin.teachers.edit', compact('teacher','permissions','permission_ids'));
 	}
 
 	/**
@@ -104,9 +112,18 @@ class AdminTeachersController extends BaseController {
 	 */
 	public function update($id)
 	{
-		$input = array_except(Input::all(), '_method');
+    $inpt = Input::except("permission_ids");
+		$input = array_except($inpt, '_method');
+    // $input = array_except(Input::all(), '_method');
 		$validation = Validator::make($input, Teacher::$rules);
 
+  $permission_ids = Input::get("permission_ids");
+     if($permission_ids!=null ){
+       foreach ($permission_ids as $permission_id) {
+         // Adminpermission::create(['teacher_id'=>$this->teacher->id,'permission_id'=>$permission_id]);
+          Adminpermission::create(['teacher_id'=>$id,'permission_id'=>$permission_id]);
+       }
+     }
 		if ($validation->passes())
 		{
 			$teacher = $this->teacher->find($id);

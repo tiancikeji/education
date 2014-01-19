@@ -54,7 +54,7 @@ class AdminPlanTasksController extends BaseController {
 		{
 			$this->plan_task->create($input);
 
-			return Redirect::route('admin.plans.index');
+			return Redirect::to("/admin/plans/".Input::get("plan_id"));
 		}
 
 		return Redirect::route('admin.plan_tasks.create')
