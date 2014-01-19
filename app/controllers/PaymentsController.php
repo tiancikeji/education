@@ -23,8 +23,23 @@ class PaymentsController extends BaseController {
 	 */
 	public function index()
 	{
-		$payments = $this->payment->all();
-		return View::make('payments.index', compact('payments'));
+        $type=Input::get("type");
+        $ceated_at=Input::get("created_at");
+        $enddate_at=Input::get("enddate_at");
+      if($type!=null){
+      $payments=$this->payment->where('type','=',$type)->get();
+      }else if($created_at!=null){
+        $payments=$this->payment->where('created_at','=',"%".$created_at."%")->get();
+
+      }else if($enddate_at!=null){
+        $payments=$this->payment->where('enddate_at','=',"%".$enddate_at."%")->get();
+
+      }else{
+ $payments = $this->payment->all();
+     
+      }
+
+		  return View::make('payments.index', compact('payments'));
 	}
 
 	/**

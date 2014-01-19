@@ -1,23 +1,30 @@
 @extends('layouts.admin')
 
 @section('main')
-
 <h1>全部付款</h1>
 
-<p>{{ link_to_route('admin.payments.create', '新增付款') }}</p>
+<link href="/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+	<script src="/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js"></script>
+  <script>
+  $(function() {
+    $( "#date" ).datepicker({ dateFormat: 'yy-mm-dd' });
+  $( "#end" ).datepicker({ dateFormat: 'yy-mm-dd' });
+
+  });
+  </script>
+
+<!-- <p>{{ link_to_route('admin.payments.create', '新增付款') }}</p> -->
 <div>
 <form action="/admin/payments" method="get">
-<select name="user_id">
-@foreach ($users as $user)
-<option value={{{$user->id}}}>{{{$user->name}}}</option>
-@endforeach
+
+<select name="type">
+<option value="exam">Exam</option>
+<option value="composition">Composition</option>
 </select>
-
-<!-- <select name="type"> -->
-<!-- <option value="exam">Exam</option> -->
-<!-- <option value="composition">Composition</option> -->
-<!-- </select> -->
-
+服务起始日期:
+<input type="text" value=""  id="date" name="created_at" / >
+期服务到期日期:
+<input type="text" value=""  id="end" name="enddate_at" / >
 <input type="submit" value="搜索">
 </form>
 </div>

@@ -25,14 +25,17 @@ class AdminPaymentsController extends BaseController {
 	 */
 	public function index()
 	{
-    $user_id = Input::get("user_id");
-    if(empty($user_id)){
-		  $payments = $this->payment->all();
-       }else{
-		  $payments = $this->payment->where("user_id",'=',$user_id)->get();
-    }
-    $users=$this->user->all();
-		return View::make('admin.payments.index', compact('payments','users'));
+        $type=Input::get("type");
+        $created_at=Input::get("created_at");
+        $enddate_at=Input::get("enddate_at");
+      if($type!=null){
+        $payments=$this->payment->where('type','=',$type)->get();
+      }else if($created_at!=null and !empty($enddate_at)){
+        $payments=DB::table("payments")->whereBetween('created_at',array($created_at,$enddate_at));
+      }else{
+        $payments = $this->payment->all();
+      }
+		return View::make('admin.payments.index', compact('payments'));
 	}
  
  
