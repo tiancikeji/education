@@ -19,7 +19,8 @@
                                 <tr>
                                     <th>邮箱：</th>
                                     <td>
-                                        <input class="ipt-txt ipt-large ipt-w2" type="text" name="username" id="" placeholder="请输入邮箱" />
+                                        <input class="ipt-txt ipt-large ipt-w2" type="text" name="username" id="email" placeholder="请输入邮箱" onblur="em()" />
+                                         <span id="ema"class="c-red">请正确输入邮箱</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -39,6 +40,19 @@
             </div><!-- mod -->        
 
         </div>
-
+<script>
+$(function(){
+$("#ema").hide();
+})
+function em(){
+  var email= $("#email").val();
+  var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/;
+  if(!myreg.test(email)){
+$("#ema").show();
+}else{
+$("#ema").hide();
+}
+}
+</script>
 @stop
 

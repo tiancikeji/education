@@ -58,6 +58,18 @@ class UserCenterController extends BaseController{
     $learn_words=Input::get("learn_words");
     $hope_learn_words=Input::get("hope_learn_words");
     $hope_compisition_times=Input::get("hope_compisition_times");
+ if (Input::hasFile('overlay')) {
+          $file            = Input::file('overlay');
+          $destinationPath = public_path().'/uploads/news/';
+          $filename        = str_random(6) . '_' . $file->getClientOriginalName();
+          $uploadSuccess   = $file->move($destinationPath, $filename);
+      }
+    $this->user = User::create([
+        'overlay' =>'/uploads/news/'.$filename ]);
+
+
+
+
     $user=User::find($number) ;
     $user->name=$name;
     $user->gender=$gender;

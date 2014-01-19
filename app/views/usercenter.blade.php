@@ -65,21 +65,24 @@
                                         <tr>
                                             <th>输入旧密码：</th>
                                             <td>
-                                                <input class="ipt-txt ipt-large ipt-w2" type="password" name="oldpassword" id="oldpassword" value={{{$user->password}}} />
-                                            </td>
+                                           <input class="ipt-txt ipt-large ipt-w2" type="password" name="oldpassword" id="oldpasswords"  onblur="oldpa();"/>
+                                           <span id="old"class="c-red">密码不能为空</span>
+                                           <span id="righ"class="c-red">密码和旧密码不相符</span>
+                                             </td>
                                         </tr>
                                         <tr>
                                             <th>输入新密码：</th>
                                             <td>
                                                 <input class="ipt-txt ipt-large ipt-w2" type="password" name="newpassword" id="newpassword" placeholder="输入标签" onblur="emp();"/>
-                                                  <span id="new"  >密码不能为空</span>  
+                                                  <span id="new" class="c-red" >密码不能为空</span>  
+                                                  <span id="na"class="c-red">6-15位字符，只包含字母数字</span>
                                              </td>
                                         </tr>
                                         <tr>
                                             <th>确认新密码：</th>
                                             <td>
                                                 <input class="ipt-txt ipt-large ipt-w2" type="password" name="newpasswordone" id="newpasswordone" placeholder="输入标签" onblur="empt();" />
-                                             <span id="newp">密码不能为空</span> 
+                                             <span id="newp"class="c-red">密码不能为空</span> 
                                            </td>
                                         </tr>                                        
                                     </table>
@@ -90,7 +93,7 @@
                                 </div>
                             </form>
                         </div><!-- form password -->
-
+<input type="hidden" id="oldpass" value={{{$user->password}}} />
                     </div><!-- Tabs 1 -->
             	</div>
         	</div><!-- mod -->
@@ -101,16 +104,39 @@ $(function() {
   $("ul#Tabs-1").tabs("div.panes-1 > div");
   $("#new").hide();
   $("#newp").hide();
-  // $("#sub").hide();
+  $("#old").hide();
+  $("#righ").hide();
 });
+
+
+function oldpa(){
+  var ps=$("#oldpasswords").val();
+  var olds=$("#oldpass").val();
+if(ps==''){
+ $("#old").show();
+}else if(ps!=olds){
+  $("#old").hide();
+  $("#righ").show();
+ }else if(ps==olds){
+$("#righ").hide();
+}
+
+}
 function emp(){
   var newpasswordone = $("#newpasswordone").val();
   var newpassword = $("#newpassword").val();
 if(newpassword==''){
-$("#new").show();
+  $("#new").show();
+  $("#na").hide();
 return false;
 }else{
  $("#new").hide(); 
+}
+var myname=/^[0-9a-zA-Z]{6,15}$/;
+if(!myname.test(newpassword)){
+$("#na").show();
+}else{
+$("#na").hide();
 }
 }
 
@@ -129,11 +155,15 @@ function Submit(){
  var newpasswordone = $("#newpasswordone").val();
  var newpassword = $("#newpassword").val();
  if(newpasswordone!=newpassword){
-alert("两次输入的密码不一致，请重新输入！");
+alert("两次输入的密码不一致");
 return false;
 }
   if(newpassword==''||newpasswordone==''){
 alert("密码不能为空！");
+return false;
+}
+var myname=/^[0-9a-zA-Z]{6,15}$/;
+if(!myname.test(newpassword)){
 return false;
 }
 return true;

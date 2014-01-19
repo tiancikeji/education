@@ -12,13 +12,15 @@
 <input type="hidden" id="gradeis" value={{{$user->grade}}} />
 <input type="hidden" id="hopelearnwords" value={{{$user->hope_learn_words}}} />
                     <p>为了给您提供更有针对性的测评报告，请您配合完成以下问题：</p>
-                    <form action="/usercenter/update" method="post">
+                    <form action="/usercenter/update" method="post" enctype="multipart/form-data">
                         <div class="form form-3">
                             <table>
                                 <tr>
                                     <th><strong>基本信息</strong>&nbsp;&nbsp;</th>
                                     <td>                                    
                                           <img src="images/avatar.jpg" alt="头像" />
+                                </br>
+                                    <input type="file" name="overlay"  />
                                     </td>
                                 </tr>
                                 <tr> 
@@ -37,20 +39,20 @@
                                 <tr>
                                     <th>出生日期：</th>
                                     <td>
-                                      <input class="ipt-txt ipt-large" type="text" name="birthday" value={{{$user->birthday}}} />
+                                      <input class="ipt-txt ipt-large" type="text" name="birthday" value={{{$user->birthday}}} >
                                     </td>
                                     </td>
                                 </tr> 
                                 <tr>
                                     <th>所在地：</th>
                                     <td>
-                                      <input  class="ipt-txt ipt-large" type="text" name="location" value={{{$user->location}}} />
+                                      <input  class="ipt-txt ipt-large" type="text" name="location" value={{{$user->location}}} >
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>所在高中：</th>
                                     <td>
-                                      <input  class="ipt-txt ipt-large" type="text" name="school" value={{{$user->school}}} />
+                                      <input  class="ipt-txt ipt-large" type="text" name="school" value={{{$user->school}}} >
                                     </td>
                                 </tr>
                                 <tr>
@@ -68,7 +70,7 @@
                                 <tr>
                                     <th>目标学校：</th>
                                     <td>
-                                      <input  class="ipt-txt ipt-large" type="text" name="dream_school" value={{{$user->dream_school}}} />
+                                      <input  class="ipt-txt ipt-large" type="text" name="dream_school" value={{{$user->dream_school}}} >
                                     </td>
                                 </tr>
                                 <tr>
@@ -80,19 +82,19 @@
                                 <tr>
                                     <th>SAT期望成绩：</th>
                                     <td>
-                                        <input class="ipt-txt ipt-large" type="text" name="sat_hope_grade" value={{{$user->sat_hope_grade}}} />
+                                        <input class="ipt-txt ipt-large" type="text" name="sat_hope_grade" value={{{$user->sat_hope_grade}}} >
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>平均每周复习时间：</th>
                                     <td>
-                                        <input class="ipt-txt ipt-large" type="text" name="study_time_everyweek" value={{{$user->study_time_everyweek}}} />
+                                        <input class="ipt-txt ipt-large" type="text" name="study_time_everyweek" value={{{$user->study_time_everyweek}}} >小时 
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>词汇量估计：</th>
                                     <td>
-                                        <input class="ipt-txt ipt-large" type="text" name="learn_words" value={{{$user->learn_words}}} />
+                                        <input class="ipt-txt ipt-large" type="text" name="learn_words" value={{{$user->learn_words}}} >个
                                     </td>
                                 </tr>
                                 <tr>
@@ -106,7 +108,7 @@
                                 <tr>
                                     <th>希望每月获得的作文批改次数：</th>
                                     <td>
-                                        <input class="ipt-txt ipt-large" type="text" name="hope_compisition_times" value={{{$user->hope_compisition_times}}} />
+                                        <input class="ipt-txt ipt-large" type="text" name="hope_compisition_times" value={{{$user->hope_compisition_times}}}  >
                                     </td>
                                 </tr>                                                                                            
                             </table>
@@ -114,14 +116,14 @@
                                <input type="hidden"  name="number" value={{{ $user->id}}} />
                       <tr>
                           <td>
-                              <input class="btn btn-large btn-gray fr css3" type="submit" value="确 定" />
+                              <input class="btn btn-large btn-gray fr css3" type="submit" value="保存信息" />
                           </td>
                       </tr>   
                     </form>
 
-                    <p class="ac pt-50">
-                        <a href="test-report.html"><input class="btn btn-large btn-blue css3" type="button" value="查看报告" /></a>
-                    </p>
+                    <!-- <p class="ac pt-50"> -->
+                        <!-- <a href="test-report.html"><input class="btn btn-large btn-blue css3" type="button" value="查看报告" /></a> -->
+                    <!-- </p> -->
 
             	</div>
           	</div><!-- mod -->
