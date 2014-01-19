@@ -37,7 +37,13 @@ class PapersController extends BaseController {
     $month=Input::get("month");
     $yearend=Input::get("yearend");
     $monthend=Input::get("monthend");
-    $papers= $this->paper->where('type','=',Input::get("type"))->get();
+    $type=Input::get("type");
+    if(!empty($type)){
+    $papers= $this->paper->where('type','=',$type)->get(); 
+    }
+    if(!empty($year) and !empty($month)){
+    $papers=$this->paper->where('year','=',$year,' and','month','=',$month)->get();
+    } 
     $exams= $this->exam->where('user_id','=',Session::get('current_user')->id)->get();
 		return View::make('papers.index', compact('papers','exams'));
   }

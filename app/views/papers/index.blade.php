@@ -24,19 +24,23 @@
                                 <ul class="fl">
                                     <li>
                                         <p>试题日期：</p>
- <select class="select">
-                                                <option value="2006-1-1">2006-1-1</option>
-                                                <option value="2007-1-1">2007-1-1</option>
-                                                <option value="2008-1-1">2008-1-1</option>
-                                                <option value="2009-1-1">2009-1-1</option>
-                                                <option value="2010-1-1">2010-1-1</option>
-                                                <option value="2011-1-1">2011-1-1</option>
-                                                <option value="2012-1-1">2012-1-1</option>
-                                                <option value="2013-1-1">2013-1-1</option>
-                                                <option value="2014-1-1">2014-1-1</option>
-                                            </select>
-
-                                    </li>
+     <select name="year" class="select">
+      <option value="2006">2006</option>
+      <option value="2007">2007</option>
+      <option value="2008">2008</option>
+      <option value="2009">2009</option>
+      <option value="2010">2010</option>
+      <option value="2011">2011</option>
+      <option value="2012">2012</option>
+      <option value="2013">2013</option>
+      <option value="2014">2014</option>
+    </select>年
+   <select  name="month" class="select">
+      @for($i = 1 ; $i <= 12 ;$i++)
+       <option value="{{{$i}}}">{{{$i}}}</option>
+      @endfor
+    </select>月
+        </li>
                                     <li>
                                         <p>科目：</p>
                                         <label for="radio334"><input type="radio" name="type" value="整套"  /> 整套</label>
@@ -56,7 +60,8 @@
                                 <table class="table table-fixed table-list">
                                     <thead>
                                         <tr>
-                                            <th>试题日期</th>
+                                            <th>试题年月</th>
+                                             <th>试题名称</th>
                                             <th>科目</th>
                                             <th>操作</th>
                                         </tr>
@@ -67,6 +72,7 @@
                                          <tr>
                                             <td>{{{ $paper->published_date }}}</td>
                                             <td>{{{ $paper->name }}}</td>
+                                            <td>{{{ $paper->type }}}</td>
                                             <td>
 
 {{ Form::open(array('route' => 'exams.store')) }}

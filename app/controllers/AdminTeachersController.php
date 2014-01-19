@@ -50,7 +50,6 @@ class AdminTeachersController extends BaseController {
 		$input = Input::except("permission_ids");
 		$validation = Validator::make($input, Teacher::$rules);
     $permission_ids = Input::get("permission_ids");
-    var_dump($permission_ids);
 		if ($validation->passes())
 		{
       $password  = Input::get('password');
@@ -138,6 +137,11 @@ class AdminTeachersController extends BaseController {
 			->with('message', 'There were validation errors.');
 	}
 
+
+public function update_permission(){
+$permission_id=Input::get("permission_id");
+$adminpermission=$this->adminpermission->find($permission_id)->delete();
+}
 	/**
 	 * Remove the specified resource from storage.
 	 *

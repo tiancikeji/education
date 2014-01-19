@@ -43,4 +43,20 @@
 	</ul>
 @endif
 
+<script type="text/javascript" charset="utf-8" >
+$("input[name='permission_ids[]']").on('click',function(){
+ if($(this).attr("checked")){
+ 
+}else{
+  alert("2222"); 
+  $.ajax({
+      url:"/admin/teachers/update_permission?permission_id= "+$(this).val();
+      context:document.body
+}).done(function(){
+alert("1111");
+});
+}
+});
+
+</script>
 @stop
