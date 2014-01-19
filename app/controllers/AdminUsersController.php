@@ -12,14 +12,22 @@ class AdminUsersController extends BaseController {
     }  
 
     public function index(){
-        $id=Input::get("id");
-        $name=Input::get("name");
+      // Event::listen('illuminate.query',function($sql){
+        // dd($sql);
+      // });
+        $id = Input::get("id");
+        $name = Input::get("name");
+        $created_at = Input::get("created_at");
     if($id!=null){
       $users = $this->user->where('id','=',$id)->get();
     }else if($name!=null){
        $users=$this->user->where('name','=',$name)->get(); 
+    }else if(!empty($created_at)){
+		  $users = DB::select("select * from users where created_at like '%".$created_at."%'");
+      // echo $created_at;
+      // var_dump($users);
     }else{
-		  $users = $this->user->all();
+      $users = $this->user->all();
     }
         return View::make('admin.users.index',compact('users'));
     } 

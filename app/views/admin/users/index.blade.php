@@ -4,15 +4,26 @@
 
 <h1>学生列表</h1>
 
-<form action="/users/students/search" method="get" accept-charset="utf-8">
+
+	<link href="/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+	<script src="/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+  });
+  </script>
+ 
+<form action="/admin/users" method="get" accept-charset="utf-8">
 付费状况： 
-<select name="fee" id="">
-  <option value="已付">已付</option>
-  <option value="未付">未付</option>
+<select name="payment" >
+  <option value="1">已付</option>
+  <option value="0">未付</option>
 </select>
 所属教师： 
-<select name="name" id="">
-  <option value="">全部</option>
+<select name="teacher_id" id="">
+ 			@foreach (Teacher::take(100)->get() as $teacher)
+					<option value="{{{ $teacher->id }}}">{{{ $teacher->name }}}</option>
+			@endforeach
 </select>
 评级状况： 
 <select name="" id="">
@@ -22,14 +33,14 @@
 <option value="d">D</option>
 </select>
 作文状态： 
-<select name="" id="">
-  <option value="">全部</option>
+<select name="compositions" >
+  <option value="all">全部</option>
+  <option value="1">有</option>
+  <option value="0">无</option>
 </select>
 
 注册日期：
- <select name="created_at" >
-</select>
-
+<input type="text" name="created_at" id="datepicker" value="" />
 <!-- 付费时间：  -->
 
 <!-- <select name="" id=""> -->
@@ -61,9 +72,6 @@ ID搜索:<input type="text" name="id" >
 </thead>
 </table>
 <p>{{ link_to_route('admin.users.create', '新增用户') }}</p>
-
-全部: {{{ $users->count() }}}
-@if ($users->count())
   <table class="table  table-bordered">
     <thead>
       <tr>
@@ -93,7 +101,7 @@ ID搜索:<input type="text" name="id" >
 <a href="/admin/payments?user_id={{{ $user->id }}}">查看</a>
 </td>
 <td>
-  {{{ $user->created_at }}}
+  {{{substr($user->created_at,0,10)  }}}
 </td>
 <td>
   {{ Exam::where('user_id','=',$user->id)->count() }}
@@ -122,9 +130,6 @@ ID搜索:<input type="text" name="id" >
       @endforeach
     </tbody>
   </table>
-@else
-  没用用户
-@endif
 
 
 @stop
