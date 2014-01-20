@@ -8,10 +8,12 @@ class AdminPlansController extends BaseController {
 	 * @var Plan
 	 */
 	protected $plan;
+	protected $plan_task;
 
-	public function __construct(Plan $plan)
+	public function __construct(Plan $plan,PlanTask $plan_task)
 	{
 		$this->plan = $plan;
+		$this->plan_task = $plan_task;
 	}
 
 	/**
@@ -43,13 +45,24 @@ class AdminPlansController extends BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::all();
+		$input = Input::except('start_date','end_date','content');
+    // var_dump($input);
 		$validation = Validator::make($input, Plan::$rules);
-
+    $start_dates = Input::get("start_date");
+    $end_dates = Input::get("end_date");
+    $contents = Input::get("content");
 		if ($validation->passes())
 		{
-			$this->plan->create($input);
+			$plan = $this->plan->create($input);
 
+     for($i=0;$i<count($start_dates);$i++){
+       PlanTask::create(['plan_id' => $plan->id,
+          'start_date' => $start_dates[$i],
+          'end_date' => $end_dates[$i],
+          'content' => $contents[$i],
+          'type' => Input::get("type")]); 
+
+      }
 			return Redirect::route('admin.plans.index');
 		}
 
@@ -57,6 +70,7 @@ class AdminPlansController extends BaseController {
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
+
 	}
 
 	/**
@@ -105,14 +119,13 @@ class AdminPlansController extends BaseController {
 		{
 			$plan = $this->plan->find($id);
 			$plan->update($input);
-
 			return Redirect::route('admin.plans.show', $id);
 		}
-
 		return Redirect::route('admin.plans.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
+
 	}
 
 	/**

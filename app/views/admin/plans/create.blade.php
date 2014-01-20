@@ -2,115 +2,66 @@
 
 @section('main')
 
-<h1>Create Plan</h1>
+<h1>创建模板 </h1>
 
 {{ Form::open(array('route' => 'admin.plans.store')) }}
-	<ul>
+  <ul>
         <li>
-            {{ Form::label('event', 'Event:') }}
-            {{ Form::text('event') }}
+            {{ Form::label('name', '模板名称：') }}
+            {{ Form::text('name') }}
         </li>
 
         <li>
-            {{ Form::label('event_date', 'Event_date:') }}
-            {{ Form::text('event_date') }}
+            {{ Form::label('days', '总天数：') }}
+            {{ Form::text('days') }}
+        </li>
+        <li>
+            {{ Form::label('is_sprint', '是否冲刺:') }}
+            <input type="radio" name="is_sprint" value="1" />是
+            <input type="radio" name="is_sprint" value="0" />否
         </li>
 
         <li>
-            {{ Form::label('status', 'Status:') }}
-            {{ Form::text('status') }}
+            {{ Form::label('type', '任务类型:') }}
+<input type="radio" name="type" value="TEST" />单词测试 
+<input type="radio" name="type" value="HOMEWORK" />作业  
+<input type="radio" name="type" value="VIDEO" />观看视频 
+<input type="radio" name="type" value="EXAM" />阶段测验
         </li>
 
         <li>
-            {{ Form::label('user_id', 'User_id:') }}
-            {{ Form::input('number', 'user_id') }}
+<div name="plan_task_div">
+    <div name="plan_task_div_item">
+开始时间： 
+<input type="text" name="start_date[]" value="" />
+----
+结束时间：
+<input type="text" name="end_date[]" value="" />
+内容：
+<input type="text" name="content[]" id="" value="" />
+           <input name="add_plan_task_btn" type="button" value="+" />
+    </div>
+</div>
         </li>
 
-        <li>
-            {{ Form::label('type', 'Type:') }}
-            {{ Form::text('type') }}
-        </li>
 
-		<li>
-			{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
-		</li>
-	</ul>
+    <li>
+      {{ Form::submit('保存', array('class' => 'btn btn-info')) }}
+    </li>
+  </ul>
 {{ Form::close() }}
 
 @if ($errors->any())
-	<ul>
-		{{ implode('', $errors->all('<li class="error">:message</li>')) }}
-	</ul>
+  <ul>
+    {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+  </ul>
 @endif
 
-
-
-<script src="/js/jquery/jquery.tools.min.js"></script>
-
-<!-- 日历 -->
-<link rel="stylesheet" href="/js/jquery/fullcalendar/fullcalendar.css" />
-<link rel="stylesheet" href="/js/jquery/fullcalendar/fullcalendar.print.css" media='print' />
-<script src="/js/jquery/jquery-ui.js"></script>
-<script src="/js/jquery/fullcalendar/fullcalendar.js"></script>
-<script>
-    $(document).ready(function() {
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-        var calendar = $('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            selectable: true,
-            selectHelper: true,
-            select: function(start, end, allDay) {
-                var title = prompt('我要做的事:');
-                if (title) {
-                    calendar.fullCalendar('renderEvent',
-                        {
-                            title: title,
-                            start: start,
-                            end: end,
-                            allDay: allDay
-                        },
-                        true // make the event "stick"
-                    );
-                }
-                calendar.fullCalendar('unselect');
-            },
-
-            editable: true,
-
-            events: [
-                {
-                    title: '完成作业',
-                    start: new Date(y, m, 1)
-                },
-                {
-                    title: '学习生词',
-                    start: new Date(y, m, d-5),
-                    end: new Date(y, m, d-2)
-                },
-                {
-                    id: 999,
-                    title: '学习生词',
-                    start: new Date(y, m, d-3, 16, 0),
-                    allDay: false
-                },
-                {
-                    id: 999,
-                    title: '学习生词',
-                    start: new Date(y, m, d+4, 16, 0),
-                    allDay: false
-                },
-            ]
-        });
-    });
+<script type="text/javascript" charset="utf-8">
+    var add_plan = function(){
+      $("div[name='plan_task_div']").append($("div[name='plan_task_div_item']").html());
+    }
+    $("input[name='add_plan_task_btn']").on('click',add_plan);
 </script>
-
-      <div id="calendar"> </div><!-- calendar -->
 
 @stop

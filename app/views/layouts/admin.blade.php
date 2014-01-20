@@ -62,11 +62,10 @@
 <li><a href="/admin/" class="list-group-item">做题历史</a></li>
 <li><a href="/admin/" class="list-group-item">日程安排</a></li>
 <li><a href="/admin/" class="list-group-item">编辑日程</a></li>
-<li><a href="/admin/" class="list-group-item">分配教师 </a></li>
 <li><a href="/admin/" class="list-group-item">批改作文 </a></li>
 <li><a href="/admin/" class="list-group-item">消费记录 </a></li>
 <li><a href="/admin/messages" class="list-group-item">发送信息 </a></li>
-<li><a href="/admin/teachers" class="list-group-item">新建教师</a></li>
+<li><a href="/admin/teachers/create" class="list-group-item">新建教师</a></li>
 </ul>
 
 <a href="#" class="list-group-item">视频管理</a>

@@ -10,7 +10,7 @@
             {{ Form::label('paper_id', '试题:') }}
             <select name="paper_id" >
 			        @foreach ($papers as $paper)
-                <option value="{{{ $paper->id}}}" >{{{ $paper->name}}} </option>
+                <option value="{{{ $paper->id}}}" >{{{ $paper->name}}} - {{{ $paper->type }}}</option>
               @endforeach
             </select>
         </li>

@@ -2,7 +2,6 @@
 
 @section('main')
 
-<h1>Create Paper</h1>
 
 {{ Form::open(array('route' => 'admin.papers.store')) }}
 	<ul>

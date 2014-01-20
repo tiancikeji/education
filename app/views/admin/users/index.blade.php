@@ -63,7 +63,10 @@
 <td></td>
                     <td>
  {{ link_to_route('admin.users.edit', 'Edit', array($user->id), array('class' => 'btn btn-info')) }}
-查看学生信息 发送信息   安排日程
+<a href="/admin/users/{{{ $user->id }}}">查看学生信息</a> 
+<a href="">发送信息</a>   
+<a href="">安排日程</a>
+                        <a href="/admin/teachers">分配教师 </a>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.users.destroy', $user->id))) }}
                             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}

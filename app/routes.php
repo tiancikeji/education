@@ -20,12 +20,13 @@ Route::get('/sessions/delete', 'SessionsController@delete');
 Route::get('/registrations/new', 'RegistrationsController@newpage');
 Route::post('/registrations/store', 'RegistrationsController@store');
 
+Route::resource('payments', 'PaymentsController');
 
-// Route::get('/plan', 'PlansController@index');
 
 Route::get('/upgrade', 'UpgradeController@index');
 Route::get('/usercenter', 'UserCenterController@index');
 Route::get('/usercenter/updatepassword', 'UserCenterController@updatepassword');
+Route::get('/plan', 'UserCenterController@plan');
 
 Route::resource('news', 'NewsController');
 Route::resource('topics', 'TopicsController');
@@ -70,4 +71,8 @@ Route::group(array('prefix' => 'admin'), function()
 
 
 
-Route::resource('plans', 'PlansController');
+
+
+// Route::resource('plan_tasks', 'PlanTasksController');
+
+

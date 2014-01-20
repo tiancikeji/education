@@ -8,4 +8,7 @@ class UserCenterController extends BaseController{
     return View::make('usercenter');
   }
 
+  public function plan(){
+    return View::make('plan') ;
+  }
 }
