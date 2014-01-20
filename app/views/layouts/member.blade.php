@@ -53,7 +53,7 @@ $(document).ready(function(){
                     <li>{{{Session::get('current_user')->name}}}</li>
                      @if(count(Payment::where("user_id",'=',Session::get('current_user')->id)->get()) > 0)
                     <li><font color="red">付费版</font></li>
-                    @elseif
+                    @else
                     <li><a href="/upgrade">升级为付费版</a></li>
                       @endif
                     <li><a href="/usercenter">账户中心</a></li>
