@@ -21,9 +21,9 @@
               <div id="calendar"> </div><!-- calendar -->
         </p>
 
-                    @elseif
+                    @else
                         <p>
-                            您当前没有日程计划，这是因为日程计划属于我们的付费服务之一，您可以<span class="l-blue l-line"><a href="upgrade.html">升级为付费版</a></span>使用
+                            您当前没有日程计划，这是因为日程计划属于我们的付费服务之一，您可以<span class="l-blue l-line"><a href="/upgrade">升级为付费版</a></span>使用
                         </p>
                       @endif
 
