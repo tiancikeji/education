@@ -44,19 +44,33 @@ class PaymentsController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-    var_dump($input);
+    // var_dump($input);
     
     $validation = Validator::make($input, Payment::$rules);
     if ($validation->passes())
     {
-       $this->payment->create($input);
-       return Redirect::route('payments.index');
+
+      $count = 0;
+      $fee = 30;
+      $type = Input::get("type");
+      if($type=="composition"){
+        $count = Input::get("composition_count");
+      }
+
+      if($type=="exam"){
+        $count = Input::get("exam_count");
+      }
+      $total = $count * $fee;
+      $user_id = Session::get('current_user')->id;
+      $this->payment->create(['type'=>Input::get('type'),'count'=>$count,'fee'=>$fee,'total'=>$total,'user_id'=>$user_id ]);
+      // return Redirect::route('payments.index');
+			return Redirect::to('/usercenter');
     }
     
-		// return Redirect::route('payments.create')
-		// 	->withInput()
-		// 	->withErrors($validation)
-		//   ->with('message', 'There were validation errors.');
+		return Redirect::route('payments.create')
+			->withInput()
+			->withErrors($validation)
+		  ->with('message', 'There were validation errors.');
 
 	}
 

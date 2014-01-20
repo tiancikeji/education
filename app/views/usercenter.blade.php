@@ -49,13 +49,14 @@
                                 <dt>付费信息：</dt>
                                 <dd>
                                     <div class="user-option cf">
+			@foreach ($payments as $payment)
                                         <ul>
-                                            <li>已购买服务：付费版1</li>
-                                            <li>次购买时间：2013年9月1日</li>
-                                            <li>剩余时间：<strong class="c-red">32</strong> 天</li>
+                                            <li>已购买服务：{{{ $payment->type }}} {{{ $payment->count }}}天</li>
+                                            <li>购买时间：{{{ $payment->created_at }}}</li>
+                                            <li>剩余时间：<strong class="c-red">{{{ $payment->count }}}</strong> 天</li>
                                         </ul>
-                                        <input class="btn btn-large btn-gray fr css3" type="button" value="修 改" />
-                                        <input class="btn btn-large btn-gray fr css3 mr-20" type="button" value="查看消费记录" />
+      <br>
+			@endforeach
                                     </div>
                                 </dd>                          
                             </dl>                            

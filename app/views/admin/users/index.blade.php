@@ -58,7 +58,7 @@
 <td>{{{ $user->id }}}</td>
 <td>{{{ $user->email }}}</td>
 <td>{{{ $user->name }}}</td>
-<td></td>
+<td><a href="/admin/payments?user_id={{{ $user->id }}}">查看</a></td>
 <td>{{{ $user->created_at }}}</td>
 <td></td>
                     <td>

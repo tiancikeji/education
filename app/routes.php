@@ -55,24 +55,7 @@ Route::group(array('prefix' => 'admin'), function()
     Route::resource('words', 'AdminWordsController');
     Route::resource('teachers', 'AdminTeachersController');
     Route::resource('plans', 'AdminPlansController');
+    Route::resource('payments', 'AdminPaymentsController');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Route::resource('plan_tasks', 'PlanTasksController');
 
 

@@ -29,10 +29,10 @@
                             </p>
                             <div class="price-option cf">
                                 <strong>请选择购买时长：</strong>
-                                <label for="radio1"><input type="radio" name="count" id="radio1" checked="checked" value="1" /> 1个月</label>
-                                <label for="radio2"><input type="radio" name="count" id="radio2" value="3"/> 3个月</label>
-                                <label for="radio3"><input type="radio" name="count" id="radio3" value="6"/> 6个月</label>
-                                <label for="radio4"><input type="radio" name="count" id="radio4" value="12"/> 12个月</label>
+                                <label for="radio1"><input type="radio" name="exam_count" checked="checked" value="1" /> 1个月</label>
+                                <label for="radio2"><input type="radio" name="exam_count" value="3"/> 3个月</label>
+                                <label for="radio3"><input type="radio" name="exam_count" value="6"/> 6个月</label>
+                                <label for="radio4"><input type="radio" name="exam_count" value="12"/> 12个月</label>
                             </div>
                         </dd>
                         <dt>
@@ -47,7 +47,7 @@
                             </p>
                             <div class="price-option cf">
                                 <strong>请输入要购买的次数：</strong>
-                                <input class="ipt-txt ipt-normal ipt-large ipt-w1" type="text" name="count"/>
+                                <input class="ipt-txt ipt-normal ipt-large ipt-w1" type="text" name="composition_count"/>
                                 <span>请输入1-X的整数。</span>
                             </div>                            
                         </dd>                          
