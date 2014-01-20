@@ -46,16 +46,23 @@ $(document).ready(function(){
             <div class="fl">
                 我们竭尽所能为您提供出色的SAT考试服务
             </div>
+
+@if(Session::has('current_user'))
             <div class="fr">
                 <ul class="toolbar-menu l-gray l-line">
                     <li>{{{Session::get('current_user')->name}}}</li>
+                     @if(count(Payment::where("user_id",'=',Session::get('current_user')->id)->get()) > 0)
+                    <li><font color="red">付费版</font></li>
+                    @elseif
                     <li><a href="/upgrade">升级为付费版</a></li>
+                      @endif
                     <li><a href="/usercenter">账户中心</a></li>
                     <li><a href="/messages">提醒（<span class="c-red">0</span>）</a></li>
                     <li><a href="/sessions/delete">安全退出</a></li>
                 </ul>
             </div>
 
+@endif
         </div>
     </div><!-- //toolbar -->
 
