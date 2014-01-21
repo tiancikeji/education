@@ -85,7 +85,8 @@
 <a href="#" class="list-group-item">日程管理</a>
 <ul>
   <li><a href="/admin/plans" class="list-group-item">日程模板</a></li>
-  <li><a href="/admin/plans/create" class="list-group-item">新建模板</a></li>
+  <li><a href="/admin/plans/create" class="list-group-item">新建日程模板</a></li>
+  <li><a href="/admin/homeworks" class="list-group-item">作业测试模板</a></li>
 </ul>
 
 <a href="#" class="list-group-item">作业管理</a>

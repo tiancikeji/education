@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('Plan_tasksTableSeeder');
 		$this->call('PaymentsTableSeeder');
 		$this->call('ExamsTableSeeder');
+		$this->call('HomeworksTableSeeder');
 	}
 
 }
