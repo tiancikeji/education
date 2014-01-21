@@ -7,7 +7,6 @@
             <div class="hd hd-1">
               <h3>SAT水平测试卷</h3>
                     <div class="fr">
-                        <a href="calendar.html"><input type="button" class="btn btn-normal btn-white css3" value="日历" /></a>
                     </div>                    
             </div>
               <div class="bd bd-2">
