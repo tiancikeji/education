@@ -38,6 +38,7 @@ Route::resource('words', 'WordsController');
 Route::resource('exercises', 'ExercisesController');
 Route::resource('comments', 'CommentsController');
 Route::resource('teachers', 'TeachersController');
+Route::resource('exams', 'ExamsController');
 
 Route::group(array('prefix' => 'admin'), function()
 {
@@ -56,6 +57,9 @@ Route::group(array('prefix' => 'admin'), function()
     Route::resource('teachers', 'AdminTeachersController');
     Route::resource('plans', 'AdminPlansController');
     Route::resource('payments', 'AdminPaymentsController');
+    Route::resource('exams', 'AdminExamsController');
 });
+
+
 
 

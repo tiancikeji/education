@@ -26,7 +26,7 @@ class AdminExercisesController extends BaseController {
 	 */
 	public function index()
 	{
-		$exercises = $this->exercise->all();
+		$exercises = $this->exercise->where('paper_id','=',Input::get('paper_id'))->get();
 
 		return View::make('admin.exercises.index', compact('exercises'));
 	}
@@ -49,20 +49,21 @@ class AdminExercisesController extends BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::except('answers','is_rights');
+		$input = Input::except('answers','numbers');
 		$validation = Validator::make($input, Exercise::$rules);
     $answers = Input::get('answers');
-    $is_rights = Input::get('is_rights');
+    $numbers = Input::get('numbers');
 		if ($validation->passes())
 		{
 			$exercise = $this->exercise->create($input);
       // print_r($is_rights);
       // print_r($answers);
       for($i=0;$i < count($answers); $i++){
-        Answer::create(['exercises_id' => $exercise->id,
-          'description' => $answers[$i],
-        'is_right' => $is_rights[$i]]); 
-
+        if(!empty($numbers[$i])) {
+          Answer::create(['exercises_id' => $exercise->id,
+            'description' => $answers[$i],
+            'number' => $numbers[$i]]);  
+        }
       } 
 
 			return Redirect::route('admin.exercises.index');

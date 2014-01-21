@@ -16,21 +16,24 @@
         </li>
 
       <li>
-          {{ Form::label('no', 'No:') }}
+          {{ Form::label('no', '编号:') }}
           {{ Form::input('number', 'no') }}
       </li>
 
       <li>
-          {{ Form::label('description', 'Description:') }}
+          {{ Form::label('description', '描述:') }}
           {{ Form::textarea('description') }}
       </li>
-      
       <li>
-answers:<br/>
-        是否是正确答案：<input type="input" name="is_rights[]" value="0" > 选项：<input type="text" name="answers[]" value="" /><br>
-        是否是正确答案：<input type="input" name="is_rights[]" value="0" >选项：<input type="text" name="answers[]" value="" /><br>
-        是否是正确答案：<input type="input" name="is_rights[]" value="0" >选项：<input type="text" name="answers[]" value="" /><br>
-        是否是正确答案：<input type="input" name="is_rights[]" value="0" >选项：<input type="text" name="answers[]" value="" /><br>
+          {{ Form::label('description', '正确答案：') }}
+          {{ Form::input('right_answer', 'right_answer') }}
+      </li>
+      <li>答案:<br/>
+        选项：<input type="text" name="numbers[]" size="5" value="" />描述:<input type="text" name="answers[]" value="" /><br>
+        选项：<input type="text" name="numbers[]" size="5" value="" />描述:<input type="text" name="answers[]" value="" /><br>
+        选项：<input type="text" name="numbers[]" size="5" value="" />描述:<input type="text" name="answers[]" value="" /><br>
+        选项：<input type="text" name="numbers[]" size="5" value="" />描述:<input type="text" name="answers[]" value="" /><br>
+        选项：<input type="text" name="numbers[]" size="5" value="" />描述:<input type="text" name="answers[]" value="" /><br>
       </li>
 		<li>
 			{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}

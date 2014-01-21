@@ -13,7 +13,7 @@
                             您尚未进行SAT水平测试（测试后可查看SAT水平分析），是否现在开始？ </p>
                     </div>
                     <p class="ac pb-50">
-                        <a href="test.html"><input class="btn btn-large btn-blue css3" type="button" value="开 始" /></a>
+                        <a href="/exams/create"><input class="btn btn-large btn-blue css3" type="button" value="开 始" /></a>
                     </p>
                     <div class="tips tips-1">
 @if(count(Payment::where("user_id",'=',Session::get('current_user')->id)->get()) > 0)

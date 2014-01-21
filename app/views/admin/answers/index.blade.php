@@ -22,6 +22,7 @@
 					<td>{{{ $answer->id }}}</td>
 					<td>{{{ $answer->description }}}</td>
 					<td>{{{ $answer->exercise_id }}}</td>
+					<td>{{{ $answer->number }}}</td>
                     <td>{{ link_to_route('admin.answers.edit', 'Edit', array($answer->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.answers.destroy', $answer->id))) }}
