@@ -7,7 +7,7 @@
               <h3>我的计划</h3>
             </div>
               <div class="bd bd-2">
-
+@if(count(Exam::where("user_id",'=',Session::get('current_user')->id)->get()) == 0)
                     <div class="tips tips-1">
                         <p>
                             您尚未进行SAT水平测试（测试后可查看SAT水平分析），是否现在开始？ 
@@ -16,6 +16,8 @@
                     <p class="ac pb-50">
                         <a href="/exams/create"><input class="btn btn-large btn-blue css3" type="button" value="开 始" /></a>
                     </p>
+
+@endif
                     <div class="tips tips-1">
 @if(count(Payment::where("user_id",'=',Session::get('current_user')->id)->get()) > 0)
                         <p>

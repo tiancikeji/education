@@ -109,7 +109,7 @@ class ExamsController extends BaseController {
     $score = 0;
     foreach($exercises as $exercise){
        $answers .=  $exercise->id."+".Input::get("exercise_".$exercise->id).";";
-       if($exercise->right_anwser == Input::get("exercise_".$exercise->id)){
+       if($exercise->right_answer === Input::get("exercise_".$exercise->id)){
           $score += 1;  
        }
     }
