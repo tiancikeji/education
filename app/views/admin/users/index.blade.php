@@ -48,6 +48,7 @@
         <th>付费情况</th>
         <th>注册日期</th>
         <th>水平评级</th>
+        <th>日程</th>
         <th>操作</th>
       </tr>
     </thead>
@@ -67,15 +68,14 @@
 </td>
 <td>{{{ $user->created_at }}}</td>
 <td>{{ Exam::where('user_id','=',$user->id)->first()['score'] }}</td>
+<td>
+{{ Userplan::where('user_id','=',$user->id)->first() }}
+</td>
                     <td>
- {{ link_to_route('admin.users.edit', 'Edit', array($user->id), array('class' => 'btn btn-info')) }}
 <a href="/admin/users/{{{ $user->id }}}">查看学生信息</a> 
 <a href="/admin/messages/create?user_id={{{ $user->id }}} ">发送信息</a>   
 <a href="/admin/userplans/create?user_id={{{ $user->id }}}">安排日程</a>
 <a href="/admin/userteachers/create?user_id={{{ $user->id }}}">分配教师 </a>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.users.destroy', $user->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                        {{ Form::close() }}
                     </td>
         </tr>
       @endforeach
