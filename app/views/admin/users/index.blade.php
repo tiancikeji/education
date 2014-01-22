@@ -69,7 +69,7 @@
 <td>{{{ $user->created_at }}}</td>
 <td>{{ Exam::where('user_id','=',$user->id)->first()['score'] }}</td>
 <td>
-{{ Userplan::where('user_id','=',$user->id)->first() }}
+{{ Userplan::where('user_id','=',$user->id)->count() }}
 </td>
                     <td>
 <a href="/admin/users/{{{ $user->id }}}">查看学生信息</a> 
