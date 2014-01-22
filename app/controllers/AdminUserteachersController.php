@@ -8,9 +8,11 @@ class AdminUserteachersController extends BaseController {
 	 * @var Userteacher
 	 */
 	protected $userteacher;
+  protected $teacher;
 
-	public function __construct(Userteacher $userteacher)
+	public function __construct(Userteacher $userteacher,Teacher $teacher)
 	{
+    $this->teacher = $teacher;
 		$this->userteacher = $userteacher;
 	}
 
@@ -33,7 +35,8 @@ class AdminUserteachersController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.userteachers.create');
+    $teachers = $this->teacher->all();
+		return View::make('admin.userteachers.create',compact('teachers'));
 	}
 
 	/**

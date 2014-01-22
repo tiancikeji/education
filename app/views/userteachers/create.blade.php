@@ -4,8 +4,7 @@
 
 <h1>Create Userteacher</h1>
 
-{{ Form::open(array('route' => 'userteachers.store')) }}
-	<ul>
+{{ Form::open(array('route' => 'userteachers.store')) }} <ul>
         <li>
             {{ Form::label('user_id', 'User_id:') }}
             {{ Form::input('number', 'user_id') }}

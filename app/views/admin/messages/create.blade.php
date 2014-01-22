@@ -26,14 +26,9 @@
             {{ Form::text('type') }}
         </li>
 
-        <li>
-            {{ Form::label('user_id', 'User_id:') }}
-            {{ Form::input('number', 'user_id') }}
-        </li>
+            {{ Form::input('hidden', 'user_id',Input::get('user_id')) }}
 
-		<li>
 			{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
-		</li>
 	</ul>
 {{ Form::close() }}
 

@@ -1,9 +1,9 @@
-@extends('layouts.scaffold')
+@extends('layouts.admin')
 
 @section('main')
 
 <h1>Edit Userteacher</h1>
-{{ Form::model($userteacher, array('method' => 'PATCH', 'route' => array('userteachers.update', $userteacher->id))) }}
+{{ Form::model($userteacher, array('method' => 'PATCH', 'route' => array('admin.userteachers.update', $userteacher->id))) }}
 	<ul>
         <li>
             {{ Form::label('user_id', 'User_id:') }}
@@ -17,7 +17,7 @@
 
 		<li>
 			{{ Form::submit('Update', array('class' => 'btn btn-info')) }}
-			{{ link_to_route('userteachers.show', 'Cancel', $userteacher->id, array('class' => 'btn')) }}
+			{{ link_to_route('admin.userteachers.show', 'Cancel', $userteacher->id, array('class' => 'btn')) }}
 		</li>
 	</ul>
 {{ Form::close() }}

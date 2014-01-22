@@ -8,10 +8,12 @@ class AdminUserplansController extends BaseController {
 	 * @var Userplan
 	 */
 	protected $userplan;
+  protected $plan;
 
-	public function __construct(Userplan $userplan)
+	public function __construct(Plan $plan,Userplan $userplan)
 	{
 		$this->userplan = $userplan;
+    $this->plan = $plan;
 	}
 
 	/**
@@ -33,7 +35,8 @@ class AdminUserplansController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.userplans.create');
+    $plans = $this->plan->all();
+		return View::make('admin.userplans.create',compact('plans'));
 	}
 
 	/**
