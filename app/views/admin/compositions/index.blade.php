@@ -1,10 +1,10 @@
-@extends('layouts.scaffold')
+@extends('layouts.admin')
 
 @section('main')
 
 <h1>All Compositions</h1>
 
-<p>{{ link_to_route('compositions.create', 'Add new composition') }}</p>
+<p>{{ link_to_route('admin.compositions.create', 'Add new composition') }}</p>
 
 @if ($compositions->count())
 	<table class="table table-striped table-bordered">
@@ -28,9 +28,9 @@
 					<td>{{{ $composition->content }}}</td>
 					<td>{{{ $composition->note }}}</td>
 					<td>{{{ $composition->teacher_id }}}</td>
-                    <td>{{ link_to_route('compositions.edit', 'Edit', array($composition->id), array('class' => 'btn btn-info')) }}</td>
+                    <td>{{ link_to_route('admin.compositions.edit', 'Edit', array($composition->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('compositions.destroy', $composition->id))) }}
+                        {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.compositions.destroy', $composition->id))) }}
                             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>

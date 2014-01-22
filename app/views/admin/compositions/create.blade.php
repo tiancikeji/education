@@ -1,10 +1,10 @@
-@extends('layouts.scaffold')
+@extends('layouts.admin')
 
 @section('main')
 
 <h1>Create Composition</h1>
 
-{{ Form::open(array('route' => 'compositions.store')) }}
+{{ Form::open(array('route' => 'admin.compositions.store')) }}
 	<ul>
         <li>
             {{ Form::label('user_id', 'User_id:') }}

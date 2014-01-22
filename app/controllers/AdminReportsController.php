@@ -23,7 +23,7 @@ class AdminReportsController extends BaseController {
 	{
 		$reports = $this->report->all();
 
-		return View::make('admin.eports.index', compact('reports'));
+		return View::make('admin.reports.index', compact('reports'));
 	}
 
 	/**
