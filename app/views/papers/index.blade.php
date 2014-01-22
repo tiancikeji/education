@@ -4,21 +4,17 @@
 
         <div class="grid">
 
-        	<div class="mod">
-        		<div class="hd hd-1">
-        			<h3>题库</h3>
+          <div class="mod">
+            <div class="hd hd-1">
+              <h3>题库</h3>
                     <div class="fr">
                         <ul id="Tabs-2" class="tabs">
                             <li><a href="#">我的题库</a></li>
                             <li><a href="#">做题历史</a></li>
                         </ul>
                     </div>
-        		</div>
-            	<div class="bd bd-1">
-
-                    <div class="tips tips-2">
-                        用户：Zack， 能力评级：<strong class="c-red">A</strong>。
-                    </div>
+            </div>
+              <div class="bd bd-1">
 
                     <div class="panes-2">
                         <div>
@@ -66,24 +62,33 @@
                                     </thead>
                                     <tbody>
 @if ($papers->count())
-			@foreach ($papers as $paper)
+      @foreach ($papers as $paper)
                                          <tr>
                                             <td>{{{ $paper->published_date }}}</td>
                                             <td>{{{ $paper->name }}}</td>
                                             <td>
-                                                <a href="question-mode.html"><input type="button" class="btn btn-normal btn-white css3" value="开始" /></a>
+
+{{ Form::open(array('route' => 'exams.store')) }}
+<input type="hidden" name="paper_id" id="" value="{{{$paper->id}}}" />
+<input type="submit" class="btn btn-normal btn-white css3" value="开始" />
+{{ Form::close() }}
+@if ($errors->any())
+    {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+@endif
+
+
                                             </td>
                                         </tr>
 
-										
-			@endforeach
+
+      @endforeach
 @else
-	There are no papers
+  There are no papers
 @endif
                                     </tbody>
                                 </table>
                             </div><!-- question list -->       
-                        
+
                             <div class="paging" style="display:none;">
                                 <a href="javascript:void(0);">上一页</a>
                                 <a class="on" href="javascript:void(0);">1</a>
@@ -130,23 +135,23 @@
                                     </thead>
                                     <tbody>
 @if ($papers->count())
-			@foreach ($papers as $paper)
- 
+      @foreach ($exams as $exam)
+
                                         <tr>
-                                            <td>2013年3月</td>
-                                            <td>单词测验</td>
+                                            <td>{{{ $exam->created_at}}}</td>
+                                            <td>{{{Paper::find($exam->paper_id)->name }}}</td>
                                             <td>考试模式</td>
                                             <td><input type="button" class="btn btn-normal btn-white css3" value="查看" /></td>
                                         </tr>
-			@endforeach
+      @endforeach
 @else
-	There are no papers
+  There are no exam
 @endif
 
                                     </tbody>
                                 </table>
                             </div><!-- question list -->       
-                        
+
                             <div class="paging" style="display:none;">
                                 <a href="javascript:void(0);">上一页</a>
                                 <a class="on" href="javascript:void(0);">1</a>
@@ -159,8 +164,8 @@
                         </div><!-- table list -->
 
                     </div><!-- Tabs 2 -->
-            	</div>
-        	</div><!-- mod -->
+              </div>
+          </div><!-- mod -->
 
         </div>
     </div><!-- //container -->
@@ -168,10 +173,10 @@
 
 
 <script>
-  $(function() {
-      // Tabs 1
-      // http://jquerytools.org/demos/tabs/index.html
-      $("ul#Tabs-2").tabs("div.panes-2 > div"); 
+$(function() {
+  // Tabs 1
+  // http://jquerytools.org/demos/tabs/index.html
+  $("ul#Tabs-2").tabs("div.panes-2 > div"); 
 
   });
 </script>

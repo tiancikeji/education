@@ -66,8 +66,12 @@
 @endif
 <a href="/admin/payments?user_id={{{ $user->id }}}">查看</a>
 </td>
-<td>{{{ $user->created_at }}}</td>
-<td>{{ Exam::where('user_id','=',$user->id)->first()['score'] }}</td>
+<td>
+  {{{ $user->created_at }}}
+</td>
+<td>
+  {{ Exam::where('user_id','=',$user->id)->count() }}
+</td>
 <td>
 {{ Userplan::where('user_id','=',$user->id)->count() }}
 </td>

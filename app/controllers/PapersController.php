@@ -9,11 +9,13 @@ class PapersController extends BaseController {
 	 */
 	protected $paper;
 
+  protected $exam;
   protected $layout = "layouts.member";
 
-	public function __construct(Paper $paper)
+	public function __construct(Paper $paper, Exam $exam)
 	{
 		$this->paper = $paper;
+    $this->exam = $exam;
 	}
 
 	/**
@@ -25,7 +27,8 @@ class PapersController extends BaseController {
 	{
 		$papers = $this->paper->all();
     $numbers= $this->paper->count();
-		return View::make('papers.index', compact('papers','numbers'));
+    $exams= $this->exam->where('user_id','=',Session::get('current_user')->id)->get();
+		return View::make('papers.index', compact('papers','numbers','exams'));
 	}
 
 	/**

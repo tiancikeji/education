@@ -106,8 +106,12 @@ class ExamsController extends BaseController {
     $paper = $this->paper->find($exam->paper_id);
 		$exercises = $this->exercise->where('paper_id','=',$paper->id)->get();
     $answers  = "";
+    $score = 0;
     foreach($exercises as $exercise){
        $answers .=  $exercise->id."+".Input::get("exercise_".$exercise->id).";";
+       if($exercise->right_anwser == Input::get("exercise_".$exercise->id)){
+          $score += 1;  
+       }
     }
 
     // var_dump($input);
@@ -115,6 +119,7 @@ class ExamsController extends BaseController {
 		// if ($validation->passes())
 		// {
 		$exam->answers = $answers;
+    $exam->score = $score;
 		$exam->end_time = date('Y-m-d H:i:s');
 		$exam->save();
 		return Redirect::route('exams.show', $id);
