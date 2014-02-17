@@ -53,7 +53,8 @@ class AdminUserplansController extends BaseController {
 		{
 			$this->userplan->create($input);
 
-			return Redirect::route('admin.userplans.index');
+
+			return Redirect::to('/admin/userplans?user_id='.Input::get("user_id"));
 		}
 
 		return Redirect::route('admin.userplans.create')
