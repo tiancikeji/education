@@ -24,10 +24,7 @@ class RegistrationsController extends BaseController {
 
       if ($validation->passes())
       {
-        $password  = Input::get('password');
-
-			  $this->user->create(['username' => Input::get('username'),'name' => Input::get('name'),'password' => $password]);
-
+        $this->user = $this->user->create($input);
         Session::put('current_user', $this->user);
         return Redirect::to('/usercenter');
       }
