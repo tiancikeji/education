@@ -35,13 +35,18 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+	// if (Auth::guest()) return Redirect::guest('login');
+  if(!Session::has('current_user')){
+	  return Redirect::to('/sessions/new');
+  }
 });
 
 
-Route::filter('auth.basic', function()
+Route::filter('admin', function()
 {
-	return Auth::basic();
+  if(!Session::has('current_admin')){
+	  return Redirect::to('/admin/signin');
+  }
 });
 
 /*

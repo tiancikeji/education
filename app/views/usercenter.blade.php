@@ -12,9 +12,6 @@
                     </div>
         		</div>
             	<div class="bd bd-1">
-                    <div class="tips tips-2">
-                        用户：{{{$user->name}}}， 能力评级：<strong class="c-red">A</strong>， 服务剩余：<strong class="c-red">32</strong> 天。
-                    </div>
                     <div class="panes-1">
                         <div>
                             <dl class="user-info">
@@ -39,8 +36,8 @@
                                     <div class="user-option cf">
                                         <ul>
                                             <li>希望就读学校：哈佛</li>
-                                            <li>每天复习时间：3小时</li>
-                                            <li>单词量估计：5000词</li>
+                                            <li>每天复习时间：{{{$user->study_time_everyweek}}}</li>
+                                            <li>单词量估计：{{{$user->learn_words}}}词</li>
                                             <li>当前水平：中级</li>
                                         </ul>
                                         <input class="btn btn-large btn-gray fr css3" type="button" value="修 改" />

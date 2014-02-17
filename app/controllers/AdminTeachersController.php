@@ -48,7 +48,7 @@ class AdminTeachersController extends BaseController {
 
 		if ($validation->passes())
 		{
-      $password  = Hash::make(Input::get('password'));
+      $password  = Input::get('password');
 			$this->teacher->create(['username' => Input::get('username'),'name' => Input::get('name'),'password' => $password]);
 
 			return Redirect::route('admin.teachers.index');

@@ -25,7 +25,7 @@ class SessionsController extends BaseController {
         Session::flash('message', 'user is not exist');
 			  return Redirect::to('/sessions/new');
       }
-      if ($model->password != $password){
+      if($password != $model->password){
         Session::flash('message', 'password is not correct');
 			  return Redirect::to('/sessions/new');
       }
