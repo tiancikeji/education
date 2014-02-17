@@ -73,7 +73,10 @@
   {{ Exam::where('user_id','=',$user->id)->count() }}
 </td>
 <td>
+
+<a href="/admin/userplans?user_id={{{ $user->id }}}">
 {{ Userplan::where('user_id','=',$user->id)->count() }}
+</a>
 </td>
                     <td>
 <a href="/admin/users/{{{ $user->id }}}">查看学生信息</a> 

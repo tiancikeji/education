@@ -23,7 +23,7 @@ class AdminUserplansController extends BaseController {
 	 */
 	public function index()
 	{
-		$userplans = $this->userplan->all();
+		$userplans = $this->userplan->where('user_id','=',Input::get("user_id"))->get();
 
 		return View::make('admin.userplans.index', compact('userplans'));
 	}

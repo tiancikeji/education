@@ -78,10 +78,11 @@ $(document).ready(function(){
 
             <nav class="nav fl">
             	<ul>
-            		<li class="active"><a href="/plan">我的计划</a></li>
-                    <li><a href="/videos">解析视频</a></li>
-                    <li><a href="/papers">题库</a></li>
-                    <li><a href="/topics">疑难解答</a></li>
+
+            		<li @if(Request::segment(1)=="plan") class="active" @endif ><a href="/plan">我的计划</a></li>
+                    <li @if(Request::segment(1)=="videos") class="active" @endif ><a href="/videos">解析视频</a></li>
+                    <li @if(Request::segment(1)=="papers") class="active" @endif><a href="/papers">题库</a></li>
+                    <li @if(Request::segment(1)=="topics") class="active" @endif><a href="/topics">疑难解答</a></li>
             	</ul>
             </nav><!-- nav -->
 
