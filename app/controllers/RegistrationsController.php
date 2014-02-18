@@ -13,9 +13,11 @@ class RegistrationsController extends BaseController {
 
 
     public function newpage(){
-
       return View::make('registrations.new');
+    } 
 
+    public function success(){
+      return View::make('registrations.success');
     } 
 
     public function store(){
@@ -24,9 +26,18 @@ class RegistrationsController extends BaseController {
 
       if ($validation->passes())
       {
-        $this->user = $this->user->create($input);
-        Session::put('current_user', $this->user);
-        return Redirect::to('/usercenter');
+        $token = Hash::make('secret');
+        $this->user->name = Input::get("name");
+        $this->user->email = Input::get("email");
+        $this->user->password = Input::get("password");
+        $this->user->token = $token;
+        $this->user->save();
+        // Session::put('current_user', $this->user);
+        $path = app_path();
+        Mail::send('mails.welcome', array('name'=>Input::get('name'),'token'=>$token,'path'=>$path), function($message){
+          $message->to(Input::get('email'), Input::get('name'))->subject('Welcome to the Laravel 4 Auth App!');
+        });
+        return Redirect::to('/registrations/success');
       }
 
       return Redirect::to('/registrations/new')
@@ -36,5 +47,5 @@ class RegistrationsController extends BaseController {
     
       }
 
-}
+   }
 

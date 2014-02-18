@@ -19,3 +19,10 @@ composer install
 alter table news add column teacher_id int(10);
 
 alter table news add column subtitle varchar(255);
+
+
+
+alter table users add column token varchar(255);
+
+
+alter table users add column confirm_at varchar(255);

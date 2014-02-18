@@ -23,7 +23,7 @@
 				<tr>
 <td><img src="{{{ $news->overlay }}}" alt="" /></td>
 					<td>{{{ $news->author }}}</td>
-					<td>{{{ $news->published_date }}}</td>
+					<td>{{{ $news->created_at }}}</td>
 					<td>{{{ $news->subtitle }}}</td>
 					<td>{{{ $news->title }}}</td>
                     <td>{{ link_to_route('admin.news.edit', '编辑', array($news->id), array('class' => 'btn btn-info')) }}</td>

@@ -14,9 +14,12 @@
 Route::get('/', 'HomeController@showWelcome');
 Route::get('/sessions/new', 'SessionsController@newpage');
 Route::post('/sessions/save', 'SessionsController@save');
+Route::get('/confirm', 'SessionsController@confirm');
 Route::get('/sessions/delete', 'SessionsController@delete');
 Route::get('/registrations/new', 'RegistrationsController@newpage');
+Route::get('/registrations/success', 'RegistrationsController@success');
 Route::post('/registrations/store', 'RegistrationsController@store');
+
 Route::resource('news', 'NewsController');
 Route::resource('exercises', 'ExercisesController');
 

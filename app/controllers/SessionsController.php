@@ -22,16 +22,32 @@ class SessionsController extends BaseController {
       $password = Input::get("password");
       $model = $this->user->where('email','=',$username)->firstOrFail();
 		  if (is_null($model)){
-        Session::flash('message', 'user is not exist');
+        Session::flash('message', '用户不存在');
 			  return Redirect::to('/sessions/new');
       }
       if($password != $model->password){
-        Session::flash('message', 'password is not correct');
+        Session::flash('message', '密码不正确');
+			  return Redirect::to('/sessions/new');
+      }
+      if(!$model->confirm_at){
+        Session::flash('message', '邮箱未验证');
 			  return Redirect::to('/sessions/new');
       }
       Session::put('current_user', $model);
 			return Redirect::to('/usercenter');
     } 
+    
+    public function confirm(){
+      $token = Input::get("token") ;
+      $date = date('m/d/Y h:i:s', time());
+      if($token){
+        $model = $this->user->where('token','=',$token)->firstOrFail();
+        $model->confirm_at = $date;
+        $model->save();
+        Session::put('current_user', $model);
+			  return Redirect::to('/usercenter');
+      }
+    }
 
 
     public function delete(){
