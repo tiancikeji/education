@@ -23,19 +23,21 @@ class AdminController extends BaseController {
   public function login(){
       $username = Input::get("username");
       $password = Input::get("password");
-      $model = $this->teacher->where('username','=',$username)->firstOrFail();
-		  if (is_null($model)){
+      $this->teacher = $this->teacher->where('username','=',$username)->firstOrFail();
+		  if (is_null($this->teacher)){
        Session::flash('message', 'user is not exist');
 			 return Redirect::to('/admin/signin');
       }
       // var_dump($model->password);
       // var_dump($password);
 
-      if($model->password != $password){
+      if($this->teacher->password != $password){
         Session::flash('message', 'password is not correct');
 			 return Redirect::to('/admin/signin');
       }
-      Session::put('current_admin', $model);
+      Session::put("current_admin", $this->teacher);
+      Session::put("current_admin_id", $this->teacher->id);
+    // var_dump(Session::get("current_admin"));
 	    return Redirect::to('/admin/main');
 
   }

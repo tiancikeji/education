@@ -13,3 +13,9 @@ https://github.com/JeffreyWay/Laravel-4-Generators
 $ mv composer.phar /usr/local/bin/composer
 
 composer install
+
+
+
+alter table news add column teacher_id int(10);
+
+alter table news add column subtitle varchar(255);

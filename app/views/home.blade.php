@@ -126,8 +126,8 @@
                                     </div>
                                 </a>
                                 <dl>
-                                    <dt><a href="/news/{{{ $n->id }}}">{{{ $n->title }}}</a></dt>
-                                    <dd>{{{ $n->body }}}</dd>
+                                    <dt><a href="/news/{{{ $n->id }}}"><?php echo substr($n->title,0,8); ?></a></dt>
+                                    <dd> <?php echo substr($n->subtitle,0,8); ?></dd>
                                 </dl>
                             </li>
 			@endforeach

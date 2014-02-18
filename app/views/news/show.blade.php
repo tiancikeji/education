@@ -33,10 +33,10 @@
                             <div class="details news-details">
                                 <div class="details-title">
                                     <h1>{{{ $news->title }}}</h1>
-                                    <p>{{{ $news->author }}}--{{{ $news->published_date }}}</p>
+                                    <p>{{{ $news->author }}}--{{{ $news->created_at }}}</p>
                                 </div>
                                 <div class="details-cont">
-                                    {{{ $news->body }}}
+                                  <?php echo $news->body; ?>
                                 </div>
                             </div>
                         </div><!-- news details -->

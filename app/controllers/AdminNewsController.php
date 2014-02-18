@@ -10,9 +10,12 @@ class AdminNewsController extends BaseController {
 	 */
 	protected $news;
 
-	public function __construct(News $news)
+  protected $teacher;
+
+	public function __construct(News $news,Teacher $teacher)
 	{
 		$this->news = $news;
+    $this->teacher = $teacher;
 	}
 
 	/**
@@ -31,8 +34,7 @@ class AdminNewsController extends BaseController {
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
-	 */
-	public function create()
+	 */ public function create()
 	{
 		return View::make('admin.news.create');
 	}
@@ -46,12 +48,13 @@ class AdminNewsController extends BaseController {
 	{
 		$input = Input::all();
 		$validation = Validator::make($input, News::$rules);
+    $teacher = $this->teacher->findOrFail(Session::get("current_admin_id"));
 
 		if ($validation->passes())
 		{
 			// $this->news->create($input);
       
-      $destinationPath = '';
+     $destinationPath = '';
       $filename        = '';
 
       if (Input::hasFile('overlay')) {
@@ -61,10 +64,14 @@ class AdminNewsController extends BaseController {
           $uploadSuccess   = $file->move($destinationPath, $filename);
       }
 
+      // $teacher = $this->teacher->findOrFail(Session::get('current_admin')->id);
       $this->news = News::create(['author' => Input::get('author'),
-        'published_date' => Input::get('published_date'),
+        'published_date' => "",
         'body' => Input::get('body'),
         'title' => Input::get('title'),
+        'subtitle' => Input::get('subtitle'),
+        'author' => $teacher->name,
+        'teacher_id' => $teacher->id,
         'overlay' =>'/uploads/news/'.$filename ]);
 
 			return Redirect::route('admin.news.index');
@@ -74,6 +81,7 @@ class AdminNewsController extends BaseController {
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
+
 	}
 
 	/**
@@ -118,10 +126,34 @@ class AdminNewsController extends BaseController {
 		$input = array_except(Input::all(), '_method');
 		$validation = Validator::make($input, News::$rules);
 
+    $teacher = $this->teacher->findOrFail(Session::get("current_admin_id"));
 		if ($validation->passes())
 		{
 			$news = $this->news->find($id);
-			$news->update($input);
+
+
+     $destinationPath = '';
+     $filename        = '';
+
+      if (Input::hasFile('overlay')) {
+          $file            = Input::file('overlay');
+          $destinationPath = public_path().'/uploads/news/';
+          $filename        = str_random(6) . '_' . $file->getClientOriginalName();
+          $uploadSuccess   = $file->move($destinationPath, $filename);
+      }
+
+      $news->author = Input::get('author');
+      $news->published_date = "";
+      $news->body = Input::get("body");
+      $news->title = Input::get("title");
+      $news->subtitle = Input::get("subtitle");
+      $news->author = $teacher->name;
+      $news->teacher_id = $teacher->id;
+      $news->overlay ="/uploads/news/".$filename;
+        
+      $news->save();
+
+
 
 			return Redirect::route('admin.news.show', $id);
 		}

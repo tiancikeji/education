@@ -2,6 +2,20 @@
 
 @section('main')
 
+
+<link rel="stylesheet" href="/kindeditor-4.1.10/themes/default/default.css" />
+    <script charset="utf-8" src="/kindeditor-4.1.10/kindeditor-min.js"></script>
+    <script charset="utf-8" src="/kindeditor-4.1.10/lang/zh_CN.js"></script>
+    <script>
+      var editor;
+      KindEditor.ready(function(K) {
+        editor = K.create('textarea[name="body"]', {
+          allowFileManager : true
+        });
+      });
+    </script>
+
+
 <h1>创建新消息</h1>
 
 {{ Form::open(array('route' => 'admin.news.store','files'=>true)) }}
