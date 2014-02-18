@@ -11,7 +11,10 @@
             {{ Form::label('title', '咨询标题:') }}
             {{ Form::text('title') }}
         </li>
-
+        <li>
+            {{ Form::label('subtitle', '简介:') }}
+            {{ Form::text('subtitle') }}
+        </li>
         <li>
             {{ Form::label('body', '标题正文:') }}
             {{ Form::textarea('body') }}
@@ -23,14 +26,14 @@
         </li>
 
 
-        <li>
-            {{ Form::label('author', '发布作者:') }}
-            {{ Form::text('author') }}
-        </li>
-        <li>
-            {{ Form::label('published_date', '发布时间:') }}
-            {{ Form::text('published_date') }}
-        </li>
+        <!-- <li> -->
+        <!--     {{ Form::label('author', '发布作者:') }} -->
+        <!--     {{ Form::text('author') }} -->
+        <!-- </li> -->
+        <!-- <li> -->
+        <!--     {{ Form::label('published_date', '发布时间:') }} -->
+        <!--     {{ Form::text('published_date') }} -->
+        <!-- </li> -->
 
 		<li>
 			{{ Form::submit('提交', array('class' => 'btn btn-info')) }}
