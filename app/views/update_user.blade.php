@@ -37,33 +37,20 @@
                                 <tr>
                                     <th>出生日期：</th>
                                     <td>
-                                        <select name="birthday" class="select">
-                                            <option value={{{ $user->birthday}}}>{{{$user->birthday}}} </option>
-                                        </select>
-                                        <select class="select">
-                                            <option value={{{ $user->birthday}}}>{{{$user->birthday}}}</option>
-                                        </select>
-                                        <select class="select">
-                                            <option value={{{$user->birthday}}}>{{{$user->birthday}}}</option>
-                                        </select>
+                                      <input class="ipt-txt ipt-large" type="text" name="birthday" value={{{$user->birthday}}} />
+                                    </td>
                                     </td>
                                 </tr> 
                                 <tr>
                                     <th>所在地：</th>
                                     <td>
-                                        <select name="location" class="select">
-                                            <!-- <option value="ss">ss</option> -->
-                                            <option value={{{$user->location}}}>ss</option>
-                                        </select>
+                                      <input  class="ipt-txt ipt-large" type="text" name="location" value={{{$user->location}}} />
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>所在高中：</th>
                                     <td>
-                                        <select name="school" class="select">
-                                            <option value={{{ $user->school}}}>{{{ $user->school}}}</option>
-                                            <option value={{{ $user->school}}}>{{{ $user->school}}}</option>
-                                        </select>
+                                      <input  class="ipt-txt ipt-large" type="text" name="school" value={{{$user->school}}} />
                                     </td>
                                 </tr>
                                 <tr>
@@ -81,10 +68,7 @@
                                 <tr>
                                     <th>目标学校：</th>
                                     <td>
-                                        <select name="dream_school" class="select">
-                                            <!-- <option value="ds">{{{ $user->dream_school}}} </option> -->
-                                            <option value={{{ $user->dream_school}}}>{{{ $user->dream_school}}} </option>
-                                        </select>
+                                      <input  class="ipt-txt ipt-large" type="text" name="dream_school" value={{{$user->dream_school}}} />
                                     </td>
                                 </tr>
                                 <tr>

@@ -27,7 +27,7 @@
                     </div><!-- btn groups -->       
 
                     <div class="md-simple">
-                        <h4 class="hd-simple">按发帖时间排序 （共{{{ $numb}}}条）</h4>
+                        <h4 class="hd-simple">按发帖时间排序 （共{{{ $topics->count()}}}条）</h4>
                         <table class="table table-list">
                             <thead>
                                 <tr>

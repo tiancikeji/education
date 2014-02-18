@@ -24,8 +24,7 @@ class TopicsController extends BaseController {
 	public function index()
 	{
 		$topics = $this->topic->all();
-    $numb=$this->topic->count();
-		return View::make('topics.index', compact('topics','numb'));
+		return View::make('topics.index', compact('topics'));
   
   }
 
@@ -36,9 +35,8 @@ class TopicsController extends BaseController {
  */
   public function check(){
  $check=Input::get("check"); 
- $topics=$this->topic->where('titile','like',$check)->get();
- $numb=$this->topic->count();
-		return View::make('topics.index', compact('topics','numb'));
+ $topics=$this->topic->where('titile','like',"%".$check."%")->get();
+		return View::make('topics.index', compact('topics'));
   }
     
 

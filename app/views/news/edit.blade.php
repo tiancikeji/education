@@ -2,7 +2,7 @@
 
 @section('main')
 
-<h1>Edit News</h1>
+<h1>编辑新消息</h1>
 {{ Form::model($news, array('method' => 'PATCH', 'route' => array('news.update', $news->id))) }}
 	<ul>
         <li>

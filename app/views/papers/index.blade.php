@@ -19,21 +19,21 @@
                     <div class="panes-2">
                         <div>
                             <h4 class="hd-simple-2">试题分类检索：</h4>
-                      <form action="/papers/check" method="post">
+                      <form action="/papers/search" method="post">
                             <div class="video-search cf">
                                 <ul class="fl">
                                     <li>
                                         <p>试题日期：</p>
-                                        <select class="select">
-                                            <option value="">1990年</option>
+                                        <select name="year"class="select">
+                                            <option value="1990">1990年</option>
                                         </select>
-                                        <select class="select">
+                                        <select name="month" class="select">
                                             <option value="">12月</option>
                                         </select>  ——   
-                                        <select class="select">
+                                        <select name="yearend" class="select">
                                             <option value="">1991年</option>
                                         </select>
-                                        <select class="select">
+                                        <select name="monthend"class="select">
                                             <option value="">12月</option>
                                         </select>                                                                                             
                                     </li>
@@ -51,7 +51,7 @@
                             </div><!-- search -->
                         </form>
                             <div class="md-simple">
-                                <h4 class="hd-simple">2003年5月 - 2003年7月 （共{{{$numbers}}}条）</h4>
+                                <h4 class="hd-simple">2003年5月 - 2003年7月 （共{{{$papers->count()}}}条）</h4>
                                 <table class="table table-fixed table-list">
                                     <thead>
                                         <tr>

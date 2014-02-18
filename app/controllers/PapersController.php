@@ -26,11 +26,22 @@ class PapersController extends BaseController {
 	public function index()
 	{
 		$papers = $this->paper->all();
-    $numbers= $this->paper->count();
     $exams= $this->exam->where('user_id','=',Session::get('current_user')->id)->get();
-		return View::make('papers.index', compact('papers','numbers','exams'));
+		return View::make('papers.index', compact('papers','exams'));
 	}
-
+/**
+ *
+ */
+  public function search(){
+    $year=Input::get("year");
+    $month=Input::get("month");
+    $yearend=Input::get("yearend");
+    $monthend=Input::get("monthend");
+    $pa= $this->paper->where('id','=',Session::get('current_user')->id)->findOrFail();
+    var_dump($pa->id);
+    // $papers=$this->paper->where(year-month,'<',) 
+		// return View::make('papers.index', compact(''));
+  }
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -132,19 +143,6 @@ class PapersController extends BaseController {
 
 		return Redirect::route('papers.index');
 	}
-
-/**
- *check
- */
-
-    public function check(){
-    
-    
-    
-    
-    
-    }
-
 
 
 }
