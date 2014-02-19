@@ -114,7 +114,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
     'Way\Generators\GeneratorsServiceProvider',
-
+    'Wehnhew\Payments\PaymentServiceProvider'
 	),
 
 	/*
@@ -179,6 +179,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+    'AlipayPayment' => 'Wehnhew\Payments\Facades\Payment',
 
 	),
 

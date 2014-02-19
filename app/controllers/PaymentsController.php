@@ -62,9 +62,9 @@ class PaymentsController extends BaseController {
       }
       $total = $count * $fee;
       $user_id = Session::get('current_user')->id;
-      $this->payment->create(['type'=>Input::get('type'),'count'=>$count,'fee'=>$fee,'total'=>$total,'user_id'=>$user_id ]);
-      // return Redirect::route('payments.index');
-			return Redirect::to('/usercenter');
+      $this->payment = $this->payment->create(['type'=>Input::get('type'),'count'=>$count,'fee'=>$fee,'total'=>$total,'user_id'=>$user_id ]);
+      return Redirect::to('/payments/'.$this->payment->id);
+			// return Redirect::to('/usercenter');
     }
     
 		return Redirect::route('payments.create')
@@ -82,9 +82,23 @@ class PaymentsController extends BaseController {
 	 */
 	public function show($id)
 	{
+    
+    $config = array(
+    'account'=>'1001',//商户账号
+    'key'=>'test', //商户密钥
+    'reurl'=>'http://localhost/payments/callback' //支付返回地址
+    );
+
+
+    $pay = AlipayPayment::create('alipay',$config);
+    $payForm = $pay->setOrderid('0001') //订单ID
+                ->setProduct(['price'=>100.01]) //商品价钱
+                ->setCustomer(['name'=>'文文','mobile'=>1380000000]) //购买人名称，手机
+                ->render(); //生成表单
+
 		$payment = $this->payment->findOrFail($id);
 
-		return View::make('payments.show', compact('payment'));
+		return View::make('payments.show', compact('payment','payForm'));
 	}
 
 	/**
