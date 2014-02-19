@@ -12,7 +12,9 @@
 			<tr>
 				<th>名称</th>
 				<th>用户名称</th>
-				<th>密码 </th>
+        <td>创建时间</td>
+        <td>权限</td>
+<td></td>
 			</tr>
 		</thead>
 
@@ -21,8 +23,8 @@
 				<tr>
 					<td>{{{ $teacher->name }}}</td>
 					<td>{{{ $teacher->username }}}</td>
-					<td>{{{ $teacher->password }}}</td>
-                    <td>{{ link_to_route('admin.teachers.edit', '编辑', array($teacher->id), array('class' => 'btn btn-info')) }}</td>
+<td>{{{$teacher->created_at}}}</td>
+<td></td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.teachers.destroy', $teacher->id))) }}
                             {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}

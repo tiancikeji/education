@@ -1,43 +1,27 @@
-@extends('layouts.scaffold')
+@extends('layouts.member')
+@section('content')
 
-@section('main')
-
-<h1>Create Composition</h1>
+<h1>创建作文 </h1>
 
 {{ Form::open(array('route' => 'compositions.store')) }}
 	<ul>
         <li>
-            {{ Form::label('user_id', 'User_id:') }}
-            {{ Form::input('number', 'user_id') }}
+            {{ Form::input('hidden', 'user_id',Session::get("current_user")->id) }}
         </li>
 
         <li>
-            {{ Form::label('exam_id', 'Exam_id:') }}
-            {{ Form::input('number', 'exam_id') }}
-        </li>
-
-        <li>
-            {{ Form::label('title', 'Title:') }}
+            {{ Form::label('title', '标题:') }}
             {{ Form::text('title') }}
         </li>
 
         <li>
-            {{ Form::label('content', 'Content:') }}
+            {{ Form::label('content', '内容:') }}
             {{ Form::textarea('content') }}
         </li>
 
-        <li>
-            {{ Form::label('note', 'Note:') }}
-            {{ Form::text('note') }}
-        </li>
-
-        <li>
-            {{ Form::label('teacher_id', 'Teacher_id:') }}
-            {{ Form::input('number', 'teacher_id') }}
-        </li>
 
 		<li>
-			{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
+			{{ Form::submit('完成', array('class' => 'btn btn-info')) }}
 		</li>
 	</ul>
 {{ Form::close() }}

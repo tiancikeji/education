@@ -5,10 +5,10 @@ class Composition extends Eloquent {
 
 	public static $rules = array(
 		'user_id' => 'required',
-		'exam_id' => 'required',
+		// 'exam_id' => 'required',
 		'title' => 'required',
-		'content' => 'required',
-		'note' => 'required',
-		'teacher_id' => 'required'
+		'content' => 'required'
+		// 'note' => 'required',
+		// 'teacher_id' => 'required'
 	);
 }

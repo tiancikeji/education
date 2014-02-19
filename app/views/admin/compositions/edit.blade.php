@@ -1,18 +1,13 @@
-@extends('layouts.scaffold')
+@extends('layouts.admin')
 
 @section('main')
 
 <h1>编辑作文</h1>
-{{ Form::model($composition, array('method' => 'PATCH', 'route' => array('compositions.update', $composition->id))) }}
+{{ Form::model($composition, array('method' => 'PATCH', 'route' => array('admin.compositions.update', $composition->id))) }}
 	<ul>
-        <li>
-            {{ Form::label('user_id', '用户id:') }}
-            {{ Form::input('number', 'user_id') }}
-        </li>
 
         <li>
-            {{ Form::label('exam_id', ' 考试id:') }}
-            {{ Form::input('number', 'exam_id') }}
+            {{ Form::input('hidden', 'user_id') }}
         </li>
 
         <li>
@@ -25,14 +20,14 @@
             {{ Form::textarea('content') }}
         </li>
 
+
         <li>
             {{ Form::label('note', ' 笔记:') }}
-            {{ Form::text('note') }}
+            {{ Form::textarea('note') }}
         </li>
 
         <li>
-            {{ Form::label('teacher_id', '老师id:') }}
-            {{ Form::input('number', 'teacher_id') }}
+            {{ Form::input('hidden', 'teacher_id',Session::get("current_admin_id")) }}
         </li>
 
 		<li>

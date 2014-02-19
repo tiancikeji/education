@@ -48,6 +48,7 @@
         <th>付费情况</th>
         <th>注册日期</th>
         <th>水平评级</th>
+        <th>是否有作文需要批改</th>
         <th>日程</th>
         <th>操作</th>
       </tr>
@@ -71,6 +72,12 @@
 </td>
 <td>
   {{ Exam::where('user_id','=',$user->id)->count() }}
+</td>
+<td>
+@if(count(Composition::where("user_id",'=',$user->id)->get()) > 0)
+     <font color="red">是</font>
+      <a href="/admin/compositions?user_id={{{$user->id}}}">批改</a>
+@endif
 </td>
 <td>
 
