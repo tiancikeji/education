@@ -20,12 +20,6 @@
                                 </ul>
                             </div><!-- list -->
 
-                            <div class="paging">
-                                <a href="javascript:void(0);">上一页</a>
-                                <a class="on" href="javascript:void(0);">1</a>
-                                <a href="javascript:void(0);">2</a>
-                                <a href="javascript:void(0);">下一页</a>
-                            </div><!-- paging -->
 
                         </div><!-- news list -->
 
