@@ -22,11 +22,12 @@ Route::post('/registrations/store', 'RegistrationsController@store');
 Route::resource('news', 'NewsController');
 Route::resource('exercises', 'ExercisesController');
 Route::post('/usercenter/updatepassword', 'UserCenterController@updatepassword');
-Route::get('/papers/search', 'PapersController@search');
 
 Route::resource('videos', 'VideosController');
 
 Route::group(array('before'=>'auth'),function(){
+
+  Route::get('/papers/search', 'PapersController@search');
   Route::resource('payments', 'PaymentsController');
   Route::get('/upgrade', 'UpgradeController@index');
   Route::get('/plan', 'UserCenterController@plan');
