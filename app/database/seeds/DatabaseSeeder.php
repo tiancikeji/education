@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ReportsTableSeeder');
 		$this->call('CompositionsTableSeeder');
 		$this->call('UserteachersTableSeeder');
+		$this->call('PermissionsTableSeeder');
+		$this->call('AdminpermissionsTableSeeder');
 	}
 
 }

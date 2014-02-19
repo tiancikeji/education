@@ -24,7 +24,12 @@
 					<td>{{{ $teacher->name }}}</td>
 					<td>{{{ $teacher->username }}}</td>
 <td>{{{$teacher->created_at}}}</td>
-<td></td>
+<td>
+			@foreach (Adminpermission::where("teacher_id","=",$teacher->id)->get() as $adminpermission)
+			{{{Permission::find($adminpermission->permission_id)->name  }}},
+			@endforeach
+
+</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.teachers.destroy', $teacher->id))) }}
                             {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}

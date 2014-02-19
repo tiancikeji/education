@@ -87,3 +87,8 @@ Route::group(array('before'=>'admin','prefix' => 'admin'), function()
 
 
 
+
+
+Route::resource('permissions', 'PermissionsController');
+
+Route::resource('adminpermissions', 'AdminpermissionsController');

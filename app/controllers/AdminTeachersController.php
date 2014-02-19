@@ -8,10 +8,12 @@ class AdminTeachersController extends BaseController {
 	 * @var Teacher
 	 */
 	protected $teacher;
+  protected $permission;
 
-	public function __construct(Teacher $teacher)
+	public function __construct(Teacher $teacher,Permission $permission)
 	{
-		$this->teacher = $teacher;
+    $this->teacher = $teacher;
+    $this->permission = $permission;
 	}
 
 	/**
@@ -33,7 +35,8 @@ class AdminTeachersController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.teachers.create');
+    $permissions = $this->permission->all();
+		return View::make('admin.teachers.create',compact('permissions'));
 	}
 
 	/**
@@ -43,14 +46,16 @@ class AdminTeachersController extends BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::all();
+		$input = Input::except("permission_ids");
 		$validation = Validator::make($input, Teacher::$rules);
-
+    $permission_ids = Input::get("permission_ids");
 		if ($validation->passes())
 		{
       $password  = Input::get('password');
-			$this->teacher->create(['username' => Input::get('username'),'name' => Input::get('name'),'password' => $password]);
-
+			$this->teacher = $this->teacher->create(['username' => Input::get('username'),'name' => Input::get('name'),'password' => $password]);
+      foreach ($permission_ids as $permission_id) {
+        Adminpermission::create(['teacher_id'=>$this->teacher->id,'permission_id'=>$permission_id]);
+      }
 			return Redirect::route('admin.teachers.index');
 		}
 
