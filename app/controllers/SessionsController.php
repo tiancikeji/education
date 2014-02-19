@@ -20,7 +20,7 @@ class SessionsController extends BaseController {
     public function save(){
       $username = Input::get("username");
       $password = Input::get("password");
-      $model = $this->user->where('email','=',$username)->firstOrFail();
+      $model = $this->user->where('email','=',$username)->first();
 		  if (is_null($model)){
         Session::flash('message', '用户不存在');
 			  return Redirect::to('/sessions/new');
