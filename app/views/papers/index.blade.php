@@ -19,7 +19,7 @@
                     <div class="panes-2">
                         <div>
                             <h4 class="hd-simple-2">试题分类检索：</h4>
-                      <form action="/papers/search" method="post">
+                      <form action="/papers/search" method="get">
                             <div class="video-search cf">
                                 <ul class="fl">
                                     <li>
@@ -39,10 +39,11 @@
                                     </li>
                                     <li>
                                         <p>科目：</p>
-                                        <label for="radio334"><input type="radio" name="radio" id="radio334" /> 整套</label>
-                                        <label for="radio335"><input type="radio" name="radio" id="radio335" /> 阅读</label>
-                                        <label for="radio336"><input type="radio" name="radio" id="radio336" /> 词汇</label>
-                                        <label for="radio337"><input type="radio" name="radio" id="radio337" /> 语法</label>
+                                        <label for="radio334"><input type="radio" name="type" value="整套"  /> 整套</label>
+                                        <label for="radio334"><input type="radio" name="type" value="作文"  /> 作文</label>
+                                        <label for="radio335"><input type="radio" name="type" value="阅读"   /> 阅读</label>
+                                        <label for="radio336"><input type="radio" name="type" value="词汇"  /> 词汇</label>
+                                        <label for="radio337"><input type="radio" name="type" value="语法"  /> 语法</label>
                                     </li>
                                 </ul>
                                 <div class="fr">

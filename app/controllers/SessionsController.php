@@ -39,7 +39,7 @@ class SessionsController extends BaseController {
     
     public function confirm(){
       $token = Input::get("token") ;
-      $date = date('m/d/Y h:i:s', time());
+      $date = date('Y-m-s H:i:s', time());
       if($token){
         $model = $this->user->where('token','=',$token)->firstOrFail();
         $model->confirm_at = $date;

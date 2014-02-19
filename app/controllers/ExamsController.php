@@ -47,8 +47,8 @@ class ExamsController extends BaseController {
 	 */
 	public function store()
 	{
-      $current_date = date('Y-m-d H:i:s');
-      $endTime = date('Y-m-d H:i:s', strtotime('+30 minutes'));
+      $current_date = date('Y-m-d H:i:s',time());
+      $endTime = date($current_date, strtotime('+30 minutes'));
 
       $user_id = Session::get('current_user')->id;
 
@@ -87,9 +87,13 @@ class ExamsController extends BaseController {
 		{
 			return Redirect::route('exams.index');
 		}
+
+    $date = date('Y-m-s H:i:s', time());
+
+    $left = $exam->end_time - $date;
     $paper = $this->paper->find($exam->paper_id);
 		$exercises = $this->exercise->where('paper_id','=',$paper->id)->get();
-		return View::make('exams.edit', compact('exam','paper','exercises'));
+		return View::make('exams.edit', compact('exam','paper','exercises','left'));
 	}
 
 	/**

@@ -22,7 +22,9 @@ Route::post('/registrations/store', 'RegistrationsController@store');
 Route::resource('news', 'NewsController');
 Route::resource('exercises', 'ExercisesController');
 Route::post('/usercenter/updatepassword', 'UserCenterController@updatepassword');
-Route::post('/papers/search', 'PapersController@search');
+Route::get('/papers/search', 'PapersController@search');
+
+Route::resource('videos', 'VideosController');
 
 Route::group(array('before'=>'auth'),function(){
   Route::resource('payments', 'PaymentsController');
@@ -35,7 +37,6 @@ Route::group(array('before'=>'auth'),function(){
   Route::post('/videos/check', 'VideosController@check');
   Route::post('/topics/check', 'TopicsController@check');
   Route::resource('topics', 'TopicsController');
-  Route::resource('videos', 'VideosController');
   Route::resource('papers', 'PapersController');
   Route::resource('messages', 'MessagesController');
   Route::resource('mywords', 'MywordsController');

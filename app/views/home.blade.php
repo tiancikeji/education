@@ -60,7 +60,7 @@
                                             </select>
                                         </li>
                                         <li>
-                                            <a href="/exercises"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索阅读真题解析" /></a>
+                                            <a href="/papers/search?type=阅读"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索阅读真题解析" /></a>
                                         </li>
                                         <li>
                                             <select class="select">
@@ -74,13 +74,13 @@
                                             </select>
                                         </li>
                                         <li>
-                                            <a href="/exercises"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索语法真题解析" /></a>
+                                            <a href="/papers/search?type=语法"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索语法真题解析" /></a>
                                         </li>
                                         <li>
-                                            <a href="/exercises"><input class="ipt-txt ipt-normal ipt-block" type="text" name="" id="" placeholder="输入想要查找的词汇" /></a>
+                                            <a href="/papers/search?type="><input class="ipt-txt ipt-normal ipt-block" type="text" name="" id="" placeholder="输入想要查找的词汇" /></a>
                                         </li>
                                         <li>
-                                            <a href="/exercises"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索语法真题解析" /></a>
+                                            <a href="/papers/search?type=整套"><input class="btn btn-normal btn-white btn-block css3" type="button" value="搜索整套真题解析" /></a>
                                         </li>
                                     </ul>
                                 </div>

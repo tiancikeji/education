@@ -21,6 +21,7 @@
                         </div>
                     </div><!-- video details -->
 
+@if(Session::has('current_user'))
                     <div class="comment cf">
 {{ Form::open(array('route' => 'comments.store')) }}
             {{ Form::hidden('video_id',$video->id) }}
@@ -70,7 +71,8 @@
                         <a href="javascript:void(0);">5</a>
                         <a href="javascript:void(0);">下一页</a>
                     </div><!-- paging -->                            
-                    
+@endif                    
+请先登录
             	</div>
         	</div><!-- mod -->
 

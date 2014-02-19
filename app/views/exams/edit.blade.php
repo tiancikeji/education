@@ -1,13 +1,48 @@
 @extends('layouts.member')
 @section('content')
-        <div class="grid">
 
+   <script>
+    var interval;
+    var minutes = 30;
+    var seconds = 0;
+    window.onload = function() {
+        countdown('countdown');
+    }
+
+    function countdown(element) {
+        interval = setInterval(function() {
+            var el = document.getElementById(element);
+            if(seconds == 0) {
+                if(minutes == 0) {
+                    el.innerHTML = "时间已到";                    
+                    $("exam_form").submit();
+                    clearInterval(interval);
+                    return;
+                } else {
+                    minutes--;
+                    seconds = 60;
+                }
+            }
+            if(minutes > 0) {
+                var minute_text = minutes + (minutes > 1 ? ' minutes' : ' minute');
+            } else {
+                var minute_text = '';
+            }
+            var second_text = seconds > 1 ? 'seconds' : 'second';
+            el.innerHTML ='剩余时间：'+ minute_text + ' ' + seconds + ' ' + second_text;
+            seconds--;
+        }, 1000);
+    }
+    </script>
+
+
+        <div class="grid">
           <div class="mod">
             <div class="hd hd-1">
               <h3>{{{$paper->name}}}</h3>
-                    <div class="fr question-stat">
                         <span><strong>考试模式</strong></span>
-                        <span>已用时间：<strong class="c-red">{{{$exam->start_time}}}</strong></span>
+                    <div class="fr question-stat">
+                        <div id='countdown'></div>
                     </div>
             </div>
               <div class="bd bd-2">
@@ -15,7 +50,7 @@
     {{ implode('', $errors->all('<li class="error">:message</li>')) }}
 @endif
 
-{{ Form::model($exam, array('method' => 'PATCH', 'route' => array('exams.update', $exam->id))) }}
+{{ Form::model($exam, array('id' => 'exam_form', 'method' => 'PATCH', 'route' => array('exams.update', $exam->id))) }}
                     <div class="question-list f-16">
                         <ul>
 

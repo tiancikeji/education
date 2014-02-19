@@ -37,10 +37,9 @@ class PapersController extends BaseController {
     $month=Input::get("month");
     $yearend=Input::get("yearend");
     $monthend=Input::get("monthend");
-    $pa= $this->paper->where('id','=',Session::get('current_user')->id)->findOrFail();
-    var_dump($pa->id);
-    // $papers=$this->paper->where(year-month,'<',) 
-		// return View::make('papers.index', compact(''));
+    $papers= $this->paper->where('type','=',Input::get("type"))->get();
+    $exams= $this->exam->where('user_id','=',Session::get('current_user')->id)->get();
+		return View::make('papers.index', compact('papers','exams'));
   }
 	/**
 	 * Show the form for creating a new resource.
