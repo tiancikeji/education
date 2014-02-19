@@ -84,18 +84,20 @@ class PaymentsController extends BaseController {
 	{
     
     $config = array(
-    'account'=>'1001',//商户账号
-    'key'=>'test', //商户密钥
-    'reurl'=>'http://localhost/payments/callback' //支付返回地址
+    'account' => "zaoke@tiancikeji.com",
+    'partner'=>'2088011990203030',//商户账号
+    'key'=>'bs1pij9z950fl968mu8vd8zpeqgazbdt', //商户密钥
+    'call_back_url'=>'http://localhost/payments/callback',
+   'notify_url' => 'http://localhost/payments/callback' //支付返回地址
     );
 
 
     $pay = AlipayPayment::create('alipay',$config);
     $payForm = $pay->setOrderid('0001') //订单ID
-                ->setProduct(['price'=>100.01]) //商品价钱
+                ->setProduct(['price'=>0.01]) //商品价钱
                 ->setCustomer(['name'=>'文文','mobile'=>1380000000]) //购买人名称，手机
                 ->render(); //生成表单
-
+    // dd($payForm);
 		$payment = $this->payment->findOrFail($id);
 
 		return View::make('payments.show', compact('payment','payForm'));

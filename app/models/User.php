@@ -14,7 +14,7 @@ class User extends Eloquent {
 	// protected $table = 'users';
 
 	public static $rules = array(
-		'email' => 'required',
+    'email' => 'unique:users',
 		'name' => 'required',
 		'password' => 'required'
 	);
