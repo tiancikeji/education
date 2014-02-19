@@ -55,6 +55,10 @@ Route::group(array('before'=>'auth'),function(){
 
 Route::get('admin/signin','AdminController@signin' );
 Route::post('admin/login','AdminController@login' );
+
+Route::get('admin/homeworks/add_exercise','AdminHomeworksController@add_exercise' );
+Route::get('admin/homeworks/delete_exercise','AdminHomeworksController@delete_exercise' );
+
 Route::group(array('before'=>'admin','prefix' => 'admin'), function()
 {
     Route::get('main','AdminController@main' );

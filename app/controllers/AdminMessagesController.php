@@ -14,7 +14,6 @@ class AdminMessagesController extends BaseController {
 	{
 		$this->message = $message;
 	}
-
 	/**
 	 * Display a listing of the resource.
 	 *
