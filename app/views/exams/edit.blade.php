@@ -3,7 +3,7 @@
 
    <script>
     var interval;
-    var minutes = 30;
+    var minutes = {{{$left}}};
     var seconds = 0;
     window.onload = function() {
         countdown('countdown');

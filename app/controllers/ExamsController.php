@@ -48,7 +48,11 @@ class ExamsController extends BaseController {
 	public function store()
 	{
       $current_date = date('Y-m-d H:i:s',time());
-      $endTime = date($current_date, strtotime('+30 minutes'));
+      // $endTime = date($current_date, strtotime('+30 minutes'));
+
+      $currentDate = strtotime($current_date);
+      $futureDate = $currentDate+(60*30);
+      $endTime = date("Y-m-d H:i:s", $futureDate);
 
       $user_id = Session::get('current_user')->id;
 
@@ -88,11 +92,16 @@ class ExamsController extends BaseController {
 			return Redirect::route('exams.index');
 		}
 
-    $date = date('Y-m-s H:i:s', time());
+    
 
-    $left = $exam->end_time - $date;
+    $current_date = date('Y-m-d H:i:s',time());
+    $secs = strtotime($exam->end_time) - strtotime($current_date);// == <seconds between the two times>
+    // dd($current_date);
+    // dd($exam->end_time);
+    $left = intval($secs/60);
     $paper = $this->paper->find($exam->paper_id);
 		$exercises = $this->exercise->where('paper_id','=',$paper->id)->get();
+    // dd($left);
 		return View::make('exams.edit', compact('exam','paper','exercises','left'));
 	}
 
