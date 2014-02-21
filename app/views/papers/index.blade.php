@@ -52,7 +52,7 @@
                             </div><!-- search -->
                         </form>
                             <div class="md-simple">
-                                <h4 class="hd-simple">2003年5月 - 2003年7月 （共{{{$papers->count()}}}条）</h4>
+                                <h4 class="hd-simple">（共{{{$papers->count()}}}条）</h4>
                                 <table class="table table-fixed table-list">
                                     <thead>
                                         <tr>
