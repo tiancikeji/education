@@ -12,7 +12,7 @@
 			<tr>
 				<th>名称</th>
         <th>类型</th>
-				<!-- <th>Exercise_ids</th> -->
+				<th>试题</th>
 				<!-- <th>Teacher_id</th> -->
       <th></th>
 			</tr>
@@ -23,7 +23,7 @@
 				<tr>
 					<td>{{{ $homework->name }}}</td>
           <td>{{{ $homework->type }}}</td>
-					<!-- <td>{{{ $homework->exercise_ids }}}</td> -->
+					<td>{{{ $homework->exercise_ids }}}</td>
 					<!-- <td>{{{ $homework->teacher_id }}}</td> -->
                     <td>{{ link_to_route('admin.homeworks.show', '添加试题', array($homework->id), array('class' => 'btn btn-info')) }}
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.homeworks.destroy', $homework->id))) }}

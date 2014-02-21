@@ -6,25 +6,17 @@
 
 {{ Form::open(array('route' => 'admin.messages.store')) }}
 	<ul>
-        <li>
-            {{ Form::label('title', '标题:') }}
-            {{ Form::text('title') }}
-        </li>
 
+            {{ Form::input('hidden','title',' ') }}
+
+            {{ Form::input('hidden','type',' ') }}
         <li>
             {{ Form::label('body', '内容:') }}
             {{ Form::textarea('body') }}
         </li>
 
-        <li>
-            {{ Form::label('is_read', '已读:') }}
-            {{ Form::input('number', 'is_read') }}
-        </li>
+            {{ Form::input('hidden', 'is_read',0) }}
 
-        <li>
-            {{ Form::label('type', '类型:') }}
-            {{ Form::text('type') }}
-        </li>
 
             {{ Form::input('hidden', 'user_id',Input::get('user_id')) }}
 

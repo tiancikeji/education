@@ -96,6 +96,8 @@
 <!-- </td> -->
                     <td>
 <a href="/admin/users/{{{ $user->id }}}">查看学生信息</a> 
+<a href="/admin/compositions?user_id={{{ $user->id }}}" >批改作文 </a>
+<a href="/admin/exams?user_id={{{ $user->id }}}">做题历史</a>
 <a href="/admin/messages/create?user_id={{{ $user->id }}} ">发送信息</a>   
 <a href="/admin/userplans/create?user_id={{{ $user->id }}}">安排日程</a>
 <a href="/admin/userteachers/create?user_id={{{ $user->id }}}">分配教师 </a>

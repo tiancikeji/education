@@ -21,7 +21,7 @@ class AdminCompositionsController extends BaseController {
 	 */
 	public function index()
 	{
-		$compositions = $this->composition->all();
+		$compositions = $this->composition->where('user_id','=',Input::get("user_id"))->get();
 
 		return View::make('admin.compositions.index', compact('compositions'));
 	}

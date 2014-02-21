@@ -25,7 +25,6 @@
             {{ Form::label('type', 'Type:') }}
             {{ Form::text('type') }}
         </li>
-
         <li>
             {{ Form::label('user_id', 'User_id:') }}
             {{ Form::input('number', 'user_id') }}
