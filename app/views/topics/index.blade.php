@@ -40,7 +40,8 @@
                             <tbody>
 			@foreach ($topics as $topic)
                                   <tr>
-                                    <td>{{{ $topic->titile }}}</td>
+                                    <td><a href="/topics/{{{ $topic->id }}}">{{{ $topic->titile }}}</a>
+                                    </td>
                                     <td>{{{ $topic->body }}}</td>
                                     <td>单词测验,考试模式</td>
                                     <td>6244</td>
