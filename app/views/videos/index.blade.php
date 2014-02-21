@@ -15,14 +15,17 @@
                             <li>
                <form action="/videos/check" method="post"> 
                                 <p>试题日期：
-                              @foreach ($videos as $video)
-                                <select name="created_at" class="select">
-                                    <option value={{{ $video->created_at}}}>{{{ $video->created_at}}}</option>
-                                </select>
-                              @endforeach
-                                <!-- <select class="select"> -->
-                                    <!-- <option value="">12月</option> -->
-                                <!-- </select>                                                               -->
+ <select class="select">
+                                                <option value="2006-1-1">2006-1-1</option>
+                                                <option value="2007-1-1">2007-1-1</option>
+                                                <option value="2008-1-1">2008-1-1</option>
+                                                <option value="2009-1-1">2009-1-1</option>
+                                                <option value="2010-1-1">2010-1-1</option>
+                                                <option value="2011-1-1">2011-1-1</option>
+                                                <option value="2012-1-1">2012-1-1</option>
+                                                <option value="2013-1-1">2013-1-1</option>
+                                                <option value="2014-1-1">2014-1-1</option>
+                                            </select>
                                 </p>
                             </li>
                             <!-- <li> -->
@@ -33,11 +36,12 @@
                             <!-- </li> -->
                             <li>
                                 <p>题目编号：
-                                <select name="title" class="select">
-                                @foreach ($videos as $video)
-                                    <option value={{{ $video->title}}}>{{{ $video->title}}}</option>
-                                @endforeach
-                                </select>
+           <select class="select">
+        @for($i=1;$i<=30;$i++)
+                                                <option value="{{{$i}}}">{{{$i}}}</option>
+@endfor
+                                            </select>
+
                                 </p>
                             </li>                          
                         </ul>
@@ -48,9 +52,7 @@
                     </div><!-- video search -->                      
 
                     <div class="md-simple">
-                          @foreach($videos as $video)
-                        <h4 class="hd-simple">{{{$video->created_at}}} （共{{{$num}}}条）</h4>
-                          @endforeach     
+                        <h4 class="hd-simple">（共{{{$videos->count()}}}条）</h4>
                         <div class="video-list l-black cf">
                             <ul>
 @if ($videos->count())
