@@ -24,18 +24,18 @@
                                 <ul class="fl">
                                     <li>
                                         <p>试题日期：</p>
-                                        <select name="year"class="select">
-                                            <option value="1990">1990年</option>
-                                        </select>
-                                        <select name="month" class="select">
-                                            <option value="">12月</option>
-                                        </select>  ——   
-                                        <select name="yearend" class="select">
-                                            <option value="">1991年</option>
-                                        </select>
-                                        <select name="monthend"class="select">
-                                            <option value="">12月</option>
-                                        </select>                                                                                             
+ <select class="select">
+                                                <option value="2006-1-1">2006-1-1</option>
+                                                <option value="2007-1-1">2007-1-1</option>
+                                                <option value="2008-1-1">2008-1-1</option>
+                                                <option value="2009-1-1">2009-1-1</option>
+                                                <option value="2010-1-1">2010-1-1</option>
+                                                <option value="2011-1-1">2011-1-1</option>
+                                                <option value="2012-1-1">2012-1-1</option>
+                                                <option value="2013-1-1">2013-1-1</option>
+                                                <option value="2014-1-1">2014-1-1</option>
+                                            </select>
+
                                     </li>
                                     <li>
                                         <p>科目：</p>
