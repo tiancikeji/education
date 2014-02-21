@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.0.*",
     "way/generators": "dev-master",
-    "wehnhew/payments": "dev-master"
+    "wehnhew/payments": "dev-master",
+    "maatwebsite/excel": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

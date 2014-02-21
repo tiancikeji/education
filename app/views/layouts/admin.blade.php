@@ -90,7 +90,6 @@
 <a href="#" class="list-group-item">作业管理</a>
 <ul>
   <li><a href="/admin/papers" class="list-group-item">题库列表</a></li>
-  <li><a href="/admin/exercises" class="list-group-item">上传试题</a></li>
 </ul>
 
 </div><!--/span-->
