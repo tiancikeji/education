@@ -24,7 +24,8 @@ class PaymentsController extends BaseController {
 	public function index()
 	{
 		$payments = $this->payment->all();
-		return View::make('payments.index', compact('payments'));
+    $users=$this->user->all();
+		return View::make('payments.index', compact('payments','users'));
 	}
 
 	/**
@@ -146,7 +147,12 @@ class PaymentsController extends BaseController {
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
 	}
- 	/**
+  public function search(){
+  $user_id=Input::get("user_id");
+  $payments =$this->payment->find($user_id);
+		return View::make('payments.index', compact('payments'));
+  }
+	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id

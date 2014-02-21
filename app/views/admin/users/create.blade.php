@@ -7,7 +7,7 @@
 {{ Form::open(array('route' => 'admin.users.store')) }}
 	<ul>
         <li>
-            {{ Form::label('email', 'E邮箱mail:') }}
+            {{ Form::label('email', '邮箱:') }}
             {{ Form::text('email') }}
         </li>
 
