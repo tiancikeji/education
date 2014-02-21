@@ -8,12 +8,6 @@
 
         	<div class="mod">
         		<div class="hd hd-1">
-        			<h3>2013年5月语法section1</h3>
-                    <div class="fr question-stat">
-                        <span><strong>自测模式</strong></span>
-                        <span>已用时间：<strong class="c-red">35:36</strong></span>
-                        <input type="button" class="btn btn-normal btn-white css3" value="保存进度" />
-                        <input type="button" class="btn btn-normal btn-white css3" value="暂停" />
                     </div>
         		</div>
             	<div class="bd bd-2">
