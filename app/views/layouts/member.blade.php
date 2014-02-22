@@ -57,7 +57,7 @@ $(document).ready(function(){
                     <li><a href="/upgrade">升级为付费版</a></li>
                       @endif
                     <li><a href="/usercenter">账户中心</a></li>
-                    <li><a href="/messages">提醒（<span class="c-red">0</span>）</a></li>
+                    <li><a href="/messages">提醒（<span class="c-red">{{count(Message::where("user_id",'=',Session::get('current_user')->id)->get())}}</span>）</a></li>
                     <li><a href="/sessions/delete">安全退出</a></li>
                 </ul>
             </div>
