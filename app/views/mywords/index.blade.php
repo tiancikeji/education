@@ -42,6 +42,11 @@
                                     <td width="80%">
                                         <span class="c-blue">	{{{ $myword->chinese }}}</span>
                                     </td>
+      <td>
+                        {{ Form::open(array('method' => 'DELETE', 'route' => array('mywords.destroy', $myword->id))) }}
+                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                        {{ Form::close() }}
+                    </td>
                                 </tr>
 
 			@endforeach
