@@ -59,7 +59,7 @@ $("input[name='exercise_ids[]']").unbind('click');
         url: "/mywords/add?english="+english+"&chinese=''",
         context: document.body
       }).done(function() {
-          alert("添加到生词本");
+        alert("添加成功");
       }).error(function(){
         alert("请先登录");
       });

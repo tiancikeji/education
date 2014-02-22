@@ -37,7 +37,7 @@
 @if ($mywords->count())
 			@foreach ($mywords as $myword)
                                 <tr>
-                                    <td width="5%">1.</td>
+                                    <td width="5%">{{{ $myword->id }}}</td>
                                     <td width="15%">	{{{ $myword->english }}}</td>
                                     <td width="80%">
                                         <span class="c-blue">	{{{ $myword->chinese }}}</span>

@@ -31,8 +31,9 @@
 			@foreach ($words as $word)
 
                                 <tr>
-                                    <td width="5%">1.</td>
+                                    <td width="5%">{{{ $word->id }}}</td>
                                     <td width="20%">{{{ $word->english }}}</td>
+                                    <td width="20%">{{{ $word->chinese }}}</td>
 
                                    <!-- <td width="30%"> -->
                                    <!--      <input type="text" placeholder="填写对应中文" id="" name="" class="ipt-txt ipt-normal ipt-w4"> -->
@@ -44,7 +45,14 @@
                                    <!--  </td> -->
 
                                     <td width="15%">
-                                        <a href="question-mode.html"><input type="button" class="btn btn-normal btn-white css3" value="加入生词本" /></a>
+                                      {{ Form::open(array('route' => 'mywords.store')) }}
+            {{ Form::input('hidden','chinese',$word->english) }}
+            {{ Form::input('hidden','english',$word->chinese) }}
+            {{ Form::input('hidden','user_id',Session::get("current_user")->id) }}
+                                        <input type="submit" class="btn btn-normal btn-white css3" value="加入生词本" /></a>
+                                {{ Form::close() }}
+
+  
                                     </td>
                                 </tr>
 
@@ -70,7 +78,6 @@
         	</div><!-- mod -->
 
         </div>
-
 
 
 @stop
