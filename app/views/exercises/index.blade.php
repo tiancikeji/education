@@ -20,11 +20,10 @@
 			@foreach ($exercises as $exercise)
 <p>{{{ $exercise->no }}}.{{{ $exercise->description }}}</p>
 
-<p>
               @foreach (Answer::where('exercises_id','=',$exercise->id)->get() as $answer) 
-                  <label for="radio3"><input type="radio" name="{{{ $exercise->id }}}" value="{{{$answer->id}}}" /> {{{$answer->description}}}</label>
+                  <input type="radio" name="{{{ $exercise->id }}}" value="{{{$answer->id}}}" /> {{{$answer->description}}}
               @endforeach
-</p>
+<br>
 <input type="checkbox" name="exercise_ids[]"  value="{{{ $exercise->id }}}" />添加到我的难题
 <hr />
 			@endforeach
