@@ -21,7 +21,7 @@
 		<tbody>
 			@foreach ($news as $news)
 				<tr>
-<td><img src="{{{ $news->overlay }}}" alt="" /></td>
+<td><img src="{{{ $news->overlay }}}" alt="" style="width:100px;height:100px;" /></td>
 					<td>{{{ $news->author }}}</td>
 					<td>{{{ $news->created_at }}}</td>
 					<td>{{{ $news->subtitle }}}</td>
