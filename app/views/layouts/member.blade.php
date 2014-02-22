@@ -117,15 +117,17 @@ $(document).ready(function(){
 </footer><!-- //footer -->
 
 
+@if(Session::has('current_user'))
 <div class="toolbar-user ac">
     <div class="grid">
         我的工具栏：
         <a href="/words"><input type="button" class="btn btn-normal btn-white css3" value="单词测试" /></a>
         <a href="/mywords"><input type="button" class="btn btn-normal btn-white css3" value="我的生词本" /></a>
-        <a href="toolbar-problem.html"><input type="button" class="btn btn-normal btn-white css3" value="我的难题集" /></a>
-        <a href="toolbar-search.html"><input type="button" class="btn btn-normal btn-white css3" value="真题搜索" /></a>
+        <a href="/myexercises"><input type="button" class="btn btn-normal btn-white css3" value="我的难题集" /></a>
+        <a href="/papers"><input type="button" class="btn btn-normal btn-white css3" value="真题搜索" /></a>
     </div>
 </div><!-- //toolbar user -->
+@endif
 
 
 </body>
