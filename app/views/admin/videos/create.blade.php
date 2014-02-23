@@ -21,7 +21,7 @@
 
         <li>
             {{ Form::label('url', 'Url:') }}
-            {{ Form::text('url') }}
+            {{ Form::file('url') }}
         </li>
 
 		<li>
