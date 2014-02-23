@@ -69,7 +69,7 @@
                                         <dd>标签：试题讲解 阅读</dd>
                                         <dd>播放：0</dd>
                                         <dd>评论：{{{Comment::where('video_id','=',$video->id)->count() }}}条</dd>
-                                        <dd>讲师：{{{ $video->author}}}</dd>
+                                        <!-- <dd>讲师：{{{ $video->author}}}</dd> -->
                                     </dl>
                                 </li>
 

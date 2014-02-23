@@ -34,7 +34,7 @@ class SessionsController extends BaseController {
 			  return Redirect::to('/sessions/new');
       }
       Session::put('current_user', $model);
-			return Redirect::to('/usercenter');
+			return Redirect::to('/plan');
     } 
     
     public function confirm(){
@@ -45,7 +45,7 @@ class SessionsController extends BaseController {
         $model->confirm_at = $date;
         $model->save();
         Session::put('current_user', $model);
-			  return Redirect::to('/usercenter');
+			  return Redirect::to('/plan');
       }
     }
 

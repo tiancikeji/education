@@ -1,6 +1,28 @@
 @extends('layouts.member')
 
 @section('content')
+
+<script type="text/javascript" src="../flvplayer/swfobject.js"></script>
+
+<script type="text/javascript">
+        var playervars = {    
+                contentpath: "../flvplayer/content",
+                video: "demo-video.flv",
+                preview: "demo-preview.jpg",                                                    
+                skin: "skin-applestyle.swf",
+                skincolor: "0x2c8cbd"
+                // ...
+                //see documentation for all the parameters              
+        };      
+                        
+                var params = { scale: "noscale", allowfullscreen: "true", salign: "tl", bgcolor: "#ffffff", base: "." };        
+                var attributes = { align: "left"};
+                
+        swfobject.embedSWF("../flvplayer/flvplayer.swf", "videoCanvas", "500", "450", "9.0.28", "../flvplayer/expressInstall.swf", playervars, params, attributes);
+         
+                // Playlist
+</script>
+
         <div class="grid">
 
         	<div class="mod">
@@ -13,6 +35,14 @@
                     <div class="video-cont">
                         <embed src="{{{ $video->url }}}" quality="high" width="100%" height="100%" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"></embed>
                     </div>
+<div id="videoCanvas" style="margin:0px">
+        
+            <p>This content requires the Adobe Flash Player.</p>
+
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a>
+            </p>
+
+        </div>
                     <div class="video-intro cf">
                         <div class="fl">标签：试题讲解 阅读</div>
                         <div class="fr">
