@@ -7,9 +7,9 @@
 <script type="text/javascript">
         var playervars = {    
                 contentpath: "/flvplayer/content",
-                video: "/demos/demo-video.flv",
-                preview: "/demos/demo-preview.jpg",                                                    
-                skin: "/demos/skin-applestyle.swf",
+                video: "demo-video.flv",
+                preview: "demo-preview.jpg",                                                    
+                skin: "/flvplayer/skins/skin-applestyle.swf",
                 skincolor: "0x2c8cbd"
                 // ...
                 //see documentation for all the parameters              
