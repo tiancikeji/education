@@ -2,14 +2,14 @@
 
 @section('content')
 
-<script type="text/javascript" src="../flvplayer/swfobject.js"></script>
+<script type="text/javascript" src="/flvplayer/swfobject.js"></script>
 
 <script type="text/javascript">
         var playervars = {    
-                contentpath: "../flvplayer/content",
-                video: "demo-video.flv",
-                preview: "demo-preview.jpg",                                                    
-                skin: "skin-applestyle.swf",
+                contentpath: "/flvplayer/content",
+                video: "/demos/demo-video.flv",
+                preview: "/demos/demo-preview.jpg",                                                    
+                skin: "/demos/skin-applestyle.swf",
                 skincolor: "0x2c8cbd"
                 // ...
                 //see documentation for all the parameters              
@@ -18,7 +18,7 @@
                 var params = { scale: "noscale", allowfullscreen: "true", salign: "tl", bgcolor: "#ffffff", base: "." };        
                 var attributes = { align: "left"};
                 
-        swfobject.embedSWF("../flvplayer/flvplayer.swf", "videoCanvas", "500", "450", "9.0.28", "../flvplayer/expressInstall.swf", playervars, params, attributes);
+        swfobject.embedSWF("/flvplayer/flvplayer.swf", "videoCanvas", "500", "450", "9.0.28", "/flvplayer/expressInstall.swf", playervars, params, attributes);
          
                 // Playlist
 </script>
