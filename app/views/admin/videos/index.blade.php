@@ -22,7 +22,7 @@
 				<tr>
 					<td>{{{ $video->author }}}</td>
 					<td>{{{ $video->title }}}</td>
-					<td><img src="{{{ $video->overlay }}}" alt="" /></td>
+					<td><img src="{{{ $video->overlay }}}" alt="" style="width:100px;height:100px;" /></td>
 					<td>{{{ $video->url }}}</td>
                     <td>{{ link_to_route('admin.videos.edit', '编辑 ', array($video->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
