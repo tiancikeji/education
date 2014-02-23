@@ -15,7 +15,12 @@ Route::get('/sessions/new', 'SessionsController@newpage');
 Route::post('/sessions/save', 'SessionsController@save');
 Route::get('/confirm', 'SessionsController@confirm');
 Route::get('/sessions/delete', 'SessionsController@delete');
+Route::get('/forget', 'SessionsController@forgetpassword');
+Route::post('/resetpassword', 'SessionsController@resetpassword');
+
 Route::get('/registrations/new', 'RegistrationsController@newpage');
+
+
 Route::get('/sendemail', 'RegistrationsController@sendemail');
 Route::get('/registrations/success', 'RegistrationsController@success');
 Route::post('/registrations/store', 'RegistrationsController@store');

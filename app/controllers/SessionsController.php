@@ -12,11 +12,33 @@ class SessionsController extends BaseController {
     } 
 
     public function newpage(){
-
       return View::make('sessions.new');
-
     } 
+    
+    public function forgetpassword(){
+      return View::make('sessions.forget');
+    } 
+    public function resetpassword(){
+      $username = Input::get("email");
+      $model = $this->user->where('email','=',$username)->first();
 
+		  if (is_null($model)){
+        Session::flash('message', '用户不存在');
+			  return Redirect::to('/forget');
+      }else{
+        $name = $model->name ;
+        $randstr = str_shuffle("ABCDEFGHIJKMNLOPQRST1234567890");
+        $password = substr($randstr,0,8);
+        $model->password = $password;
+        $model->save();
+        Mail::send('mails.password', array('name'=>$name,'password'=>$password), function($message){
+          $message->to(Input::get("email"),Input::get("email"))->subject('Welcome');
+        });
+
+        Session::flash('message', '发送成功');
+			  return Redirect::to('/forget');
+      }
+    }
     public function save(){
       $username = Input::get("username");
       $password = Input::get("password");
