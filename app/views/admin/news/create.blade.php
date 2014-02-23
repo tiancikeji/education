@@ -10,7 +10,10 @@
       var editor;
       KindEditor.ready(function(K) {
         editor = K.create('textarea[name="body"]', {
-          allowFileManager : true
+          allowFileManager : true,
+            newlineTag: "br",
+            width:'400px'
+
         });
       });
     </script>
@@ -23,20 +26,21 @@
         
         <li>
             {{ Form::label('title', '咨询标题:') }}
-            {{ Form::text('title') }}
+<input type="text" name="title" value="" size=14 maxlength=14 />
         </li>
         <li>
             {{ Form::label('subtitle', '简介:') }}
-            {{ Form::text('subtitle') }}
+<input type="text" name="subtitle" value="" size=32 maxlength=32 />
         </li>
         <li>
             {{ Form::label('body', '标题正文:') }}
-            {{ Form::textarea('body') }}
+<textarea name="body" rows="8" cols="40" style="word-break:break-all;"></textarea>
         </li>
 
         <li>
             {{ Form::label('overlay', '封面图片:') }}
             {{ Form::file('overlay') }}
+图像大小wei :205*120
         </li>
 
 
@@ -50,7 +54,7 @@
         <!-- </li> -->
 
 		<li>
-			{{ Form::submit('提交', array('class' => 'btn btn-info')) }}
+			{{ Form::submit('保存', array('class' => 'btn btn-info')) }}
 		</li>
 	</ul>
 {{ Form::close() }}

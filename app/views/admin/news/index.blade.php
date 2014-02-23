@@ -13,7 +13,7 @@
         <th>图像</th>
 				<th>作者</th>
 				<th>发布时间 </th>
-				<th>内容</th>
+				<th>简介</th>
 				<th>标题</th>
 			</tr>
 		</thead>
