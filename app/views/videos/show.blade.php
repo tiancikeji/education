@@ -9,7 +9,7 @@
                 contentpath: "/flvplayer/content",
                 video: "demo-video.flv",
                 preview: "demo-preview.jpg",                                                    
-                skin: "/flvplayer/skins/skin-applestyle.swf",
+                skin: "skin-applestyle.swf",
                 skincolor: "0x2c8cbd"
                 // ...
                 //see documentation for all the parameters              
