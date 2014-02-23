@@ -15,7 +15,7 @@ class HomeController extends BaseController {
   public function showWelcome()
 	{
 
-		$news = $this->news->take(4)->get();
+		$news = $this->news->take(4)->orderBy('created_at','desc')->get();
     $videos = $this->video->take(3)->get();
     $this->layout->content = View::make('home', compact('news','videos'));
 	}
