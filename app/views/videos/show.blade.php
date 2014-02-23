@@ -22,6 +22,7 @@
          
                 // Playlist
 </script>
+                                
 
         <div class="grid">
 
@@ -40,6 +41,7 @@
             </p>
 
         </div>
+
                     <div class="video-intro cf">
                         <div class="fl">标签：试题讲解 阅读</div>
                         <div class="fr">
@@ -48,6 +50,15 @@
                         </div>
                     </div><!-- video details -->
 
+			@foreach (Video::take(3)->get() as $video)
+                                        <a href="/videos/{{{$video->id}}}">
+                                            <div class="pic-video-mini">
+                                                <img src="{{{$video->overlay}}}" alt="video" />
+                                                <i class="icon-play"></i>
+                                            </div>
+                                            <p>{{{$video->title}}}</p>
+                                        </a>
+			@endforeach
 @if(Session::has('current_user'))
                     <div class="comment cf">
 {{ Form::open(array('route' => 'comments.store')) }}

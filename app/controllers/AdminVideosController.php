@@ -9,9 +9,13 @@ class AdminVideosController extends BaseController {
 	 */
 	protected $video;
 
-	public function __construct(Video $video)
+	protected $paper;
+
+	public function __construct(Video $video,Paper $paper)
 	{
 		$this->video = $video;
+
+		$this->paper = $paper;
 	}
 
 	/**
@@ -33,7 +37,8 @@ class AdminVideosController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.videos.create');
+		$papers = $this->paper->all();
+		return View::make('admin.videos.create', compact('papers'));
 	}
 
 	/**
@@ -66,10 +71,13 @@ class AdminVideosController extends BaseController {
     $videofilename        = str_random(6) . '_' . $video->getClientOriginalName();
       $uploadSuccess   = $video->move($videodestinationPath, $videofilename);
      }
+     $tags = Input::get("tags");
      $this->video = Video::create(['title' => Input::get('title'),
                                   'author' => Input::get('author'),
                                    'url' => $videofilename,
-                                  'overlay' => "/uploads/videos/".$filename]);
+                                   'overlay' => "/uploads/videos/".$filename,
+                                   'paper_id'=>Input::get("paper_id"),
+                                   'tags'=>implode(",",$tags)]);
 	    return Redirect::route('admin.videos.index');
 	}
 

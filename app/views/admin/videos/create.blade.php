@@ -6,13 +6,15 @@
 
 {{ Form::open(array('route' => 'admin.videos.store','files'=>true)) }}
 	<ul>
-        <li>
-            {{ Form::label('author', ' 作者:') }}
-            {{ Form::text('author') }}
-        </li>
+<select name="paper_id" id="">
+			@foreach ($papers as $paper)
+        <option value="{{{ $paper->id }}}">{{{ $paper->name }}}=={{{ $paper->published_date }}}=={{{ $paper->section }}}</option>
+			@endforeach
+</select>
+            {{ Form::input('hidden','author','作者') }}
         <li>
             {{ Form::label('title', ' 标题 :') }}
-            {{ Form::text('title') }}
+<input type="text" name="title" size="18" maxlength="18" />
         </li>
          <li>
             {{ Form::label('overlay', '图像 :') }}
@@ -24,6 +26,12 @@
             {{ Form::file('url') }}
         </li>
 
+        <li>  
+        Tags:
+        <input type="text" name="tags[]" value="" size=10 maxlength=18/>
+        <input type="text" name="tags[]" value="" size=10 maxlength=18/>
+        <input type="text" name="tags[]" value="" size=10 maxlength=18/>
+      </li>
 		<li>
 			{{ Form::submit('提交', array('class' => 'btn btn-info')) }}
 		</li>
