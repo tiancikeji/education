@@ -35,13 +35,34 @@
 
         <li>
 
-@if(Input::get('plantype'))
+@if(Input::get('plantype')=="HOMEWORK")
          模板
         <select name="content" >
               @foreach (Homework::where('type','like',Input::get('plantype'))->get() as $homework) 
                 <option value="{{{ $homework->id }}}"> {{{ $homework->name }}}</option>
               @endforeach
         </select>
+@endif
+@if(Input::get('plantype')=="EXAM")
+         模板
+        <select name="content" >
+              @foreach (Homework::where('type','like',Input::get('plantype'))->get() as $homework) 
+                <option value="{{{ $homework->id }}}"> {{{ $homework->name }}}</option>
+              @endforeach
+        </select>
+@endif
+
+@if(Input::get('plantype')=="VIDEO")
+
+         模板
+        <select name="content" >
+              @foreach (Video::take(1000)->get() as $video) 
+                <option value="{{{ $video->id }}}"> {{{ $video->title }}}</option>
+              @endforeach
+        </select>
+@endif
+@if(Input::get('plantype')=="TEST")
+        <input name="content" value="单词测试" >
 @endif
         </li>
             {{ Form::input('hidden', 'type',Input::get('plantype') ) }}

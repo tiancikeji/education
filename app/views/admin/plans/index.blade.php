@@ -24,9 +24,8 @@
 					<td>{{{ $plan->days }}}</td>
 					<td>{{{ $plan->is_sprint }}}</td>
                     <td>
-
-<a href="/admin/plans/{{{ $plan->id }}}">编辑</a>
-<a href="/admin/plans/preview?plan_id={{{ $plan->id }}}">预览</a>
+            <a href="/admin/plans/{{{ $plan->id }}}">编辑</a>
+            <a href="/admin/plans/preview?plan_id={{{ $plan->id }}}">预览</a>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.plans.destroy', $plan->id))) }}
                             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
