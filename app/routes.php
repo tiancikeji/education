@@ -69,6 +69,7 @@ Route::post('admin/login','AdminController@login' );
 Route::get('admin/homeworks/add_exercise','AdminHomeworksController@add_exercise' );
 Route::get('admin/homeworks/delete_exercise','AdminHomeworksController@delete_exercise' );
 
+Route::get('admin/plans/preview','AdminPlansController@preview' );
 Route::group(array('before'=>'admin','prefix' => 'admin'), function()
 {
     Route::get('main','AdminController@main' );

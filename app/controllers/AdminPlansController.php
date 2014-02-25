@@ -28,6 +28,11 @@ class AdminPlansController extends BaseController {
 		return View::make('admin.plans.index', compact('plans'));
 	}
 
+  public function preview(){
+
+		$plan = $this->plan->findOrFail(Input::get("plan_id"));
+		return View::make('admin.plans.preview', compact('plan'));
+  }
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -82,7 +87,6 @@ class AdminPlansController extends BaseController {
 	public function show($id)
 	{
 		$plan = $this->plan->findOrFail($id);
-
 		return View::make('admin.plans.show', compact('plan'));
 	}
 
