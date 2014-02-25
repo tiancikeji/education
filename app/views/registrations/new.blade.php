@@ -21,23 +21,23 @@
                                     <th>邮箱：</th>
                                     <td>
                                       <!-- {{ Form::text('email','',array('class'=>'ipt-txt ipt-large ipt-w2')) }} -->
-                                      <input type="text" name="email" class="ipt-txt ipt-large ipt-w2" id="email" onblur="em();">    
-                                      <span id="ema"class="c-red">邮箱不符，请重新输入！</span>
+                                      <input type="text" name="email" class="ipt-txt ipt-large ipt-w2" id="email" onblur="em();" placeholder="请输入邮箱" >    
+                                      <span id="ema"class="c-red">请正确输入邮箱</span>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>昵称：</th>
+                                    <th>姓名：</th>
                                     <td>
-                                      <input type="text" name="name" class="ipt-txt ipt-large ipt-w2" id="name" onblur="na();">    
+                                      <input type="text" name="name" class="ipt-txt ipt-large ipt-w2" id="name" onblur="na();" placeholder="请输入姓名" >    
                                       <!-- {{ Form::text('name','',array('class'=>'ipt-txt ipt-large ipt-w2')) }} -->
-                                      <span id="na"class="c-red">昵称:5-15位字符，只包含字母数字</span>
+                                      <span id="na"class="c-red">请正确输入姓名</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>密码：</th>
                                     <td>
                                         <input class="ipt-txt ipt-large ipt-w2" type="password" name="password" id="password" placeholder="请输入密码" onblur="passw();" />
-                                        <span id="mima"class="c-red">密码:1-16位字符，只包含字母数字</span>
+                                        <span id="mima"class="c-red">密码:6-16位字符，只包含字母数字</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -66,8 +66,9 @@ $(function(){
 
 function na(){
 var name=$("#name").val();
-var myname=/^[0-9a-zA-Z]{5,15}$/;
-if(!myname.test(name)){
+// var myname=/^[0-9a-zA-Z]{5,15}$/;
+ var re =/^[\u4e00-\u9fa5]+$/
+if(!re.test(name)){
 $("#na").show();
 }else{
 $("#na").hide();
@@ -76,13 +77,12 @@ $("#na").hide();
 
 function passw(){
 var password =$("#password").val();
-var mypassword=/^[0-9a-zA-Z]{1,16}$/;
+var mypassword=/^[0-9a-zA-Z]{6,16}$/;
 if(!mypassword.test(password)){
   $("#mima").show();
 }else{
 $("#mima").hide();
 }
-
 }
 function em(){
   var email= $("#email").val();
@@ -106,9 +106,18 @@ function Sub(){
   var password =$("#password").val();
   var passwordone=$("#passwordone").val();
    if(password!=passwordone){
-  alert("两次密码输入不相符，请重新输入！");
+  alert("两次输入的密码不一致");
 return false; 
  }
+var password =$("#password").val();
+var mypassword=/^[0-9a-zA-Z]{6,16}$/;
+if(!mypassword.test(password)){
+ return false; 
+}
+var name=$("#name").val();
+ var re =/^[\u4e00-\u9fa5]+$/
+if(!re.test(name)){
+return false; } 
 return true;
 
 }
