@@ -31,11 +31,11 @@
 					<td>{{{ $plan_task->end_date }}}</td>
           <td><?php if($plan_task->type=="HOMEWORK") {echo Homework::find($plan_task->content)->name;  }?>
 
-          <?php if($plan_task->type=="EXAM") {echo Homework::find($plan_task->content)->name;  }?>
+          <?php if($plan_task->type=="TEST") {echo Homework::find($plan_task->content)->name;  }?>
 
           <?php if($plan_task->type=="VIDEO") {echo Video::find($plan_task->content)->title;  }?>
 
-          <?php if($plan_task->type=="TEST") {echo ($plan_task->content);  }?>
+          <?php if($plan_task->type=="EXAM") {echo ($plan_task->content);  }?>
 </td>
 					<td>{{{ $plan_task->type }}}</td>
                     <td>
