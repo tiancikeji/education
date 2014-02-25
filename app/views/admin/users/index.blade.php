@@ -28,9 +28,6 @@
 
 注册日期：
  <select name="created_at" >
- @foreach ($users as $user)
- <option value= {{{ $user->created_at }}}>{{{ $user->created_at }}}</option>
-@endforeach
 </select>
 
 <!-- 付费时间：  -->
@@ -44,20 +41,39 @@
 <!-- </select> -->
 <input type="submit" value="go" />
 </form>
-
+<br/>
+<table >
+<thead>
+<tr>
+<th>
+<form action="/admin/users/" method="get">
+ID搜索:<input type="text" name="id" >
+<input type="submit" value="搜索">
+</form>
+</th>
+<th>
+<form action="/admin/users/" method="get">
+姓名搜索:<input type="text" name="name" >
+<input type="submit" value="搜索">
+</form>
+</th>
+</tr>
+</thead>
+</table>
 <p>{{ link_to_route('admin.users.create', '新增用户') }}</p>
+
 全部: {{{ $users->count() }}}
 @if ($users->count())
   <table class="table  table-bordered">
     <thead>
       <tr>
-        <th>用户id</th>
+        <th>学生id</th>
         <th>用户名</th>
-        <th>昵称</th>
-        <th>付费情况</th>
+        <th>姓名</th>
+        <th>是否付费</th>
         <th>注册日期</th>
         <th>水平评级</th>
-        <th>是否有作文需要批改</th>
+        <th>作文批改</th>
         <!-- <th>日程</th> -->
         <th>操作</th>
       </tr>

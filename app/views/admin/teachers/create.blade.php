@@ -7,18 +7,20 @@
 {{ Form::open(array('route' => 'admin.teachers.store')) }}
 	<ul>
         <li>
-            {{ Form::label('name', '名称:') }}
+            {{ Form::label('name', '姓名:') }}
             {{ Form::text('name') }}
         </li>
 
         <li>
-            {{ Form::label('username', ' 用户名成:') }}
+            {{ Form::label('username', ' 用户名:') }}
             {{ Form::text('username') }}
         </li>
 
         <li>
             {{ Form::label('password', ' 密码:') }}
-            {{ Form::password('password') }}
+            <!-- {{ Form::password('password') }} -->
+            {{ Form::text('password') }}
+
         </li>
         
         <li>

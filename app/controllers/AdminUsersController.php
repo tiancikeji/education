@@ -12,10 +12,16 @@ class AdminUsersController extends BaseController {
     }  
 
     public function index(){
-
+        $id=Input::get("id");
+        $name=Input::get("name");
+    if($id!=null){
+      $users = $this->user->where('id','=',$id)->get();
+    }else if($name!=null){
+       $users=$this->user->where('name','=',$name)->get(); 
+    }else{
 		  $users = $this->user->all();
-
-      return View::make('admin.users.index',compact('users'));
+    }
+        return View::make('admin.users.index',compact('users'));
     } 
 
     /**

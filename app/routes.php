@@ -61,6 +61,8 @@ Route::group(array('before'=>'auth'),function(){
 
 });
 
+// Route::resource('admin/users/', 'AdminUsersController');
+ // Route::get('/admin/users/search', 'AdminUsersController@search');
 Route::get('admin/signin','AdminController@signin' );
 Route::post('admin/login','AdminController@login' );
 
