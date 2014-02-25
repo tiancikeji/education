@@ -4,25 +4,13 @@
 
 <h1>作业测试模板 </h1>
 
-<p>{{ link_to_route('admin.homeworks.index', '返回全部作业测试模板') }}</p>
-<p>
+{{ link_to_route('admin.homeworks.edit', '编辑', array($homework->id), array('class' => 'btn btn-info')) }}
 <h3> 名称: {{{ $homework->name }}}</h3>
 <input type="hidden" id="homework_id" value="{{{ $homework->id }}}" />
 </p>
 
 <form action="/admin/homeworks/{{{ $homework->id }}}" method="get" accept-charset="utf-8">
                             <div class="video-search cf">
-试卷名称:<input type="text" name="paper_name" value="" />
-所属section:<input type="text" name="section"  value="" />
-编号:<input type="text" name="no"  value="" />
-考点编号:<input type="text" name="point_no"  value="" />
-            <select name="type" >
-                 <option value="语法">语法</option>
-                 <option value="阅读">阅读</option>
-                 <option value="词汇">词汇</option>
-                 <option value="作文">作文</option>
-                 <option value="整套">整套</option>
-            </select> 
      <select name="year" class="select">
       <option value="2006">2006</option>
       <option value="2007">2007</option>
@@ -41,9 +29,34 @@
     </select>月
 
 
-                                <div class="fr">
+所属section:
+<select  name="section" class="select">
+      @for($i = 1 ; $i <= 10 ;$i++)
+       <option value="{{{$i}}}">{{{$i}}}</option>
+      @endfor
+    </select>
+编号:
+<select  name="section" class="select">
+      @for($i = 1 ; $i <= 50 ;$i++)
+       <option value="{{{$i}}}">{{{$i}}}</option>
+      @endfor
+    </select>
+考点编号:
+    <select  name="point_no" class="select">
+       <option value="000001">考点A</option>
+       <option value="000002">考点B</option>
+       <option value="000003">考点C</option>
+       <option value="000004">考点D</option>
+    </select>
+类型：
+            <select name="type" >
+                 <option value="语法">语法</option>
+                 <option value="阅读">阅读</option>
+                 <option value="词汇">词汇</option>
+                 <option value="作文">作文</option>
+            </select> 
+
                                     <input class="btn btn-large btn-gray css3" type="submit" value="搜 索" />                    
-                                </div>
                             </div><!-- search -->
 
 </form>

@@ -98,15 +98,7 @@ class AdminHomeworksController extends BaseController {
 	{
 		$homework = $this->homework->findOrFail($id);
 
-    // $arrs = explode(",",$homework->exercise_ids);
-    $paper_name = Input::get("paper_name");
-    if(!empty($paper_name)){
-        $paper = Paper::where("name",$paper_name)->first();
-        $exercises = $this->exercise->where('paper_id',$paper->id)->get();
-    }else{
-    
-      $exercises = $this->exercise->where('no',Input::get('no'))->orWhere('point_no',Input::get('point_no'))->orWhere('section',Input::get('section'))->get();
-    }
+    $exercises = $this->exercise->Where('point_no',Input::get('point_no'))->where('section',Input::get('section'))->get();
 		return View::make('admin.homeworks.show', compact('homework','exercises'));
 	}
 
