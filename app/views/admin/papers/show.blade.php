@@ -1,4 +1,4 @@
-@extends('layouts.scaffold')
+@extends('layouts.admin')
 
 @section('main')
 
@@ -9,16 +9,20 @@
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th> 名称</th>
-				<th> 发布日期</th>
+        <th>试卷名称</th> 
+        <th>试卷科目</th>
+				<th>试卷年月</th>
+        <th>section</th>
+<th></th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<tr>
 			<td>{{{ $paper->name }}}</td>
+          <td>{{{ $paper->type }}}</td>
 					<td>{{{ $paper->published_date }}}</td>
-                    <td>{{ link_to_route('papers.edit', ' 编辑', array($paper->id), array('class' => 'btn btn-info')) }}</td>
+					<td>{{{ $paper->section }}}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('papers.destroy', $paper->id))) }}
                             {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
@@ -27,5 +31,110 @@
 		</tr>
 	</tbody>
 </table>
+
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+<th>ID</th>
+				<th>编号</th>
+				<th>描述</th>
+        <th>正确答案</th>
+        <th>难度</th>
+        <th></th>
+        <th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach (Exercise::where("paper_id",$paper->id)->where('article_no','0')->get() as $exercise)
+				<tr>
+  <td>{{{ $exercise->id }}}</td>
+					<td>{{{ $exercise->no }}}</td>
+					<td>{{{ $exercise->description }}}</td>
+          <td>{{{ $exercise->right_answer }}}</td>
+          <td>{{{ $exercise->hard }}}</td>
+          <td>{{{ $exercise->type }}}</td>
+          <td>{{{ $exercise->article_no }}}</td>
+				</tr>
+<tr>
+  <td>答案：</td>
+     <td>
+              @foreach (Answer::where('exercises_id','=',$exercise->id)->get() as $answer) 
+                {{{ $answer->number }}}.
+                {{{ $answer->description }}}
+              @endforeach
+          </td>
+  <td></td>
+  <td></td>
+</tr>
+			@endforeach
+		</tbody>
+	</table>
+
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Content</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach (Article::where('paper_id',$paper->id)->get() as $article)
+				<tr>
+					<td>{{{ $article->no }}}</td>
+					<td>{{{ $article->content }}}</td>
+				</tr>
+
+        <tr>
+          <td colspan=2>
+
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+<th>ID</th>
+				<th>编号</th>
+				<th>描述</th>
+        <th>正确答案</th>
+        <th>难度</th>
+        <th></th>
+        <th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach (Exercise::where("paper_id",$paper->id)->where('article_no',$article->no)->get() as $exercise)
+				<tr>
+  <td>{{{ $exercise->id }}}</td>
+					<td>{{{ $exercise->no }}}</td>
+					<td>{{{ $exercise->description }}}</td>
+          <td>{{{ $exercise->right_answer }}}</td>
+          <td>{{{ $exercise->hard }}}</td>
+          <td>{{{ $exercise->type }}}</td>
+          <td>{{{ $exercise->article_no }}}</td>
+				</tr>
+<tr>
+  <td>答案：</td>
+     <td>
+              @foreach (Answer::where('exercises_id','=',$exercise->id)->get() as $answer) 
+                {{{ $answer->number }}}.
+                {{{ $answer->description }}}
+              @endforeach
+          </td>
+  <td></td>
+  <td></td>
+</tr>
+			@endforeach
+		</tbody>
+	</table>
+
+
+
+</td>
+        </tr>
+			@endforeach
+		</tbody>
+	</table>
+
 
 @stop

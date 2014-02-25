@@ -107,3 +107,6 @@ Route::resource('adminpermissions', 'AdminpermissionsController');
 
 
 Route::resource('myexercises', 'MyexercisesController');
+
+
+Route::resource('articles', 'ArticlesController');

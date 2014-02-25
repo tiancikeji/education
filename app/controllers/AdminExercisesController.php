@@ -79,36 +79,43 @@ class AdminExercisesController extends BaseController {
 
       $excel =  public_path()."/uploads/exercises/".$filename;
       // echo $excel;
-      $arr = Excel::load($excel)->toArray()['阅读表1']; 
       $paper_id = Input::get("paper_id");
+      
+      $article_arr = Excel::load($excel)->toArray()['阅读表2']; 
+      // var_dump($article_arr);
+      
+      for($n=1;$n<count($article_arr)-1;$n++) {
+        $article = new Article;
+        $article->no = $article_arr[$n][1];
+        $article->paper_id = $paper_id;
+        $article->content = $article_arr[$n][2];
+        if(!empty($article->no)){
+          $article->save();
+        }
+      }
+
+      $arr = Excel::load($excel)->toArray()['阅读表1']; 
+
       for($i=1; $i<count($arr)-1;$i++){
-        $no =  $arr[$i][2];
-        $description =  $arr[$i][4];
-        $right_answer =  $arr[$i][5];
-        $hard =  $arr[$i][11];
-        $note =  $arr[$i][14];
-        // echo $note; 
-
-        $exercise = Exercise::create(
-          [
-          'paper_id'=>$paper_id,
-          'no'=> $no,
-          'description' => $description,
-          'right_answer' => $right_answer,
-          'hard' => $hard,
-          'note' => $note
-          ]
-         );
-
+        $exercise  = new Exercise;
+        $exercise->paper_id=$paper_id;
+        $exercise->no =  $arr[$i][2];
+        $exercise->type = $arr[$i][3];
+        $exercise->article_no = $arr[$i][4];
+        $exercise->description =  $arr[$i][5];
+        $exercise->right_answer =  $arr[$i][6];
+        $exercise->hard =  $arr[$i][12];
+        $exercise->note =  $arr[$i][15];
+        $exercise->save();
         $numberarr = ["A","B","C","D","E"];
         for($j=0;$j < count($numberarr); $j++){
-            $answer_option =  $arr[$i][6+$j] ;
+            $answer_option =  $arr[$i][7+$j] ;
           Answer::create(['exercises_id' => $exercise->id,
           'description' => $answer_option,
           'number' => $numberarr[$j]]);  
         }  
-
       }
+
 			return Redirect::to('/admin/exercises?paper_id='.$paper_id);
     //}
 

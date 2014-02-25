@@ -26,3 +26,19 @@ alter table users add column token varchar(255);
 
 
 alter table users add column confirm_at varchar(255);
+oooo
+ooo
+
+
+alter table videos add column year varchar(50);
+
+alter table videos add column month varchar(50);
+
+alter table videos add column section varchar(50);
+
+alter table videos add column play_count int(10) default 0;
+
+alter table exercises add column article_no varchar(50);
+
+alter table exercises add column type varchar(50);
+

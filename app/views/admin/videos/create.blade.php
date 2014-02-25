@@ -6,11 +6,29 @@
 
 {{ Form::open(array('route' => 'admin.videos.store','files'=>true)) }}
 	<ul>
-<select name="paper_id" id="">
-			@foreach ($papers as $paper)
-        <option value="{{{ $paper->id }}}">{{{ $paper->name }}}=={{{ $paper->published_date }}}=={{{ $paper->section }}}</option>
-			@endforeach
-</select>
+<li>
+     <select name="year" class="select">
+      <option value="2006">2006</option>
+      <option value="2007">2007</option>
+      <option value="2008">2008</option>
+      <option value="2009">2009</option>
+      <option value="2010">2010</option>
+      <option value="2011">2011</option>
+      <option value="2012">2012</option>
+      <option value="2013">2013</option>
+      <option value="2014">2014</option>
+    </select>年
+   <select  name="month" class="select">
+      @for($i = 1 ; $i <= 12 ;$i++)
+       <option value="{{{$i}}}">{{{$i}}}</option>
+      @endfor
+    </select>月
+  section: <select class="select" name='section'>
+      @for($i = 1 ; $i <= 4 ;$i++)
+       <option value="{{{$i}}}">{{{$i}}}</option>
+      @endfor
+    </select>
+</li>
             {{ Form::input('hidden','author','作者') }}
         <li>
             {{ Form::label('title', ' 标题 :') }}
