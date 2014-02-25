@@ -45,9 +45,9 @@
 
         <li>  
         Tags:
+        <input type="text" name="tags[]" value="{{{explode(",",$video->tags)[0]}}}" size=10 maxlength=18/>
         <input type="text" name="tags[]" value="{{{explode(",",$video->tags)[1]}}}" size=10 maxlength=18/>
         <input type="text" name="tags[]" value="{{{explode(",",$video->tags)[2]}}}" size=10 maxlength=18/>
-        <input type="text" name="tags[]" value="{{{explode(",",$video->tags)[3]}}}" size=10 maxlength=18/>
       </li>
 
 		<li>
