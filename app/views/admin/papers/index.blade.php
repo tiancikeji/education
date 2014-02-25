@@ -13,7 +13,6 @@
 				<th>试卷名称</th> 
         <th>试卷科目</th>
 				<th>试卷年月</th>
-        <th>section</th>
         <th>操作</th>
 			</tr>
 		</thead>
@@ -23,14 +22,12 @@
 				<tr>
 					<td>{{{ $paper->name }}}</td>
           <td>{{{ $paper->type }}}</td>
-					<td>{{{ $paper->published_date }}}</td>
-					<td>{{{ $paper->section }}}</td>
+					<td>{{{ $paper->year }}}/{{{ $paper->month }}}</td>
           <td>
             <a href="/admin/exercises/create?paper_id={{{ $paper->id }}}" >上传试题</a>
-            <a href="/admin/papers/{{{ $paper->id }}}">所有习题</a>
-            {{ link_to_route('admin.papers.edit', ' 编辑 ', array($paper->id), array('class' => 'btn btn-info')) }}
+            <a href="/admin/papers/{{{ $paper->id }}}">预览</a>
             {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.papers.destroy', $paper->id))) }}
-               {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
+               {{ Form::submit('删除') }}
             {{ Form::close() }}
           </td>
 				</tr>

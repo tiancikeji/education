@@ -42,3 +42,12 @@ alter table exercises add column article_no varchar(50);
 
 alter table exercises add column type varchar(50);
 
+
+alter table exercises add column point_no varchar(50);
+
+
+alter table exercises add column section varchar(50);
+
+alter table papers add column year varchar(50);
+
+alter table papers add column month varchar(50);

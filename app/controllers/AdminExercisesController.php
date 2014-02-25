@@ -80,8 +80,17 @@ class AdminExercisesController extends BaseController {
       $excel =  public_path()."/uploads/exercises/".$filename;
       // echo $excel;
       $paper_id = Input::get("paper_id");
+
+      $point_arr =  Excel::load($excel)->toArray()['考点'];
+      for($l=1;$l<count($point_arr)-1;$l++){
+        $point = new Point; 
+        $point->paper_id = $paper_id;
+        $point->no = $point_arr[$l][1];
+        $point->content = $point_arr[$l][2];
+        $point->save();
+      }
       
-      $article_arr = Excel::load($excel)->toArray()['阅读表2']; 
+      $article_arr = Excel::load($excel)->toArray()['文章列表']; 
       // var_dump($article_arr);
       
       for($n=1;$n<count($article_arr)-1;$n++) {
@@ -94,17 +103,19 @@ class AdminExercisesController extends BaseController {
         }
       }
 
-      $arr = Excel::load($excel)->toArray()['阅读表1']; 
+      $arr = Excel::load($excel)->toArray()['题目列表']; 
 
       for($i=1; $i<count($arr)-1;$i++){
         $exercise  = new Exercise;
         $exercise->paper_id=$paper_id;
-        $exercise->no =  $arr[$i][2];
-        $exercise->type = $arr[$i][3];
-        $exercise->article_no = $arr[$i][4];
-        $exercise->description =  $arr[$i][5];
-        $exercise->right_answer =  $arr[$i][6];
-        $exercise->hard =  $arr[$i][12];
+        $exercise->type = $arr[$i][2];
+        $exercise->section = $arr[$i][3];
+        $exercise->no =  $arr[$i][3];
+        $exercise->article_no = $arr[$i][5];
+        $exercise->description =  $arr[$i][6];
+        $exercise->right_answer =  $arr[$i][12];
+        $exercise->point_no = $arr[$i][13];
+        $exercise->hard =  $arr[$i][14];
         $exercise->note =  $arr[$i][15];
         $exercise->save();
         $numberarr = ["A","B","C","D","E"];

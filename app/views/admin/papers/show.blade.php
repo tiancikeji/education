@@ -12,7 +12,6 @@
         <th>试卷名称</th> 
         <th>试卷科目</th>
 				<th>试卷年月</th>
-        <th>section</th>
 <th></th>
 		</tr>
 	</thead>
@@ -21,8 +20,7 @@
 		<tr>
 			<td>{{{ $paper->name }}}</td>
           <td>{{{ $paper->type }}}</td>
-					<td>{{{ $paper->published_date }}}</td>
-					<td>{{{ $paper->section }}}</td>
+					<td>{{{ $paper->year }}}/{{{ $paper->month }}}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('papers.destroy', $paper->id))) }}
                             {{ Form::submit('删除', array('class' => 'btn btn-danger')) }}
@@ -35,33 +33,34 @@
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-<th>ID</th>
-				<th>编号</th>
-				<th>描述</th>
+        <th>题目类型</th>
+        <th>所属section</th>
+        <th>编号</th>
+        <th>文章编号</th>
+        <th>题 目</th>
+        <th>考点编号</th>
         <th>正确答案</th>
         <th>难度</th>
-        <th></th>
-        <th></th>
 			</tr>
 		</thead>
 
 		<tbody>
 			@foreach (Exercise::where("paper_id",$paper->id)->where('article_no','0')->get() as $exercise)
 				<tr>
-  <td>{{{ $exercise->id }}}</td>
+					<td>{{{ $exercise->type }}}</td>
+					<td>{{{ $exercise->section }}}</td>
 					<td>{{{ $exercise->no }}}</td>
+					<td>{{{ $exercise->article_no }}}</td>
 					<td>{{{ $exercise->description }}}</td>
+					<td>{{{ $exercise->point_no }}}</td>
           <td>{{{ $exercise->right_answer }}}</td>
           <td>{{{ $exercise->hard }}}</td>
-          <td>{{{ $exercise->type }}}</td>
-          <td>{{{ $exercise->article_no }}}</td>
 				</tr>
 <tr>
-  <td>答案：</td>
+  <td>选项：</td>
      <td>
               @foreach (Answer::where('exercises_id','=',$exercise->id)->get() as $answer) 
-                {{{ $answer->number }}}.
-                {{{ $answer->description }}}
+   {{{ $answer->number }}}:{{{ $answer->description }}}
               @endforeach
           </td>
   <td></td>

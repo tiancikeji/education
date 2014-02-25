@@ -22,7 +22,6 @@
 		<tbody>
 			@foreach ($exercises as $exercise)
 				<tr>
-  <td>{{{ $exercise->id }}}</td>
 					<td>{{{ $exercise->no }}}</td>
 					<td>{{{ $exercise->description }}}</td>
           <td>{{{ $exercise->right_answer }}}</td>

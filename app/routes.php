@@ -110,3 +110,5 @@ Route::resource('myexercises', 'MyexercisesController');
 
 
 Route::resource('articles', 'ArticlesController');
+
+Route::resource('points', 'PointsController');
