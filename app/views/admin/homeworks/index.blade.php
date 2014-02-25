@@ -14,7 +14,7 @@
         <th>类型</th>
 				<th>试题</th>
 				<!-- <th>Teacher_id</th> -->
-      <th></th>
+      <th>删除</th>
 			</tr>
 		</thead>
 
@@ -23,9 +23,11 @@
 				<tr>
 					<td>{{{ $homework->name }}}</td>
           <td>{{{ $homework->type }}}</td>
-					<td>{{{ $homework->exercise_ids }}}</td>
+					<td>{{{ count(explode(",",$homework->exercise_ids)) }}}</td>
 					<!-- <td>{{{ $homework->teacher_id }}}</td> -->
-                    <td>{{ link_to_route('admin.homeworks.show', '添加试题', array($homework->id), array('class' => 'btn btn-info')) }}
+                    <td>
+
+{{ link_to_route('admin.homeworks.edit', '编辑', array($homework->id), array('class' => 'btn btn-info')) }}
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.homeworks.destroy', $homework->id))) }}
                             {{ Form::submit(' 删除', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}

@@ -2,35 +2,67 @@
 
 @section('main')
 
-<h1>编辑作业模板</h1>
-{{ Form::model($homework, array('method' => 'PATCH', 'route' => array('admin.homeworks.update', $homework->id))) }}
-	<ul>
-        <li>
-            {{ Form::label('name', ' 名称:') }}
-            {{ Form::text('name') }}
-        </li>
+<h1>作业测试模板 </h1>
 
-        <li>
-            {{ Form::label('exercise_ids', '练习id :') }}
-            {{ Form::textarea('exercise_ids') }}
-        </li>
+<p>{{ link_to_route('admin.homeworks.index', '返回全部作业测试模板') }}</p>
+<p>
+<h3> 名称: {{{ $homework->name }}}</h3>
+<input type="hidden" id="homework_id" value="{{{ $homework->id }}}" />
+</p>
 
-        <li>
-            {{ Form::label('teacher_id', '老师id:') }}
-            {{ Form::input('number', 'teacher_id') }}
-        </li>
+{{ link_to_route('admin.homeworks.show', '添加试题', array($homework->id), array('class' => 'btn btn-info')) }}
+@if ($exercises->count())
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+        <th>顺序</th>
+				<th>编号</th>
+				<th>描述</th>
+        <th>正确答案</th>
+        <th>难度</th>
+        <th>删除</th>
+			</tr>
+		</thead>
 
-		<li>
-			{{ Form::submit(' 编辑', array('class' => 'btn btn-info')) }}
-			{{ link_to_route('admin.homeworks.show', '取消', $homework->id, array('class' => 'btn')) }}
-		</li>
-	</ul>
-{{ Form::close() }}
-
-@if ($errors->any())
-	<ul>
-		{{ implode('', $errors->all('<li class="error">:message</li>')) }}
-	</ul>
+		<tbody>
+			@foreach ($exercises as $exercise)
+				<tr>
+          <td>{{{ $exercise->id }}}</td>
+					<td>{{{ $exercise->no }}}</td>
+					<td>{{{ $exercise->description }}}</td>
+          <td>{{{ $exercise->right_answer }}}</td>
+          <td>{{{ $exercise->hard }}}</td>
+<td><input type="checkbox" name="exercise_ids[]" <?php if(in_array($exercise->id,$arrs)){ echo "checked"; }  ?> value="{{{ $exercise->id }}}" /></td>
+				</tr>
+			@endforeach
+		</tbody>
+	</table>
+@else
+	没有
 @endif
 
+<script type="text/javascript" charset="utf-8">
+$("input[name='exercise_ids[]']").on('click',function(){
+  if($(this).attr("checked")){
+      // alert($(this).val());
+    
+      // $.ajax({
+      //   url: "/admin/homeworks/add_exercise?exercise_id="+$(this).val()+"&homework_id="+$("#homework_id").val(),
+      //   context: document.body
+      // }).done(function() {
+      //   alert("添加成功");
+      // });
+
+    }else{
+      $.ajax({
+        url: "/admin/homeworks/delete_exercise?exercise_id="+$(this).val()+"&homework_id="+$("#homework_id").val(),
+        context: document.body
+      }).done(function() {
+        alert("已经删除");
+      });
+    }
+});
+</script>
 @stop
+
+

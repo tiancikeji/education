@@ -98,9 +98,16 @@ class AdminHomeworksController extends BaseController {
 	{
 		$homework = $this->homework->findOrFail($id);
 
-    $arrs = explode(",",$homework->exercise_ids);
-		$exercises = $this->exercise->all();
-		return View::make('admin.homeworks.show', compact('homework','exercises','arrs'));
+    // $arrs = explode(",",$homework->exercise_ids);
+    $paper_name = Input::get("paper_name");
+    if(!empty($paper_name)){
+        $paper = Paper::where("name",$paper_name)->first();
+        $exercises = $this->exercise->where('paper_id',$paper->id)->get();
+    }else{
+    
+      $exercises = $this->exercise->where('no',Input::get('no'))->orWhere('point_no',Input::get('point_no'))->orWhere('section',Input::get('section'))->get();
+    }
+		return View::make('admin.homeworks.show', compact('homework','exercises'));
 	}
 
 	/**
@@ -118,7 +125,9 @@ class AdminHomeworksController extends BaseController {
 			return Redirect::route('admin.homeworks.index');
 		}
 
-		return View::make('admin.homeworks.edit', compact('homework'));
+    $arrs = explode(",",$homework->exercise_ids);
+		$exercises = $this->exercise->whereIn('id',$arrs)->get();
+		return View::make('admin.homeworks.edit', compact('homework','arrs','exercises'));
 	}
 
 	/**
