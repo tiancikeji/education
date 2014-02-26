@@ -44,11 +44,10 @@
 					<td>{{{ $payment->fee }}}</td>
 					<td>{{{ $payment->total }}}</td>
 					<td>{{{ $payment->user_id }}}</td>
-      @endforeach
-@foreach ($users as $user)
-			<td>{{{ $user->name }}}</td>
- @endforeach
-			@foreach ($payments as $payment)
+			<td>{{{ User::find($payment->user_id)->name }}}</td>
+          <td>{{{$payment->created_at}}}</td>
+           <td>{{{ $payment->enddate_at }}}</td>
+ 
                     <td>{{ link_to_route('admin.payments.edit', '编辑 ', array($payment->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
                          {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.payments.destroy', $payment->id))) }}

@@ -45,8 +45,8 @@ class PaymentsController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-    // var_dump($input);
-    
+
+   
     $validation = Validator::make($input, Payment::$rules);
     if ($validation->passes())
     {
@@ -64,6 +64,15 @@ class PaymentsController extends BaseController {
       $total = $count * $fee;
       $user_id = Session::get('current_user')->id;
       $this->payment = $this->payment->create(['type'=>Input::get('type'),'count'=>$count,'fee'=>$fee,'total'=>$total,'user_id'=>$user_id ]);
+
+      $start_date = strtotime($this->payment->created_at); 
+
+      $enddate = $start_date+(24*60*60*30*$count); 
+
+      $enddate_at = date("Y-m-d H:i:s",$enddate);
+
+      $this->payment->enddate_at = $enddate_at;
+      $this->payment->save();
       return Redirect::to('/payments/'.$this->payment->id);
 			// return Redirect::to('/usercenter');
     }
