@@ -20,8 +20,7 @@
   total: <?php echo count($answerarr); ?>
 <?php
    $count = 0;
-   $key_value = array();
-   for($i=0;$i<count($answerarr);$i++){
+   $key_value = array(); for($i=0;$i<count($answerarr);$i++){
      if(strlen($answerarr[$i])==6){
         $count += 1; 
 
