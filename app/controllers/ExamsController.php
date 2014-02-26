@@ -59,6 +59,7 @@ class ExamsController extends BaseController {
       $exam = $this->exam->create(['start_time' => $current_date,
         'end_time'=> $endTime,
         'user_id'=>$user_id,
+        'type'=>Input::get("type"),
         'paper_id' => Input::get('paper_id')]);
 			return Redirect::to('/exams/'.$exam->id.'/edit');
 
