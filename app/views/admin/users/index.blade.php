@@ -18,7 +18,7 @@
 付费状况： 
 <select name="payment" >
   <option value="1">已付</option>
-  <option value="0">未付</option>
+  <option value="2">未付</option>
 </select>
 所属教师： 
 <select name="teacher_id" id="">

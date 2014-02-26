@@ -29,11 +29,11 @@ class AdminUsersController extends BaseController {
       $users = DB::table("users")->whereBetween('created_at', array($created_at_begin,$created_at_end ))->get();
     }else if(!empty($payment)){
 
-        $userpayments = Payment::all();
-        $user_ids = array();
-        foreach($userpayments as $userpayment){
-          $user_ids[]= $userpayment->user_id;
-        } 
+      $userpayments = Payment::all();
+      $user_ids = array();
+      foreach($userpayments as $userpayment){
+        $user_ids[]= $userpayment->user_id;
+      } 
 
       if($payment == 1){
 
@@ -52,13 +52,10 @@ class AdminUsersController extends BaseController {
         }
 
       }
-    } else if(!empty($teacher_id) and $teacher_id !="all"){
+    } 
+    else if(!empty($teacher_id) and $teacher_id !="all"){
 
-      // $users = DB::table("users")->join("userteachers", function($join){
-      //   $join->on("user_id","=","userteachers.user_id")
-      //         ->where('userteachers.teacher_id','=',$teacher_id);
-      // })->get();
-     $userteachers = Userteacher::where("teacher_id","=",$teacher_id)->get(); 
+      $userteachers = Userteacher::where("teacher_id","=",$teacher_id)->get(); 
       $user_ids = array();
       foreach($userteachers as $userteacher){
           $user_ids[]= $userteacher->user_id;
