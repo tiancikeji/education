@@ -15,13 +15,15 @@
  
 <form action="/admin/users" method="get" accept-charset="utf-8">
 付费状况： 
-<select name="fee" id="">
-  <option value="已付">已付</option>
-  <option value="未付">未付</option>
+<select name="payment" >
+  <option value="1">已付</option>
+  <option value="0">未付</option>
 </select>
 所属教师： 
 <select name="teacher_id" id="">
-    
+ 			@foreach (Teacher::take(100)->get() as $teacher)
+					<option value="{{{ $teacher->id }}}">{{{ $teacher->name }}}</option>
+			@endforeach
 </select>
 评级状况： 
 <select name="" id="">
@@ -31,8 +33,10 @@
 <option value="d">D</option>
 </select>
 作文状态： 
-<select name="" id="">
-  <option value="">全部</option>
+<select name="compositions" >
+  <option value="all">全部</option>
+  <option value="1">有</option>
+  <option value="0">无</option>
 </select>
 
 注册日期：
@@ -68,9 +72,6 @@ ID搜索:<input type="text" name="id" >
 </thead>
 </table>
 <p>{{ link_to_route('admin.users.create', '新增用户') }}</p>
-
-全部: {{{ $users->count() }}}
-@if ($users->count())
   <table class="table  table-bordered">
     <thead>
       <tr>
@@ -129,9 +130,6 @@ ID搜索:<input type="text" name="id" >
       @endforeach
     </tbody>
   </table>
-@else
-  没用用户
-@endif
 
 
 @stop
