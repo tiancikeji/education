@@ -9,7 +9,8 @@
 	<script src="/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js"></script>
   <script>
   $(function() {
-    $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+    $("#created_at_begin").datepicker({ dateFormat: 'yy-mm-dd' });
+    $("#created_at_end").datepicker({ dateFormat: 'yy-mm-dd' });
   });
   </script>
  
@@ -21,6 +22,7 @@
 </select>
 所属教师： 
 <select name="teacher_id" id="">
+      <option value="all">全部</option>
  			@foreach (Teacher::take(100)->get() as $teacher)
 					<option value="{{{ $teacher->id }}}">{{{ $teacher->name }}}</option>
 			@endforeach
@@ -38,9 +40,11 @@
   <option value="1">有</option>
   <option value="0">无</option>
 </select>
-
-注册日期：
-<input type="text" name="created_at" id="datepicker" value="" />
+<br>
+注册开始日期：
+<input type="text" name="created_at_begin" id="created_at_begin" value="" />
+注册结束日期：
+<input type="text" name="created_at_end" id="created_at_end" value="" />
 <!-- 付费时间：  -->
 
 <!-- <select name="" id=""> -->
@@ -50,20 +54,8 @@
 <!-- <select name="" id=""> -->
 <!--   <option value="">全部</option> -->
 <!-- </select> -->
-<input type="submit" value="go" />
-</form>
 <br/>
-<table >
-<thead>
-<tr>
-<th>
-<form action="/admin/users/" method="get">
 ID搜索:<input type="text" name="id" >
-<input type="submit" value="搜索">
-</form>
-</th>
-<th>
-<form action="/admin/users/" method="get">
 姓名搜索:<input type="text" name="name" >
 <input type="submit" value="搜索">
 </form>

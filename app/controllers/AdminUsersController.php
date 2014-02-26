@@ -17,15 +17,16 @@ class AdminUsersController extends BaseController {
     // });
     $id = Input::get("id");
     $name = Input::get("name");
-    $created_at = Input::get("created_at");
+    $created_at_begin = Input::get("created_at_begin");
+    $created_at_end = Input::get("created_at_end");
     $teacher_id = Input::get("teacher_id");
     $payment = Input::get("payment");
     if($id!=null){
       $users = $this->user->where('id','=',$id)->get();
     }else if($name!=null){
       $users=$this->user->where('name','=',$name)->get(); 
-    }else if(!empty($created_at)){
-      $users = DB::select("select * from users where created_at like '%".$created_at."%'");
+    }else if(!empty($created_at_begin) and !empty($created_at_end)){
+      $users = DB::table("users")->whereBetween('created_at', array($created_at_begin,$created_at_end ))->get();
     }else if(!empty($payment)){
 
         $userpayments = Payment::all();
@@ -51,7 +52,7 @@ class AdminUsersController extends BaseController {
         }
 
       }
-    } else if(!empty($teacher_id)){
+    } else if(!empty($teacher_id) and $teacher_id !="all"){
 
       // $users = DB::table("users")->join("userteachers", function($join){
       //   $join->on("user_id","=","userteachers.user_id")
