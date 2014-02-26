@@ -20,15 +20,21 @@
   total: <?php echo count($answerarr); ?>
 <?php
    $count = 0;
-   $key_value = array(); for($i=0;$i<count($answerarr);$i++){
-     if(strlen($answerarr[$i])==6){
-        $count += 1; 
+   $key_value = array();
+   for($i=0;$i<count($answerarr);$i++){
 
       $arr = explode("+",$answerarr[$i]);
-      $key_value[$arr[0]] = $arr[1];
+      // if(!empty($arr[1])){ echo "222";}
+      // echo ($arr[1])."<br>";
+     if(count($arr)>1){
+       if(!empty($arr[1])){ 
+        $count += 1; 
+       }
+        $key_value[$arr[0]] = $arr[1];
      }
    }
 ?>
+
 
   answers:<?php echo $count; ?> right:{{{$exam->score}}}
 

@@ -15,15 +15,17 @@
    $count = 0;
    $key_value = array();
    for($i=0;$i<count($answerarr);$i++){
-     if(strlen($answerarr[$i])==6){
-        $count += 1; 
 
       $arr = explode("+",$answerarr[$i]);
-      $key_value[$arr[0]] = $arr[1];
+      // if(!empty($arr[1])){ echo "222";}
+      // echo ($arr[1])."<br>";
+     if(count($arr)>1){
+       if(!empty($arr[1])){ 
+        $count += 1; 
+       }
+        $key_value[$arr[0]] = $arr[1];
      }
-      // echo $answerarr[$i]."<br>";
    }
-   // print_r($key_value);
 ?>
 
   answers:<?php echo $count; ?> right:{{{$exam->score}}}
