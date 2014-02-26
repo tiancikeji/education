@@ -4,15 +4,24 @@
 
 <h1>学生列表</h1>
 
-<form action="/users/students/search" method="get" accept-charset="utf-8">
+
+	<link href="/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+	<script src="/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+  });
+  </script>
+ 
+<form action="/admin/users" method="get" accept-charset="utf-8">
 付费状况： 
 <select name="fee" id="">
   <option value="已付">已付</option>
   <option value="未付">未付</option>
 </select>
 所属教师： 
-<select name="name" id="">
-  <option value="">全部</option>
+<select name="teacher_id" id="">
+    
 </select>
 评级状况： 
 <select name="" id="">
@@ -27,9 +36,7 @@
 </select>
 
 注册日期：
- <select name="created_at" >
-</select>
-
+<input type="text" name="created_at" id="datepicker" value="" />
 <!-- 付费时间：  -->
 
 <!-- <select name="" id=""> -->
@@ -93,7 +100,7 @@ ID搜索:<input type="text" name="id" >
 <a href="/admin/payments?user_id={{{ $user->id }}}">查看</a>
 </td>
 <td>
-  {{{ $user->created_at }}}
+  {{{substr($user->created_at,0,10)  }}}
 </td>
 <td>
   {{ Exam::where('user_id','=',$user->id)->count() }}

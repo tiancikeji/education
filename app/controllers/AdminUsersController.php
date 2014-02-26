@@ -12,15 +12,23 @@ class AdminUsersController extends BaseController {
     }  
 
     public function index(){
-        $id=Input::get("id");
-        $name=Input::get("name");
-    if($id!=null){
-      $users = $this->user->where('id','=',$id)->get();
-    }else if($name!=null){
-       $users=$this->user->where('name','=',$name)->get(); 
-    }else{
-		  $users = $this->user->all();
-    }
+      // Event::listen('illuminate.query',function($sql){
+        // dd($sql);
+      // });
+        $id = Input::get("id");
+        $name = Input::get("name");
+        $created_at = Input::get("created_at");
+    // if($id!=null){
+      // $users = $this->user->where('id','=',$id)->get();
+    // }else if($name!=null){
+       // $users=$this->user->where('name','=',$name)->get(); 
+    // }else if(!empty($created_at)){
+		  $users = $this->user->where('created_at','like',"'%".$created_at."%'");
+      // echo $created_at;
+      // var_dump($users->toSql());
+    // }else{
+      // $users = $this->user->all();
+    // }
         return View::make('admin.users.index',compact('users'));
     } 
 
