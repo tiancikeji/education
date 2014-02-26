@@ -13,11 +13,11 @@
 @endforeach
 </select>
 
-<select name="type">
-@foreach ($payments as $payment)
-<option value={{{ $payment->type }}}>{{{ $payment->type }}}</option>
-@endforeach
-</select>
+<!-- <select name="type"> -->
+<!-- <option value="exam">Exam</option> -->
+<!-- <option value="composition">Composition</option> -->
+<!-- </select> -->
+
 <input type="submit" value="搜索">
 </form>
 </div>
