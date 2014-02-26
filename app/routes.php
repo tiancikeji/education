@@ -36,6 +36,7 @@ Route::resource('videos', 'VideosController');
 Route::group(array('before'=>'auth'),function(){
 
   Route::get('/papers/search', 'PapersController@search');
+  Route::get('/exams/review', 'ExamsController@review');
   Route::resource('payments', 'PaymentsController');
   Route::get('/upgrade', 'UpgradeController@index');
   Route::get('/plan', 'UserCenterController@plan');
