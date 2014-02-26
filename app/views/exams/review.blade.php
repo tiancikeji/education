@@ -63,10 +63,6 @@
                             </li>
       @endforeach
                         </ul>
-                    </div>
-                    <div class="ac pt-30 btn-wrap-2">
-                        {{ Form::submit('完成') }}
-                    </div>
 
               </div>
           </div><!-- mod -->
